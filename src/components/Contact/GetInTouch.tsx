@@ -6,7 +6,6 @@ import { useState } from "react"
 import { Card, CardContent } from "@/components/card/Card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/card/textarea"
 import { MapPin, Phone, Mail } from "lucide-react"
 
 export default function ContactSection() {
@@ -143,7 +142,7 @@ export default function ContactSection() {
                     >
                       Message
                     </label>
-                    <Textarea
+                    <textarea
                       id="message"
                       name="message"
                       rows={5}
