@@ -194,7 +194,7 @@ const Header = () => {
             : 'opacity-0 invisible -translate-y-4'
         } ${shouldAppearScrolled ? 'mt-20' : 'mt-28'}`}
       >
-        <div className="min-h-[80vh] w-full bg-white dark:bg-black shadow-2xl border-t border-gray-200 dark:border-gray-800 overflow-y-auto">
+        <div className="min-h-[50vh] w-full bg-white dark:bg-black shadow-2xl border-t border-gray-200 dark:border-gray-800 overflow-y-auto">
           {activeMenu && (
             <div className="container mx-auto px-6 py-16">
               <h2 className="text-4xl font-bold text-ril-dark-blue dark:text-white mb-12">
