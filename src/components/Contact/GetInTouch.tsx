@@ -18,7 +18,6 @@ export default function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
     console.log("Form submitted:", formData)
   }
 
@@ -43,7 +42,6 @@ export default function ContactSection() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
           <div>
             <h3 className="text-3xl font-bold text-hoa-charcoal dark:text-white mb-8 font-serif">
               Contact Information
@@ -87,7 +85,6 @@ export default function ContactSection() {
               </Card>
             </div>
 
-            {/* Map Placeholder */}
             <div className="mt-8">
               <div className="bg-gray-200 dark:bg-gray-700 rounded-lg h-64 flex items-center justify-center">
                 <p className="text-gray-500 dark:text-gray-400">Interactive Map</p>
@@ -95,7 +92,6 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Contact Form */}
           <div>
             <Card className="border-0 shadow-lg bg-white dark:bg-hoa-charcoal/50">
               <CardContent className="p-8">

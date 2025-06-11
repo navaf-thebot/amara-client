@@ -214,8 +214,6 @@ import {
 
   return (
     <div className="min-h-screen bg-background">
-
-      {/* Hero Section */}
       <section className="relative pt-24 pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-hoa-gold/20 via-hoa-beige/30 to-white dark:from-hoa-gold/10 dark:via-hoa-charcoal/20 dark:to-hoa-charcoal"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -232,7 +230,6 @@ import {
         </div>
       </section>
 
-      {/* Subsidiaries Grid */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -242,7 +239,6 @@ import {
                 className={`group animate-fade-in-up animation-delay-${((index % 6) + 1) * 100}`}
               >
                 <div className="bg-white dark:bg-hoa-charcoal/80 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-500 h-full">
-                  {/* Header with Icon */}
                   <div className={`bg-gradient-to-br ${subsidiary.color} p-6 text-white relative overflow-hidden`}>
                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
                     <div className="relative z-10">
@@ -252,7 +248,6 @@ import {
                     </div>
                   </div>
 
-                  {/* Content */}
                   <div className="p-6">
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">{subsidiary.description}</p>
                     <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
@@ -260,7 +255,6 @@ import {
                     </div>
                   </div>
 
-                  {/* Footer */}
                   <div className="px-6 pb-6">
                     <button className="w-full py-2 text-hoa-gold hover:text-white hover:bg-hoa-gold border border-hoa-gold rounded-lg transition-all duration-300 font-medium">
                       Learn More
@@ -273,7 +267,6 @@ import {
         </div>
       </section>
 
-      {/* Impact Statistics */}
       <section className="py-16 bg-gradient-to-br from-hoa-beige/50 to-white dark:from-hoa-charcoal/30 dark:to-hoa-charcoal/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in-up">
@@ -306,7 +299,6 @@ import {
         </div>
       </section>
 
-      {/* Call to Action */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="animate-fade-in-up">

@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Search, ChevronDown, Facebook, Twitter, Linkedin, ExternalLink } from 'lucide-react';
@@ -13,15 +14,12 @@ const navLinks = [
   'Privacy Policy',
 ];
 
-// Define routes for main menu items and submenu items
 const menuRoutes: { [key: string]: string } = {
-  // Main menu routes (for items with empty submenus)
   'Subsidiaries': '/subsidiaries',
   'Careers': '/careers',
   'Contact US': '/contact',
   'Privacy Policy': '/privacy-policy',
   
-  // Submenu item routes
   'story': '/about/our-story',
   'Values & Culture': '/about/values-culture',
   'Leadership': '/about/leadership',
@@ -59,16 +57,27 @@ const megaMenuData: { [key: string]: { title: string; links: string[] }[] } = {
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const pathname = usePathname();
+  
+  const isHomePage = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      if (isHomePage) {
+        setScrolled(window.scrollY > 50);
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    
+    if (isHomePage) {
+      window.addEventListener('scroll', handleScroll);
+    }
+    
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      if (isHomePage) {
+        window.removeEventListener('scroll', handleScroll);
+      }
     };
-  }, []);
+  }, [isHomePage]);
 
   const handleMouseEnter = (menu: string) => {
     if (megaMenuData[menu] && megaMenuData[menu].length > 0) {
@@ -83,22 +92,23 @@ const Header = () => {
   };
 
   const handleMenuClick = (menu: string) => {
-    // If menu has no submenu items, close the menu
     if (!megaMenuData[menu] || megaMenuData[menu].length === 0) {
       setActiveMenu(null);
     }
   };
 
+  const shouldAppearScrolled = !isHomePage || scrolled;
+
   return (
     <div onMouseLeave={handleMouseLeave} className="relative">
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
-          scrolled 
+          shouldAppearScrolled 
             ? 'bg-white/95 dark:bg-black/95 backdrop-blur-sm shadow-md' 
             : 'bg-transparent'
         }`}
       >
-        <div className={`transition-opacity duration-300 ${scrolled ? 'hidden' : 'opacity-100'}`}>
+        <div className={`transition-opacity duration-300 ${shouldAppearScrolled ? 'hidden' : 'opacity-100'}`}>
           <div className="bg-ril-light-gray h-10 border-b border-ril-gray">
             <div className="container mx-auto px-6 h-full flex justify-end items-center space-x-4">
               <Link href="https://www.facebook.com//" target="_blank" rel="noopener noreferrer">
@@ -114,12 +124,12 @@ const Header = () => {
           </div>
         </div>
 
-        <div className={`container mx-auto px-6 flex justify-between items-center transition-all duration-300 ease-in-out ${scrolled ? 'h-20' : 'h-28'}`}>
+        <div className={`container mx-auto px-6 flex justify-between items-center transition-all duration-300 ease-in-out ${shouldAppearScrolled ? 'h-20' : 'h-28'}`}>
           <Link href="/">
             <Image
               src={'/images/logo.png'}
               alt="RIL Logo"
-              width={scrolled ? 70 : 90}
+              width={shouldAppearScrolled ? 70 : 90}
               height={50}
               className="transition-all duration-300"
             />
@@ -131,7 +141,7 @@ const Header = () => {
                   <Link 
                     href={menuRoutes[link] || '#'} 
                     className={`group flex items-center text-sm font-semibold transition-colors duration-300 ${
-                      scrolled 
+                      shouldAppearScrolled 
                         ? 'text-ril-dark-blue hover:text-ril-blue' 
                         : 'dark:text-[#af8019] text-[#af8019] hover:text-[#af8019]'
                     }`}
@@ -141,7 +151,7 @@ const Header = () => {
                   </Link>
                 ) : (
                   <button className={`group flex items-center text-sm font-semibold transition-colors duration-300 ${
-                    scrolled 
+                    shouldAppearScrolled 
                       ? 'text-ril-dark-blue hover:text-ril-blue' 
                       : 'dark:text-[#af8019] text-[#af8019] hover:text-gray-200'
                   }`}>
@@ -159,7 +169,7 @@ const Header = () => {
           </nav>
           <div className='flex gap-7 items-center'>
             <button className={`transition-colors duration-300 ${
-              scrolled 
+              shouldAppearScrolled 
                 ? 'text-ril-dark-blue hover:text-ril-blue' 
                 : 'text-white hover:text-gray-200'
             }`}>
@@ -167,7 +177,7 @@ const Header = () => {
             </button>
             
             <div className={`transition-colors duration-300 ${
-              scrolled 
+              shouldAppearScrolled 
                 ? 'text-ril-dark-blue' 
                 : 'text-white'
             }`}>
@@ -182,7 +192,7 @@ const Header = () => {
           activeMenu 
             ? 'opacity-100 visible translate-y-0' 
             : 'opacity-0 invisible -translate-y-4'
-        } ${scrolled ? 'mt-20' : 'mt-28'}`}
+        } ${shouldAppearScrolled ? 'mt-20' : 'mt-28'}`}
       >
         <div className="min-h-[80vh] w-full bg-white dark:bg-black shadow-2xl border-t border-gray-200 dark:border-gray-800 overflow-y-auto">
           {activeMenu && (

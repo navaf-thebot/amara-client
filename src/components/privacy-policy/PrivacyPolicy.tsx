@@ -25,7 +25,7 @@ function PrivacyPolicyPage() {
     }
 
     window.addEventListener("scroll", handleScroll)
-    handleScroll() // Set initial active section
+    handleScroll()
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 

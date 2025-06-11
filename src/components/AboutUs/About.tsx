@@ -100,11 +100,9 @@ const AboutUs = () => {
 
     return (
         <div className="min-h-screen bg-[#232323] text-[#f0efe2] overflow-hidden">
-            {/* Hero Section */}
             <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#232323] via-[#2a2a2a] to-[#1a1a1a]">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#c6a35d]/10 to-transparent"></div>
 
-                {/* Animated Background Elements */}
                 {client &&
                     <div className="absolute inset-0 overflow-hidden">
                         {[...Array(20)].map((_, i) => (
@@ -145,13 +143,11 @@ const AboutUs = () => {
                     </div>
                 </div>
 
-                {/* Scroll Indicator */}
                 <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
                     <ChevronRight className="w-6 h-6 text-[#c6a35d] rotate-90" />
                 </div>
             </section>
 
-            {/* Story Section */}
             {activeSection === 'story' && (
                 <section className="py-20 px-6 bg-white dark:bg-black">
                     <div className="max-w-6xl mx-auto">
@@ -188,7 +184,6 @@ const AboutUs = () => {
                 </section>
             )}
 
-            {/* Values Section */}
             {activeSection === 'values' && (
                 <section className="py-20 px-6 text-[#232323] dark:text-[#f0efe2] bg-white dark:bg-black">
                     <div className="max-w-7xl mx-auto">
@@ -224,7 +219,6 @@ const AboutUs = () => {
                 </section>
             )}
 
-            {/* Culture Section */}
             {activeSection === 'culture' && (
                 <section className="py-20 px-6 bg-white dark:bg-black">
                     <div className="max-w-6xl mx-auto">
@@ -265,7 +259,6 @@ const AboutUs = () => {
                 </section>
             )}
 
-            {/* Governance Section */}
             {activeSection === 'governance' && (
                 <section className="py-20 px-6 bg-white dark:bg-black">
                     <div className="max-w-6xl mx-auto">
@@ -278,7 +271,6 @@ const AboutUs = () => {
                             </p>
                         </div>
 
-                        {/* Governance Foundation */}
                         <div className="bg-gradient-to-br from-[#f0efe2]/5 to-transparent border border-[#c6a35d]/20 rounded-3xl p-12 mb-16">
                             <div className="text-center mb-8">
                                 <div className="w-24 h-24 bg-gradient-to-br from-[#c6a35d] to-[#c6a35d]/70 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -293,7 +285,6 @@ const AboutUs = () => {
                             </p>
                         </div>
 
-                        {/* Governance Principles */}
                         <div className="mb-16">
                             <h3 className="font-bodoni text-4xl font-bold text-[#c6a35d] text-center mb-12">
                                 Our Governance Principles
@@ -349,7 +340,6 @@ const AboutUs = () => {
                             </div>
                         </div>
 
-                        {/* Board of Directors & Risk Management */}
                         <div className="grid md:grid-cols-2 gap-12 mb-16">
                             <div className="bg-gradient-to-br from-[#c6a35d]/10 to-transparent rounded-2xl p-8">
                                 <h3 className="font-bodoni text-3xl font-bold text-[#c6a35d] mb-6">
@@ -376,7 +366,6 @@ const AboutUs = () => {
                             </div>
                         </div>
 
-                        {/* Legacy of Trust */}
                         <div className="text-center bg-gradient-to-r dark:from-[#c6a35d]/10 from-[#c6a35d]/50 to-transparent rounded-2xl p-12">
                             <h3 className="font-bodoni text-3xl font-bold text-[#c6a35d] mb-6">
                                 A Legacy of Trust
@@ -389,7 +378,6 @@ const AboutUs = () => {
                 </section>
             )}
 
-            {/* Leadership Section */}
             {activeSection === 'leadership' && (
                 <section className="py-20 px-6 bg-white dark:bg-black">
                     <div className="max-w-6xl mx-auto">
