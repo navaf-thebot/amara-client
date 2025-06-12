@@ -9,37 +9,37 @@ export default function LeadershipPage() {
     {
       name: "Rajesh Mehra",
       title: "Chairperson",
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/leader-rajesh.jpg",
       bio: "With over 30 years of experience in global business leadership, Rajesh has guided House of Amaraa through strategic growth and diversification.",
     },
     {
       name: "Anita Kapoor",
       title: "Chief Executive Officer",
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/leader-anita.jpg",
       bio: "Anita brings innovative vision and operational excellence to HOA, driving sustainable growth across all business verticals.",
     },
     {
       name: "Vikram Singh",
       title: "Chief Financial Officer",
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/leader-vikram.jpg",
       bio: "Vikram oversees the financial strategy and operations, ensuring robust financial health and strategic investments.",
     },
     {
       name: "Priya Sharma",
       title: "Chief Operating Officer",
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/leader-priya.jpg",
       bio: "Priya leads operational excellence across all business units, optimizing processes and driving efficiency.",
     },
     {
       name: "Arjun Patel",
       title: "Chief Technology Officer",
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/leader-arjun.jpg",
       bio: "Arjun spearheads technological innovation and digital transformation initiatives across the organization.",
     },
     {
       name: "Meera Gupta",
       title: "Chief Human Resources Officer",
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/leader-meera.jpg",
       bio: "Meera develops and implements people strategies that align with our values and business objectives.",
     },
   ]
