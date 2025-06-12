@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Search, ChevronDown, Facebook, Twitter, Linkedin, ExternalLink } from 'lucide-react';
+import { Search, ChevronDown, Facebook, Twitter, Linkedin, ExternalLink, Menu, X } from 'lucide-react';
 import { ModeToggle } from '../themes/ModeToggle';
 
 const navLinks = [
@@ -59,6 +59,8 @@ const megaMenuData: { [key: string]: { title: string; links: string[] }[] } = {
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileSubMenuOpen, setMobileSubMenuOpen] = useState<string | null>(null);
   const pathname = usePathname();
   
   const isHomePage = pathname === '/';
@@ -99,6 +101,15 @@ const Header = () => {
     }
   };
 
+  const handleMobileSubMenuToggle = (menu: string) => {
+    setMobileSubMenuOpen(mobileSubMenuOpen === menu ? null : menu);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+    setMobileSubMenuOpen(null);
+  };
+
   const shouldAppearScrolled = !isHomePage || scrolled;
 
   return (
@@ -136,6 +147,8 @@ const Header = () => {
               className="transition-all duration-300"
             />
           </Link>
+          
+          
           <nav className="hidden lg:flex items-center space-x-8 h-full">
             {navLinks.map((link) => (
               <div key={link} onMouseEnter={() => handleMouseEnter(link)} className="h-full flex items-center">
@@ -169,6 +182,7 @@ const Header = () => {
               </div>
             ))}
           </nav>
+
           <div className='flex gap-7 items-center'>
             <button className={`transition-colors duration-300 ${
               shouldAppearScrolled 
@@ -185,10 +199,23 @@ const Header = () => {
             }`}>
               <ModeToggle/>
             </div>
+
+            
+            <button 
+              className={`lg:hidden transition-colors duration-300 ${
+                shouldAppearScrolled 
+                  ? 'text-ril-dark-blue hover:text-ril-blue' 
+                  : 'text-white hover:text-gray-200'
+              }`}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
       </header>
 
+      
       <div
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ease-in-out ${
           activeMenu 
@@ -229,6 +256,81 @@ const Header = () => {
               </div>
             </div>
           )}
+        </div>
+      </div>
+
+      
+      {mobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-30 lg:hidden"
+          onClick={closeMobileMenu}
+        />
+      )}
+
+      
+      <div
+        className={`fixed top-0 right-0 h-full w-80 bg-white dark:bg-black z-40 transform transition-transform duration-300 ease-in-out lg:hidden ${
+          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        } ${shouldAppearScrolled ? 'mt-20' : 'mt-28'}`}
+      >
+        <div className="p-6 h-full overflow-y-auto">
+          <nav className="space-y-4">
+            {navLinks.map((link) => (
+              <div key={link}>
+                {!megaMenuData[link] || megaMenuData[link].length === 0 ? (
+                  <Link 
+                    href={menuRoutes[link] || '#'} 
+                    className="block py-3 text-lg font-semibold text-ril-dark-blue dark:text-white hover:text-ril-blue dark:hover:text-blue-400 transition-colors"
+                    onClick={closeMobileMenu}
+                  >
+                    {link}
+                  </Link>
+                ) : (
+                  <div>
+                    <button 
+                      className="flex items-center justify-between w-full py-3 text-lg font-semibold text-ril-dark-blue dark:text-white hover:text-ril-blue dark:hover:text-blue-400 transition-colors"
+                      onClick={() => handleMobileSubMenuToggle(link)}
+                    >
+                      {link}
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-300 ${
+                          mobileSubMenuOpen === link ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                    
+                    {mobileSubMenuOpen === link && (
+                      <div className="ml-4 mt-2 space-y-3">
+                        {megaMenuData[link]?.map((section, index) => (
+                          <div key={index}>
+                            {section.title && (
+                              <h4 className="text-sm font-semibold text-ril-dark-blue dark:text-white mb-2">
+                                {section.title}
+                              </h4>
+                            )}
+                            <ul className="space-y-2">
+                              {section.links.map((subLink) => (
+                                <li key={subLink}>
+                                  <Link 
+                                    href={menuRoutes[subLink] || '#'} 
+                                    className="block py-1 text-sm text-ril-text-light dark:text-gray-300 hover:text-ril-blue dark:hover:text-blue-400 transition-colors"
+                                    onClick={closeMobileMenu}
+                                  >
+                                    {subLink}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            ))}
+          </nav>
         </div>
       </div>
     </div>
