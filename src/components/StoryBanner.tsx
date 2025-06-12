@@ -18,7 +18,7 @@ const StoryBannerSection = () => {
                 page in our ever-expanding epic. We don&apos;t follow the trends—we set them,
                 driven by a vision that dares to reach higher, push further, and do better.
               </p>
-              <button className="mt-8 px-8 py-3 border-2 border-white text-white font-semibold rounded-lg transition-colors duration-300 hover:bg-white hover:text-[#0033a0]">
+              <button className="mt-8 px-8 py-3 border-2 border-white dark:border-black text-white dark:text-black font-semibold rounded-lg transition-colors duration-300 hover:bg-[#c6a35d] hover:text-[#0033a0]">
                 KNOW MORE
               </button>
             </div>

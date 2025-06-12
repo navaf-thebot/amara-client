@@ -165,9 +165,9 @@ export default function GovernancePage() {
             <div className="animate-fade-in-up animation-delay-400">
               <div className="relative">
                 <img
-                  src="/placeholder.svg?height=500&width=600"
+                  src="/images/gover-img.jpg"
                   alt="Corporate governance framework"
-                  className="rounded-2xl shadow-2xl"
+                  className="rounded-2xl  w-full"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-hoa-gold/20 to-transparent rounded-2xl"></div>
               </div>
