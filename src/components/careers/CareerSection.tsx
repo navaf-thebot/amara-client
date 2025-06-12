@@ -54,25 +54,25 @@ export default function CareersPage() {
     {
       title: "Innovation Labs",
       description: "Dedicated spaces for creative thinking and breakthrough solutions",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "/images/career-innovation.jpg",
       stats: "50+ Projects Annually",
     },
     {
       title: "Global Mobility",
       description: "Work across 25+ countries and experience diverse cultures",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "/images/career-global.jpg",
       stats: "25+ Countries",
     },
     {
       title: "Learning Academy",
       description: "Continuous learning with world-class training programs",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "/images/career-education.jpg",
       stats: "200+ Courses",
     },
     {
       title: "Wellness Centers",
       description: "Comprehensive health and wellness facilities at every location",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "/images/career-wellness.jpg",
       stats: "24/7 Support",
     },
   ]
@@ -127,7 +127,7 @@ export default function CareersPage() {
       department: "Technology Division",
       quote:
         "At Amaraa, I'm not just analyzing data—I'm helping shape the future of sustainable agriculture. The impact we create here goes far beyond spreadsheets.",
-      image: "/placeholder-user.jpg",
+      image: "/images/career-sara.jpg",
       tenure: "3 years",
     },
     {
@@ -136,7 +136,7 @@ export default function CareersPage() {
       department: "Aviation Division",
       quote:
         "The diversity of challenges keeps me engaged every day. From optimizing flight routes to implementing eco-friendly practices, no two days are the same.",
-      image: "/placeholder-user.jpg",
+      image: "/images/career-rodg.jpg",
       tenure: "5 years",
     },
     {
@@ -145,7 +145,7 @@ export default function CareersPage() {
       department: "Corporate Strategy",
       quote:
         "Working here means being part of something bigger. Every project contributes to our mission of creating a more sustainable and prosperous world.",
-      image: "/placeholder-user.jpg",
+      image: "/images/career-priya.jpg",
       tenure: "2 years",
     },
   ]
@@ -215,7 +215,7 @@ export default function CareersPage() {
                   <span>Explore Opportunities</span>
                   <ArrowRight className="w-5 h-5" />
                 </button>
-                <button className="px-8 py-4 border-2 border-white/30 text-black dark:text-white hover:bg-white/10 font-semibold rounded-lg transition-all duration-300 flex items-center justify-center space-x-2">
+                <button className="px-8 py-4 border-2 cursor-pointer dark:border-white/30 border-black/30 text-black dark:text-white hover:bg-white/10 font-semibold rounded-lg transition-all duration-300 flex items-center justify-center space-x-2">
                   <Play className="w-5 h-5" />
                   <span>Watch Our Story</span>
                 </button>
@@ -250,13 +250,13 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white dark:bg-hoa-charcoal/50">
+      <section className="py-20 bg-white dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-4xl sm:text-5xl font-serif font-bold text-hoa-charcoal dark:text-white mb-6">
               Your Career Journey
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600  dark:text-gray-300 max-w-3xl mx-auto">
               Every great career is a journey of discovery, growth, and impact. Here&apos;s how your story unfolds with us.
             </p>
           </div>

@@ -12,6 +12,7 @@ export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   })
 
@@ -134,6 +135,23 @@ export default function ContactSection() {
                       required
                     />
                   </div>
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-semibold text-hoa-charcoal dark:text-white mb-2"
+                    >
+                      Phone Number
+                    </label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="border-gray-300 dark:border-gray-600 focus:border-hoa-gold focus:ring-hoa-gold dark:bg-hoa-charcoal/30"
+                      required
+                    />
+                  </div>
 
                   <div>
                     <label
@@ -148,7 +166,7 @@ export default function ContactSection() {
                       rows={5}
                       value={formData.message}
                       onChange={handleChange}
-                      className="border-gray-300 dark:border-gray-600 focus:border-hoa-gold focus:ring-hoa-gold dark:bg-hoa-charcoal/30"
+                      className="border-hoa-gold border w-full dark:border-gray-600 focus:border-hoa-gold focus:ring-hoa-gold dark:bg-hoa-charcoal/30"
                       required
                     />
                   </div>

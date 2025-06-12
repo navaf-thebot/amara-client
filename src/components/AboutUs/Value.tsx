@@ -122,7 +122,7 @@ export default function ValuesCulturePage() {
               <div className="animate-fade-in-up animation-delay-200">
                 <div className="relative">
                   <img
-                    src="/placeholder.svg?height=400&width=500"
+                    src="/images/value-curiosity.jpg"
                     alt="Culture of curiosity"
                     className="rounded-2xl shadow-2xl"
                   />
@@ -158,7 +158,7 @@ export default function ValuesCulturePage() {
               <div className="lg:order-1 animate-fade-in-up animation-delay-200">
                 <div className="relative">
                   <img
-                    src="/placeholder.svg?height=400&width=500"
+                    src="/images/value-emp.jpg"
                     alt="Culture of empowerment"
                     className="rounded-2xl shadow-2xl"
                   />
@@ -194,9 +194,9 @@ export default function ValuesCulturePage() {
               <div className="animate-fade-in-up animation-delay-200">
                 <div className="relative">
                   <img
-                    src="/placeholder.svg?height=400&width=500"
+                    src="/images/value-learning.jpg"
                     alt="Culture of learning"
-                    className="rounded-2xl shadow-2xl"
+                    className="rounded-2xl shadow-2xl w-full"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-hoa-gold/20 to-transparent rounded-2xl"></div>
                 </div>

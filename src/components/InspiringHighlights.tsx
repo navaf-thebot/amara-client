@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
@@ -6,19 +7,19 @@ const highlightsData = [
   {
     title: 'Building Sustainable Communities: Our Real Estate Vision',
     description: "Amaraa Group's real estate ventures are creating green, inclusive, and future-ready spaces for modern living.",
-    image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1770&auto=format&fit=crop',
+    image: '/images/hglt-estate.jpg',
     color: 'bg-yellow-600', 
   },
   {
     title: "Empowering the Nation: Amaraa's Contribution to Defense",
     description: "Delve into Amaraa Group's pivotal role in advancing India's defense capabilities and ensuring national security.",
-    image: 'https://images.unsplash.com/photo-1629707255868-b7691522dd62?q=80&w=1858&auto=format&fit=crop',
+    image: '/images/hglt-defense.jpg',
     color: 'bg-yellow-600',
   },
   {
     title: "Powering a Greener Future: Amaraa's Energy Initiatives",
     description: 'Explore how Amaraa Group is driving innovation in renewable energy, from solar farms to wind power projects.',
-    image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9c?q=80&w=1932&auto=format&fit=crop',
+    image: '/images/hglt-energy.jpg',
     color: 'bg-yellow-600',
   },
 ];
@@ -34,10 +35,10 @@ const InspiringHighlights = () => {
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-left max-w-2xl mb-12">
-          <h2 className="text-4xl font-bold font-serif text-gray-900 dark:text-gray-200 sm:text-5xl">
+          <h2 className="text-4xl font-bold font-bodoni text-gray-900 dark:text-gray-200 sm:text-5xl">
             Inspiring Highlights
           </h2>
-          <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-200">
+          <p className="mt-4 text-lg font-montserrat leading-8 text-gray-600 dark:text-gray-200">
             Explore our press releases, industry insights, and media coverage, highlighting 
             our achievements, innovations, and contributions across sectors.
           </p>
@@ -51,10 +52,10 @@ const InspiringHighlights = () => {
               </div>
               <div className="flex flex-1 flex-col justify-between bg-white dark:bg-black p-6">
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold font-serif text-gray-900 dark:text-gray-200 mb-3">
+                  <h3 className="text-xl font-bold font-bodoni text-gray-900 dark:text-gray-200 mb-3">
                     {item.title}
                   </h3>
-                  <p className="text-base text-gray-600 line-clamp-3">
+                  <p className="text-base font-montserrat text-gray-600 line-clamp-3">
                     {item.description}
                   </p>
                 </div>

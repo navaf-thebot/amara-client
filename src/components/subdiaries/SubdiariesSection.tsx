@@ -256,7 +256,7 @@ import {
                   </div>
 
                   <div className="px-6 pb-6">
-                    <button className="w-full py-2 text-hoa-gold hover:text-white hover:bg-hoa-gold border border-hoa-gold rounded-lg transition-all duration-300 font-medium">
+                    <button className="w-full py-2 text-hoa-gold hover:text-[#c6a35d] hover:bg-hoa-gold border border-hoa-gold rounded-lg transition-all duration-300 font-medium">
                       Learn More
                     </button>
                   </div>
@@ -310,10 +310,10 @@ import {
               organization.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-hoa-gold hover:bg-hoa-gold/80 text-white font-semibold rounded-lg transition-colors duration-200">
+              <button className="px-8 py-4 border cursor-pointer border-hoa-gold bg-hoa-gold hover:bg-hoa-gold/80 hover:text-[#c6a35d] font-semibold rounded-lg transition-colors duration-200">
                 Partner With Us
               </button>
-              <button className="px-8 py-4 border-2 border-hoa-gold text-hoa-gold hover:bg-hoa-gold hover:text-white font-semibold rounded-lg transition-all duration-200">
+              <button className="px-8 py-4 border-2 cursor-pointer border-hoa-gold text-hoa-gold hover:bg-hoa-gold hover:text-[#c6a35d] font-semibold rounded-lg transition-all duration-200">
                 Download Brochure
               </button>
             </div>

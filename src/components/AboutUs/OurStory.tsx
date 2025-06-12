@@ -21,7 +21,7 @@ export default function OurStoryPage() {
 
       <section className="py-16 bg-white dark:bg-hoa-charcoal/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-44 items-center">
             <div className="animate-fade-in-up animation-delay-200">
               <h2 className="text-3xl sm:text-4xl font-serif font-bold text-hoa-charcoal dark:text-white mb-6">
                 The Genesis of Excellence
@@ -47,7 +47,7 @@ export default function OurStoryPage() {
             <div className="animate-fade-in-up animation-delay-400">
               <div className="relative">
                 <img
-                  src="/placeholder.svg?height=500&width=600"
+                  src="/images/logo.png"
                   alt="House of Amaraa founding story"
                   className="rounded-2xl shadow-2xl"
                 />

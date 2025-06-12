@@ -9,22 +9,22 @@ const companies = [
   {
     name: 'Amaraa Airlines',
     description: "In the aviation world, Amaraa Airlines is more than a carrier—it's a sanctuary in the skies. Every journey, from the smoothest business class flight...",
-    image: 'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=1770&auto=format&fit=crop',
+    image: '/images/chapter-plane.jpg',
   },
   {
     name: 'Amaraa Automotive',
     description: 'On the ground, Amaraa Automotive moves beyond mere transportation. We design, manufacture, and export vehicles that are not just machines but extensions...',
-    image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1770&auto=format&fit=crop',
+    image: '/images/chapter-car.jpg',
   },
   {
     name: 'Amaraa Security Services',
     description: "Our guardians in a world that's growing ever more complex, safeguard the realms of both the digital and physical. Armed with cutting-edge technology...",
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1634&auto=format&fit=crop',
+    image: '/images/chapter-door.jpg',
   },
   {
     name: 'Amaraa Technology',
     description: "Our vanguard in the world of tomorrow. With supercomputer networks and solutions that power the aviation industry and beyond, we are scripting the future...",
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1770&auto=format&fit=crop',
+    image: '/images/chapter-chip.jpg',
   },
 ];
 
@@ -53,7 +53,7 @@ const LegacySection = () => {
     if (!isDragging || !scrollContainerRef.current) return;
     e.preventDefault();
     const x = e.pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // The '2' makes the scroll faster
+    const walk = (x - startX) * 2;
     scrollContainerRef.current.scrollLeft = scrollLeft - walk;
   };
 
