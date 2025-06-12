@@ -48,7 +48,7 @@ function PrivacyPolicyPage() {
   return (
     <div className="min-h-screen bg-background">
       <section className="relative pt-24 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-hoa-gold/20 via-hoa-beige/30 to-white dark:from-hoa-gold/10 dark:via-hoa-charcoal/20 dark:to-hoa-charcoal"></div>
+        <div className="absolute inset-0 bg-white dark:bg-black"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center animate-fade-in-up">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-hoa-charcoal dark:text-white mb-6">
@@ -66,7 +66,7 @@ function PrivacyPolicyPage() {
         <div className="grid lg:grid-cols-4 gap-12">
           <div className="lg:col-span-1">
             <div className="sticky top-32">
-              <div className="bg-white dark:bg-hoa-charcoal/80 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
+              <div className="bg-white dark:bg-black/80 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
                 <h2 className="text-xl font-serif font-bold text-hoa-charcoal dark:text-white mb-6">
                   Table of Contents
                 </h2>
@@ -92,7 +92,7 @@ function PrivacyPolicyPage() {
 
           <div className="lg:col-span-3 space-y-16">
             <section id="governance" className="animate-fade-in-up">
-              <div className="bg-white dark:bg-hoa-charcoal/80 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
+              <div className="bg-white dark:bg-black/80 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
                 <h2 className="text-3xl font-serif font-bold text-hoa-gold mb-8 flex items-center">
                   <Scale className="w-8 h-8 mr-4" />
                   Corporate Governance
@@ -113,7 +113,7 @@ function PrivacyPolicyPage() {
             </section>
 
             <section id="principles" className="animate-fade-in-up">
-              <div className="bg-white dark:bg-hoa-charcoal/80 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
+              <div className="bg-white dark:bg-black/80 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
                 <h2 className="text-3xl font-serif font-bold text-hoa-gold mb-8 flex items-center">
                   <Eye className="w-8 h-8 mr-4" />
                   Our Guiding Principles
@@ -158,7 +158,7 @@ function PrivacyPolicyPage() {
             </section>
 
             <section id="privacy" className="animate-fade-in-up">
-              <div className="bg-white dark:bg-hoa-charcoal/80 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
+              <div className="bg-white dark:bg-black/80 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
                 <h2 className="text-3xl font-serif font-bold text-hoa-gold mb-8 flex items-center">
                   <Shield className="w-8 h-8 mr-4" />
                   Privacy Promise
@@ -210,7 +210,7 @@ function PrivacyPolicyPage() {
             </section>
 
             <section id="rights" className="animate-fade-in-up">
-              <div className="bg-white dark:bg-hoa-charcoal/80 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
+              <div className="bg-white dark:bg-black/80 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
                 <h2 className="text-3xl font-serif font-bold text-hoa-gold mb-8 flex items-center">
                   <Users className="w-8 h-8 mr-4" />
                   Your Data Rights
@@ -260,7 +260,7 @@ function PrivacyPolicyPage() {
             </section>
 
             <section id="security" className="animate-fade-in-up">
-              <div className="bg-white dark:bg-hoa-charcoal/80 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
+              <div className="bg-white dark:bg-black/80 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
                 <h2 className="text-3xl font-serif font-bold text-hoa-gold mb-8 flex items-center">
                   <Lock className="w-8 h-8 mr-4" />
                   Data Security Measures
@@ -317,7 +317,7 @@ function PrivacyPolicyPage() {
             </section>
 
             <section id="contact" className="animate-fade-in-up">
-              <div className="bg-white dark:bg-hoa-charcoal/80 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
+              <div className="bg-white dark:bg-black/80 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
                 <h2 className="text-3xl font-serif font-bold text-hoa-gold mb-8 flex items-center">
                   <FileText className="w-8 h-8 mr-4" />
                   Contact Our Privacy Team
