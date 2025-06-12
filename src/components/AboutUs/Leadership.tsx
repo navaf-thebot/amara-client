@@ -3,7 +3,6 @@ import PageBanner from "@/components/card/PageBanner"
 import { Card, CardContent } from "@/components/card/Card"
 
 export default function LeadershipPage() {
-  const breadcrumbs = [{ name: "Leadership" }]
 
   const leaders = [
     {
@@ -45,11 +44,10 @@ export default function LeadershipPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black dark:bg-hoa-charcoal transition-colors duration-400">
+    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-400">
       <PageBanner
         title="Leadership Team"
         subtitle="The visionaries guiding our journey towards excellence"
-        breadcrumbs={breadcrumbs}
       />
 
       <main className="py-20 px-6">

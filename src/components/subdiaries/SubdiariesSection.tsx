@@ -22,7 +22,7 @@ import {
   Star,
 } from "lucide-react"
 
- function SubsidiariesPage() {
+function SubsidiariesPage() {
   const subsidiaries = [
     {
       name: "Amaraa Agro Group Pvt. Ltd.",
@@ -141,7 +141,7 @@ import {
       chapter: "Chapter of Precision",
       description: "Expert engineering consultancy and project management, building the infrastructure of tomorrow.",
       icon: Wrench,
-      color: "from-amber-500 to-yellow-600",
+      color: "from-amber-500 to-[#c6a35d]",
       details:
         "Engineering excellence in infrastructure projects with BIM technology and sustainable design practices.",
     },
@@ -213,15 +213,15 @@ import {
   ]
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white dark:bg-black">
       <section className="relative pt-24 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-hoa-gold/20 via-hoa-beige/30 to-white dark:from-hoa-gold/10 dark:via-hoa-charcoal/20 dark:to-hoa-charcoal"></div>
+        <div className="absolute inset-0 bg-white dark:bg-black"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center animate-fade-in-up">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-hoa-charcoal dark:text-white mb-6">
-              Our Subsidiaries
+          <div className="text-center">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-gray-800 dark:text-white mb-6">
+              Our Businesses
             </h1>
-            <p className="text-xl sm:text-2xl text-hoa-gold font-serif mb-8">The Pillars of Our Vision</p>
+            <p className="text-xl sm:text-2xl text-[#c6a35d] font-serif mb-8">The Pillars of Our Vision</p>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
               Each subsidiary of Amaraa Holding is a chapter in our greater story. Together, they form a tapestry of
               sustainability, innovation, and impact that spans across industries and continents.
@@ -233,30 +233,28 @@ import {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {subsidiaries.map((subsidiary, index) => (
-              <div
-                key={subsidiary.name}
-                className={`group animate-fade-in-up animation-delay-${((index % 6) + 1) * 100}`}
-              >
-                <div className="bg-white dark:bg-hoa-charcoal/80 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-500 h-full">
+            {subsidiaries.map((subsidiary) => (
+              <div key={subsidiary.name} className="group">
+                <div className="bg-white dark:bg-black/80 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-500 h-full flex flex-col">
                   <div className={`bg-gradient-to-br ${subsidiary.color} p-6 text-white relative overflow-hidden`}>
                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
                     <div className="relative z-10">
                       <subsidiary.icon className="w-12 h-12 mb-4 group-hover:scale-110 transition-transform duration-300" />
-                      <h3 className="text-xl font-serif font-bold mb-2">{subsidiary.name}</h3>
+                      <h3 className="text-xl font-serif font-bold mb-2 min-h-[3.5rem] line-clamp-2">{subsidiary.name}</h3>
                       <p className="text-white/90 font-medium italic">{subsidiary.chapter}</p>
                     </div>
                   </div>
 
-                  <div className="p-6">
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">{subsidiary.description}</p>
-                    <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
-                      <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{subsidiary.details}</p>
+                  <div className="p-6 flex-1 flex flex-col">
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 flex-1">{subsidiary.description}</p>
+                    
+                    <div className="border-t border-gray-200 dark:border-gray-700 pt-4 mb-4">
+                      <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed min-h-[2.5rem]">{subsidiary.details}</p>
                     </div>
                   </div>
 
                   <div className="px-6 pb-6">
-                    <button className="w-full py-2 text-hoa-gold hover:text-[#c6a35d] hover:bg-hoa-gold border border-hoa-gold rounded-lg transition-all duration-300 font-medium">
+                    <button className="w-full cursor-pointer py-3 text-[#c6a35d] hover:text-white hover:bg-[#c6a35d] border border-[#c6a35d] rounded-lg transition-all duration-300 font-medium">
                       Learn More
                     </button>
                   </div>
@@ -267,10 +265,10 @@ import {
         </div>
       </section>
 
-      <section className="py-16 bg-gradient-to-br from-hoa-beige/50 to-white dark:from-hoa-charcoal/30 dark:to-hoa-charcoal/50">
+      <section className="py-16 bg-white dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-hoa-charcoal dark:text-white mb-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-gray-800 dark:text-white mb-6">
               Collective Impact
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -284,11 +282,11 @@ import {
               { number: "50+", label: "Countries", description: "Global presence" },
               { number: "100K+", label: "Employees", description: "Passionate professionals" },
               { number: "$5B+", label: "Revenue", description: "Annual consolidated" },
-            ].map((stat, index) => (
-              <div key={stat.label} className={`text-center animate-fade-in-up animation-delay-${(index + 1) * 200}`}>
-                <div className="bg-white dark:bg-hoa-charcoal/80 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
-                  <div className="text-4xl font-bold text-hoa-gold mb-2">{stat.number}</div>
-                  <div className="text-xl font-serif font-bold text-hoa-charcoal dark:text-white mb-2">
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="bg-white dark:bg-black/80 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
+                  <div className="text-4xl font-bold text-[#c6a35d] mb-2">{stat.number}</div>
+                  <div className="text-xl font-serif font-bold text-gray-800 dark:text-white mb-2">
                     {stat.label}
                   </div>
                   <div className="text-gray-600 dark:text-gray-300">{stat.description}</div>
@@ -301,8 +299,8 @@ import {
 
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="animate-fade-in-up">
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-hoa-charcoal dark:text-white mb-6">
+          <div>
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-gray-800 dark:text-white mb-6">
               Explore Partnership Opportunities
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
@@ -310,10 +308,10 @@ import {
               organization.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 border cursor-pointer border-hoa-gold bg-hoa-gold hover:bg-hoa-gold/80 hover:text-[#c6a35d] font-semibold rounded-lg transition-colors duration-200">
+              <button className="px-8 py-4 border cursor-pointer border-[#c6a35d] bg-[#c6a35d] hover:bg-yellow-700 text-white font-semibold rounded-lg transition-colors duration-200">
                 Partner With Us
               </button>
-              <button className="px-8 py-4 border-2 cursor-pointer border-hoa-gold text-hoa-gold hover:bg-hoa-gold hover:text-[#c6a35d] font-semibold rounded-lg transition-all duration-200">
+              <button className="px-8 py-4 border-2 cursor-pointer border-[#c6a35d] text-[#c6a35d] hover:bg-[#c6a35d] hover:text-white font-semibold rounded-lg transition-all duration-200">
                 Download Brochure
               </button>
             </div>
@@ -324,4 +322,4 @@ import {
   )
 }
 
-export default SubsidiariesPage;
+export default SubsidiariesPage

@@ -3,7 +3,7 @@ import { Clock, Target, Globe, Award } from "lucide-react"
 
 export default function OurStoryPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white dark:bg-black">
       <section className="relative pt-24 pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-hoa-gold/20 via-transparent to-hoa-charcoal/10 dark:from-hoa-gold/10 dark:to-hoa-charcoal/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,7 +19,7 @@ export default function OurStoryPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-white dark:bg-hoa-charcoal/50">
+      <section className="py-16 bg-white dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-44 items-center">
             <div className="animate-fade-in-up animation-delay-200">
@@ -47,9 +47,9 @@ export default function OurStoryPage() {
             <div className="animate-fade-in-up animation-delay-400">
               <div className="relative">
                 <img
-                  src="/images/logo.png"
+                  src="/images/logo/white-logo.png"
                   alt="House of Amaraa founding story"
-                  className="rounded-2xl shadow-2xl"
+                  className="rounded-2xl w-full h-full"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-hoa-gold/20 to-transparent rounded-2xl"></div>
               </div>
@@ -113,10 +113,10 @@ export default function OurStoryPage() {
                 <div key={item.year} className={`relative animate-fade-in-up animation-delay-${(index + 1) * 200}`}>
                   <div className={`lg:flex items-center ${item.side === "right" ? "lg:flex-row-reverse" : ""}`}>
                     <div className="lg:w-1/2 lg:px-8">
-                      <div className="bg-white dark:bg-hoa-charcoal/80 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                      <div className="bg-white dark:bg-black p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
                         <div className="flex items-center mb-4">
-                          <div className="w-12 h-12 bg-hoa-gold rounded-full flex items-center justify-center text-white font-bold text-lg">
-                            {item.year.slice(-2)}
+                          <div className="w-12 h-12 bg-hoa-gold rounded-full flex items-center justify-center text-black dark:text-white font-bold text-lg">
+                            {item.year}
                           </div>
                           <h3 className="text-xl font-serif font-bold text-hoa-charcoal dark:text-white ml-4">
                             {item.title}
@@ -136,7 +136,7 @@ export default function OurStoryPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-gradient-to-br from-hoa-beige/50 to-white dark:from-hoa-charcoal/30 dark:to-hoa-charcoal/50">
+      <section className="py-16 bg-white dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-hoa-charcoal dark:text-white mb-6">
@@ -176,7 +176,7 @@ export default function OurStoryPage() {
             ].map((item, index) => (
               <div key={item.title} className={`text-center animate-fade-in-up animation-delay-${(index + 1) * 200}`}>
                 <div className="w-16 h-16 bg-hoa-gold rounded-full flex items-center justify-center mx-auto mb-6">
-                  <item.icon className="w-8 h-8 text-white" />
+                  <item.icon className="w-8 h-8 text-black dark:text-white" />
                 </div>
                 <h3 className="text-xl font-serif font-bold text-hoa-charcoal dark:text-white mb-4">{item.title}</h3>
                 <p className="text-gray-600 dark:text-gray-300">{item.description}</p>

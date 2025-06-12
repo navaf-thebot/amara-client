@@ -62,11 +62,11 @@ export default function GovernancePage() {
               },
             ].map((pillar, index) => (
               <div key={pillar.title} className={`animate-fade-in-up animation-delay-${(index + 1) * 200}`}>
-                <div className="bg-white dark:bg-hoa-charcoal/80 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 h-full hover:shadow-xl transition-shadow duration-300">
+                <div className="bg-white dark:bg-black p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 h-full hover:shadow-xl transition-shadow duration-300">
                   <div
                     className={`w-16 h-16 bg-gradient-to-br ${pillar.color} rounded-2xl flex items-center justify-center mb-6`}
                   >
-                    <pillar.icon className="w-8 h-8 text-white" />
+                    <pillar.icon className="w-8 h-8 text-black dark:text-white" />
                   </div>
                   <h3 className="text-xl font-serif font-bold text-hoa-charcoal dark:text-white mb-4">
                     {pillar.title}
@@ -79,7 +79,7 @@ export default function GovernancePage() {
         </div>
       </section>
 
-      <section className="py-16 bg-gradient-to-br from-hoa-beige/50 to-white dark:from-hoa-charcoal/30 dark:to-hoa-charcoal/50">
+      <section className="py-16 bg-white dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12 animate-fade-in-up">
@@ -88,7 +88,7 @@ export default function GovernancePage() {
               </h2>
             </div>
 
-            <div className="bg-white dark:bg-hoa-charcoal/80 p-8 lg:p-12 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 animate-fade-in-up animation-delay-200">
+            <div className="bg-white dark:bg-black p-8 lg:p-12 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 animate-fade-in-up animation-delay-200">
               <div className="text-6xl text-hoa-gold mb-6 font-serif">&quot;</div>
               <blockquote className="text-lg lg:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-8 italic">
                 At House of Amaraa, governance is not merely a compliance requirement—it is the very essence of our

@@ -1,12 +1,15 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { ChevronRight, Users, Target, Award, Globe, Heart, Lightbulb, Shield, Eye, Scale, Leaf } from 'lucide-react'
+import { ChevronRight } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 const AboutUs = () => {
-    const [activeSection, setActiveSection] = useState('story')
+    const [activeSection, setActiveSection] = useState('')
     const [isVisible, setIsVisible] = useState(false)
     const [client, setClient] = useState(false)
+    const router = useRouter()
+
     useEffect(() => {
         setIsVisible(true)
     }, [])
@@ -14,89 +17,96 @@ const AboutUs = () => {
     useEffect(() => {
         setClient(true)
     }, [])
-    const values = [
-        {
-            icon: <Award className="w-8 h-8" />,
-            title: "Integrity",
-            description: "Built on a foundation of trust and honesty, we hold ourselves to the highest standards of integrity in every interaction."
-        },
-        {
-            icon: <Lightbulb className="w-8 h-8" />,
-            title: "Innovation",
-            description: "We constantly push the boundaries of possibility through cutting-edge technology and forward-thinking strategies."
-        },
-        {
-            icon: <Target className="w-8 h-8" />,
-            title: "Excellence",
-            description: "We strive for excellence in all we do, ensuring we deliver nothing less than the best in every detail."
-        },
-        {
-            icon: <Users className="w-8 h-8" />,
-            title: "Collaboration",
-            description: "We foster an environment where ideas flourish and every voice is valued in our journey of shared success."
-        },
-        {
-            icon: <Heart className="w-8 h-8" />,
-            title: "Responsibility",
-            description: "We make decisions that create positive, lasting impact for our employees, communities, and planet."
-        },
-        {
-            icon: <Globe className="w-8 h-8" />,
-            title: "Diversity",
-            description: "We celebrate the richness of diverse perspectives, fostering an inclusive environment where everyone thrives."
-        }
-    ]
 
-    const cultureAspects = [
-        {
-            title: "Curiosity",
-            description: "We are driven by curiosity, always asking questions and seeking new solutions for tomorrow's challenges."
-        },
-        {
-            title: "Empowerment",
-            description: "We trust our teams to take initiative, make decisions, and take ownership of their destiny."
-        },
-        {
-            title: "Learning",
-            description: "We are committed to lifelong learning, ensuring growth opportunities for personal and professional development."
-        },
-        {
-            title: "Community",
-            description: "We are more than a company—we are a family, united by belonging and mutual respect."
-        },
-        {
-            title: "Purpose",
-            description: "We value purpose over profit, people over numbers, and long-term impact over short-term gain."
-        }
-    ]
+    // const values = [
+    //     {
+    //         icon: <Award className="w-8 h-8" />,
+    //         title: "Integrity",
+    //         description: "Built on a foundation of trust and honesty, we hold ourselves to the highest standards of integrity in every interaction."
+    //     },
+    //     {
+    //         icon: <Lightbulb className="w-8 h-8" />,
+    //         title: "Innovation",
+    //         description: "We constantly push the boundaries of possibility through cutting-edge technology and forward-thinking strategies."
+    //     },
+    //     {
+    //         icon: <Target className="w-8 h-8" />,
+    //         title: "Excellence",
+    //         description: "We strive for excellence in all we do, ensuring we deliver nothing less than the best in every detail."
+    //     },
+    //     {
+    //         icon: <Users className="w-8 h-8" />,
+    //         title: "Collaboration",
+    //         description: "We foster an environment where ideas flourish and every voice is valued in our journey of shared success."
+    //     },
+    //     {
+    //         icon: <Heart className="w-8 h-8" />,
+    //         title: "Responsibility",
+    //         description: "We make decisions that create positive, lasting impact for our employees, communities, and planet."
+    //     },
+    //     {
+    //         icon: <Globe className="w-8 h-8" />,
+    //         title: "Diversity",
+    //         description: "We celebrate the richness of diverse perspectives, fostering an inclusive environment where everyone thrives."
+    //     }
+    // ]
 
-    const leaders = [
-        {
-            role: "Chairperson & Founder",
-            title: "A Dreamer Who Dared",
-            description: "The visionary who transformed a dream into a global reality, setting the foundation for Amaraa's empire."
-        },
-        {
-            role: "CEO",
-            title: "The Architect of Tomorrow",
-            description: "The strategist behind our expansion, blending practical discipline with visionary passion."
-        },
-        {
-            role: "COO",
-            title: "The Innovator of Efficiency",
-            description: "The engine behind operational prowess, turning boardroom dreams into ground reality."
-        },
-        {
-            role: "CFO",
-            title: "The Guardian of Growth",
-            description: "The steadfast guardian of financial health, balancing ambition with prudent decision-making."
-        },
-        {
-            role: "CTO",
-            title: "The Pioneer of the Future",
-            description: "The digital storyteller crafting innovations that define the next chapters of our journey."
-        }
-    ]
+    // const cultureAspects = [
+    //     {
+    //         title: "Curiosity",
+    //         description: "We are driven by curiosity, always asking questions and seeking new solutions for tomorrow's challenges."
+    //     },
+    //     {
+    //         title: "Empowerment",
+    //         description: "We trust our teams to take initiative, make decisions, and take ownership of their destiny."
+    //     },
+    //     {
+    //         title: "Learning",
+    //         description: "We are committed to lifelong learning, ensuring growth opportunities for personal and professional development."
+    //     },
+    //     {
+    //         title: "Community",
+    //         description: "We are more than a company—we are a family, united by belonging and mutual respect."
+    //     },
+    //     {
+    //         title: "Purpose",
+    //         description: "We value purpose over profit, people over numbers, and long-term impact over short-term gain."
+    //     }
+    // ]
+
+    // const leaders = [
+    //     {
+    //         role: "Chairperson & Founder",
+    //         title: "A Dreamer Who Dared",
+    //         description: "The visionary who transformed a dream into a global reality, setting the foundation for Amaraa's empire."
+    //     },
+    //     {
+    //         role: "CEO",
+    //         title: "The Architect of Tomorrow",
+    //         description: "The strategist behind our expansion, blending practical discipline with visionary passion."
+    //     },
+    //     {
+    //         role: "COO",
+    //         title: "The Innovator of Efficiency",
+    //         description: "The engine behind operational prowess, turning boardroom dreams into ground reality."
+    //     },
+    //     {
+    //         role: "CFO",
+    //         title: "The Guardian of Growth",
+    //         description: "The steadfast guardian of financial health, balancing ambition with prudent decision-making."
+    //     },
+    //     {
+    //         role: "CTO",
+    //         title: "The Pioneer of the Future",
+    //         description: "The digital storyteller crafting innovations that define the next chapters of our journey."
+    //     }
+    // ]
+
+    const redirectFunc = (section: string) => {
+        setActiveSection(section)
+        router.push('/about/'+section)
+        setActiveSection('')
+    }
 
     return (
         <div className="min-h-screen bg-[#232323] text-[#f0efe2] overflow-hidden">
@@ -128,13 +138,13 @@ const AboutUs = () => {
                         In the pages of every epic story, there is an undercurrent—an invisible force that drives the characters, shapes their choices, and defines their legacy. At Amaraa Holding, that force is our values and culture.
                     </p>
                     <div className="flex justify-center flex-wrap gap-4">
-                        {['story', 'values', 'culture', 'governance', 'leadership'].map((section) => (
+                        {['our-story', 'values-culture', 'governance', 'leadership','csr'].map((section) => (
                             <button
                                 key={section}
-                                onClick={() => setActiveSection(section)}
-                                className={`font-montserrat px-6 py-3 rounded-full border-2 transition-all duration-300 capitalize ${activeSection === section
+                                onClick={() => redirectFunc(section)}
+                                className={`font-montserrat cursor-pointer px-6 py-3 rounded-full border-2 transition-all duration-300 capitalize ${activeSection === section
                                     ? 'bg-[#c6a35d] border-[#c6a35d] text-[#232323]'
-                                    : 'border-[#c6a35d] text-[#c6a35d] hover:bg-[#c6a35d]/10'
+                                    : 'border-[#c6a35d] text-[#c6a35d] hover:bg-[#c6a35d] hover:text-[#232323]'
                                     }`}
                             >
                                 {section === 'governance' ? 'Governance' : section}
@@ -148,7 +158,7 @@ const AboutUs = () => {
                 </div>
             </section>
 
-            {activeSection === 'story' && (
+            {/* {activeSection === 'story' && (
                 <section className="py-20 px-6 bg-white dark:bg-black">
                     <div className="max-w-6xl mx-auto">
                         <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -426,7 +436,7 @@ const AboutUs = () => {
                         </div>
                     </div>
                 </section>
-            )}
+            )} */}
         </div>
     )
 }

@@ -2,7 +2,6 @@
 "use client"
 
 import {
-  ChevronRight,
   Users,
   Heart,
   MapPin,
@@ -24,28 +23,24 @@ export default function CareersPage() {
       phase: "Discover",
       title: "Find Your Calling",
       description: "Explore opportunities little that  that align with your passion and skills across our diverse portfolio.",
-      icon: "🔍",
       color: "from-hoa-gold to-amber-500",
     },
     {
       phase: "Connect",
       title: "Join the Conversation",
       description: "Engage with our talent team and learn about our culture, values, and growth opportunities.",
-      icon: "🤝",
       color: "from-hoa-gold/90 to-amber-600",
     },
     {
       phase: "Grow",
       title: "Evolve with Purpose",
       description: "Develop your skills, lead meaningful projects, and make a lasting impact on communities worldwide.",
-      icon: "🚀",
       color: "from-hoa-charcoal to-gray-700",
     },
     {
       phase: "Lead",
       title: "Shape the Future",
       description: "Take on leadership roles and drive innovation that creates positive change across industries.",
-      icon: "👑",
       color: "from-hoa-charcoal to-gray-700",
     },
   ]
@@ -261,31 +256,46 @@ export default function CareersPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {careerJourney.map((phase, index) => (
-              <div key={phase.phase} className={`animate-fade-in-up animation-delay-${(index + 1) * 200}`}>
-                <div className="relative">
-                  <div
-                    className={`bg-gradient-to-br ${phase.color} p-8 rounded-2xl text-black dark:text-white mb-6 hover:scale-105 transition-transform duration-300`}
-                  >
-                    <div className="text-4xl mb-4">{phase.icon}</div>
-                    <div className="text-sm font-semibold opacity-80 mb-2">{phase.phase}</div>
-                    <h3 className="text-xl font-serif font-bold mb-3">{phase.title}</h3>
-                    <p className="text-black dark:text-white text-sm leading-relaxed">{phase.description}</p>
-                  </div>
-                  {index < careerJourney.length - 1 && (
-                    <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                      <ChevronRight className="w-8 h-8 text-hoa-gold" />
+              <div key={phase.phase} className="group relative">
+                <div className="bg-white dark:bg-black border border-gray-200 hover:border-[#c6a35d] transition-all duration-300 hover:shadow-lg">
+                  <div className="bg-[#f0efe2] dark:bg-[#232323] px-6 py-4 border-b border-gray-100">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-montserrat text-xs font-semibold text-[#232323] dark:text-white tracking-wide uppercase">
+                        {phase.phase}
+                      </span>
+                      <div className="w-8 h-8 bg-[#c6a35d] rounded-full flex items-center justify-center text-white text-sm font-bold">
+                        {index + 1}
+                      </div>
                     </div>
-                  )}
+                    <h3 className="font-bodoni text-xl font-bold text-[#232323] dark:text-white leading-tight">
+                      {phase.title}
+                    </h3>
+                  </div>
+
+                  <div className="p-6">
+                    <p className="font-montserrat text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+                      {phase.description.replace("little that  that", "that")}
+                    </p>
+                  </div>
+
+                  <div className="h-1 bg-gradient-to-r from-[#c6a35d] to-[#f0efe2] group-hover:from-[#232323] group-hover:to-[#c6a35d] transition-all duration-300"></div>
                 </div>
+
+                {index < careerJourney.length - 1 && (
+                  <div className="hidden lg:flex absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
+                    <div className="w-6 h-6 bg-[#c6a35d] transform rotate-45 border-2 border-white shadow-sm"></div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-hoa-beige/50 to-white dark:from-hoa-charcoal/30 dark:to-hoa-charcoal/50">
+      <section className="py-20 bg-white dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-4xl sm:text-5xl font-serif font-bold text-hoa-charcoal dark:text-white mb-6">
@@ -299,7 +309,7 @@ export default function CareersPage() {
           <div className="grid md:grid-cols-2 gap-8">
             {lifeAtAmaraa.map((item, index) => (
               <div key={item.title} className={`animate-fade-in-up animation-delay-${(index + 1) * 200}`}>
-                <div className="bg-white dark:bg-hoa-charcoal/80 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                <div className="bg-white dark:bg-[#232323] rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-300 group">
                   <div className="relative h-48 overflow-hidden">
                     <img
                       src={item.image || "/placeholder.svg"}
@@ -324,7 +334,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white dark:bg-hoa-charcoal/50">
+      <section className="py-20 bg-white dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-4xl sm:text-5xl font-serif font-bold text-hoa-charcoal dark:text-white mb-6">
@@ -338,7 +348,7 @@ export default function CareersPage() {
           <div className="grid lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={testimonial.name} className={`animate-fade-in-up animation-delay-${(index + 1) * 200}`}>
-                <div className="bg-white dark:bg-hoa-charcoal/80 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 h-full">
+                <div className="bg-white dark:bg-black/80 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 h-full">
                   <div className="flex items-center mb-6">
                     <img
                       src={testimonial.image || "/placeholder.svg"}
@@ -369,7 +379,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-hoa-beige/50 to-white dark:from-hoa-charcoal/30 dark:to-hoa-charcoal/50">
+      <section className="py-20 bg-white dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-4xl sm:text-5xl font-serif font-bold text-hoa-charcoal dark:text-white mb-6">
@@ -383,19 +393,18 @@ export default function CareersPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
               <div key={benefit.category} className={`animate-fade-in-up animation-delay-${(index + 1) * 200}`}>
-                <div className="bg-white dark:bg-hoa-charcoal/80 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 h-full">
+                <div className="bg-white dark:bg-black/80 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 h-full">
                   <div
-                    className={`w-12 h-12 ${
-                      benefit.category === "Financial Wellness"
+                    className={`w-12 h-12 ${benefit.category === "Financial Wellness"
                         ? "bg-hoa-gold"
                         : benefit.category === "Work-Life Balance"
                           ? "bg-hoa-rose"
                           : benefit.category === "Growth & Development"
-                            ? "bg-amber-600"
+                            ? ""
                             : "bg-hoa-charcoal"
-                    } rounded-full flex items-center justify-center mb-6`}
+                      } rounded-full flex items-center justify-center mb-6`}
                   >
-                    <benefit.icon className="w-6 h-6 text-white" />
+                    <benefit.icon className="w-6 h-6 text-black dark:text-white" />
                   </div>
                   <h3 className="text-xl font-serif font-bold text-hoa-charcoal dark:text-white mb-4">
                     {benefit.category}
@@ -415,7 +424,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white dark:bg-hoa-charcoal/50">
+      <section className="py-20 bg-white dark:bg-black/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-4xl sm:text-5xl font-serif font-bold text-hoa-charcoal dark:text-white mb-6">
@@ -429,7 +438,7 @@ export default function CareersPage() {
           <div className="space-y-4">
             {openRoles.map((role, index) => (
               <div key={role.title} className={`animate-fade-in-up animation-delay-${(index + 1) * 100}`}>
-                <div className="bg-white dark:bg-hoa-charcoal/80 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 group">
+                <div className="bg-white dark:bg-black/80 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 group">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
                       <div className="flex items-center space-x-4 mb-2">

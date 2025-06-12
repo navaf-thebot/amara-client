@@ -104,7 +104,7 @@ export default function HeroSection() {
               >
                 <div className="space-y-6">
                   <div className="space-y-4">
-                    <h2 className="text-lg sm:text-xl font-montserrat font-medium text-[#c6a35d] tracking-wide uppercase">
+                    <h2 className="text-lg mt-20 sm:text-xl font-montserrat font-medium text-[#c6a35d] tracking-wide uppercase">
                       {slide.subtitle}
                     </h2>
                     <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bodoni font-bold text-white leading-tight">

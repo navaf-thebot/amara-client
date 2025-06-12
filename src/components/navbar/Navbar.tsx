@@ -8,14 +8,14 @@ import { ModeToggle } from '../themes/ModeToggle';
 
 const navLinks = [
   'About Us',
-  'Subsidiaries',
+  'Business',
+  'Investors',
   'Careers',
   'Contact US',
-  'Privacy Policy',
 ];
 
 const menuRoutes: { [key: string]: string } = {
-  'Subsidiaries': '/subsidiaries',
+  'Business': '/business',
   'Careers': '/careers',
   'Contact US': '/contact',
   'Privacy Policy': '/privacy-policy',
@@ -25,15 +25,17 @@ const menuRoutes: { [key: string]: string } = {
   'Leadership': '/about/leadership',
   'Corporate Governance': '/about/governance',
   'CSR Initiatives': '/about/csr',
-  'Quarterly Results': '/investors/quarterly-results',
-  'Annual Reports': '/investors/annual-reports',
-  'Financial Statements': '/investors/financial-statements',
-  'Stock Information': '/investors/stock-info',
-  'AGM Details': '/investors/agm',
-  'Investor Contacts': '/investors/contacts',
-  'Stock Exchange Filings': '/investors/filings',
-  'Press Releases': '/investors/press-releases',
-  'Investor Presentations': '/investors/presentations',
+
+  'Quarterly Results': '/investors/financial-information',
+  'Annual Reports': '/investors/financial-information',
+  'Financial Statements': '/investors/financial-information',
+  'Stock Information': '/investors/meeting-information',
+  'Board Meetings': '/investors/meeting-information',
+  'Shareholder Meetings': '/investors/meeting-information',
+  'Media Releases': '/investors/notices-and-announcements',
+  'Press Releases': '/investors/notices-and-announcements',
+  'Investor Updates': '/investors/notices-and-announcements',
+
 };
 
 const megaMenuData: { [key: string]: { title: string; links: string[] }[] } = {
@@ -43,11 +45,11 @@ const megaMenuData: { [key: string]: { title: string; links: string[] }[] } = {
     { title: 'Governance', links: ['Corporate Governance'] },
     { title: 'CSR', links: ['CSR Initiatives'] },
   ],
-  'Subsidiaries': [],
+  'Business': [],
   'Investors': [
     { title: 'Financial Information', links: ['Quarterly Results', 'Annual Reports', 'Financial Statements'] },
-    { title: 'Shareholder Services', links: ['Stock Information', 'AGM Details', 'Investor Contacts'] },
-    { title: 'Disclosures', links: ['Stock Exchange Filings', 'Press Releases', 'Investor Presentations'] },
+    { title: 'Meeting Information', links: ['Stock Information', 'Board Meetings', 'Shareholder Meetings'] },
+    { title: 'Notices & Announcements', links: ['Media Releases', 'Press Releases', 'Investor Updates'] },
   ],
   'Careers': [],
   'Contact US': [],
@@ -105,7 +107,7 @@ const Header = () => {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
           shouldAppearScrolled 
             ? 'bg-white/95 dark:bg-black/95 backdrop-blur-sm shadow-md' 
-            : 'bg-transparent'
+            : 'bg-blue-500/25'
         }`}
       >
         <div className={`transition-opacity duration-300 ${shouldAppearScrolled ? 'hidden' : 'opacity-100'}`}>
@@ -127,9 +129,9 @@ const Header = () => {
         <div className={`container mx-auto px-6 flex justify-between items-center transition-all duration-300 ease-in-out ${shouldAppearScrolled ? 'h-20' : 'h-28'}`}>
           <Link href="/">
             <Image
-              src={'/images/logo.png'}
+              src={'/images/logo/white-logo.png'}
               alt="RIL Logo"
-              width={shouldAppearScrolled ? 70 : 90}
+              width={shouldAppearScrolled ? 150 : 220}
               height={50}
               className="transition-all duration-300"
             />
@@ -194,12 +196,9 @@ const Header = () => {
             : 'opacity-0 invisible -translate-y-4'
         } ${shouldAppearScrolled ? 'mt-20' : 'mt-28'}`}
       >
-        <div className="min-h-[50vh] w-full bg-white dark:bg-black shadow-2xl border-t border-gray-200 dark:border-gray-800 overflow-y-auto">
+        <div className="min-h-[20vh] w-full bg-white/85 dark:bg-black/85 shadow-2xl border-t border-gray-200 dark:border-gray-800 overflow-y-auto">
           {activeMenu && (
             <div className="container mx-auto px-6 py-16">
-              <h2 className="text-4xl font-bold text-ril-dark-blue dark:text-white mb-12">
-                {activeMenu}
-              </h2>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-x-8 gap-y-12">
                 {megaMenuData[activeMenu]?.map((section, index) => (
                   <div key={index}>
@@ -214,7 +213,7 @@ const Header = () => {
                           <Link 
                             href={menuRoutes[link] || '#'} 
                             className="flex items-center text-ril-text-light dark:text-gray-300 hover:text-ril-blue dark:hover:text-blue-400 transition-colors group"
-                            onClick={() => setActiveMenu(null)} // Close menu when clicking a link
+                            onClick={() => setActiveMenu(null)}
                           >
                             {link}
                             <ExternalLink 

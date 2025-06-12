@@ -76,14 +76,14 @@ export default function ValuesCulturePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {values.map((value, index) => (
               <div key={value.title} className={`animate-fade-in-up animation-delay-${(index + 1) * 100}`}>
-                <div className="bg-white dark:bg-hoa-charcoal/80 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 h-full hover:shadow-xl transition-all duration-300 group">
+                <div className="bg-white dark:bg-black p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 h-full hover:shadow-xl transition-all duration-300 group">
                   <div
                     className={`w-16 h-16 bg-gradient-to-br ${value.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
                   >
                     <value.icon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-xl font-serif font-bold text-hoa-charcoal dark:text-white mb-4">{value.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{value.description}</p>
+                  <p className="text-gray-600 dark:text-gray-100 leading-relaxed">{value.description}</p>
                 </div>
               </div>
             ))}
@@ -91,7 +91,7 @@ export default function ValuesCulturePage() {
         </div>
       </section>
 
-      <section className="py-16 bg-gradient-to-br from-hoa-beige/50 to-white dark:from-hoa-charcoal/30 dark:to-hoa-charcoal/50">
+      <section className="py-16 bg-white dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-20">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -208,7 +208,7 @@ export default function ValuesCulturePage() {
 
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-white dark:bg-hoa-charcoal/80 p-8 lg:p-12 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 animate-fade-in-up">
+          <div className="bg-white dark:bg-black p-8 lg:p-12 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 animate-fade-in-up">
             <div className="text-6xl text-hoa-gold mb-6 font-serif">&quot;</div>
             <blockquote className="text-2xl lg:text-3xl text-gray-700 dark:text-gray-300 leading-relaxed mb-8 italic font-serif">
               Culture is not just what we do—it&apos;s who we are. It&apos;s the invisible force that transforms individual

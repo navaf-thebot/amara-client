@@ -32,7 +32,7 @@ export default function PageBanner({
       />
 
       <div className="absolute inset-0 bg-gradient-to-br from-hoa-charcoal/90 via-hoa-charcoal/70 to-hoa-gold/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20  dark:from-white/20 to-transparent " />
 
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         {breadcrumbs.length > 0 && (
