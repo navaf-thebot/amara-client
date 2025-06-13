@@ -221,7 +221,7 @@ const LegacySection = () => {
           </button>
         )}
         
-        <div className="max-w-7xl ms-4  mx-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
             <div
                 ref={scrollContainerRef}
                 onMouseDown={handleMouseDown}
