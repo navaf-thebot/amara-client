@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { FaFacebookF, FaLinkedin,  FaYoutube , FaInstagram } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 const Footer: React.FC = () => {
   return (
@@ -16,19 +16,8 @@ const Footer: React.FC = () => {
               <p>Amaraa - Leading diversified business conglomerate with excellence across multiple industries & sectors.</p>
             </div>
             <div className="flex gap-4">
-              <Link href="#" className="w-10 h-10 bg-[#c6a35d] text-[#232323] flex items-center justify-center text-lg hover:bg-[#f0efe2] transition-colors duration-300" aria-label="Facebook">
-                <FaFacebookF className="w-5 h-5 text-blue-900 transition-colors duration-200" />
-              </Link>
-              
-              <Link href="https://x.com/HouseOfAmaraa" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-[#c6a35d] text-[#232323] flex items-center justify-center text-lg hover:bg-[#f0efe2] transition-colors duration-300" aria-label="Facebook">
+              <Link href="https://x.com/HouseOfAmaraa" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-[#c6a35d] text-[#232323] flex items-center justify-center text-lg hover:bg-[#f0efe2] transition-colors duration-300" aria-label="X">
                 <FaXTwitter className="w-5 h-5 text-black transition-colors duration-200" />
-              </Link>
-
-              <Link href="#" className="w-10 h-10 bg-[#c6a35d] text-[#232323] flex items-center justify-center text-lg hover:bg-[#f0efe2] transition-colors duration-300" aria-label="LinkedIn">
-                <FaLinkedin className="w-5 h-5 text-blue-900 transition-colors duration-200" />
-              </Link>
-              <Link href="#" className="w-10 h-10 bg-[#c6a35d] text-[#232323] flex items-center justify-center text-lg hover:bg-[#f0efe2] transition-colors duration-300" aria-label="YouTube">
-                <FaYoutube className="w-5 h-5 text-red-900 transition-colors duration-200" />
               </Link>
               <a href="https://www.instagram.com/house_of_amaraa/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-[#c6a35d] text-[#232323] flex items-center justify-center text-lg hover:bg-[#f0efe2] transition-colors duration-300" aria-label="Instagram">
                 <FaInstagram className="w-5 h-5 text-pink-900 transition-colors duration-200" />

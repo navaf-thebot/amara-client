@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Search, ChevronDown,ExternalLink, Menu, X } from 'lucide-react';
-import { FaFacebookF, FaLinkedin,  FaYoutube , FaInstagram, } from "react-icons/fa";
+import { Search, ChevronDown, ExternalLink, Menu, X } from 'lucide-react';
+import { FaInstagram, } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { ModeToggle } from '../themes/ModeToggle';
 
@@ -136,32 +136,23 @@ const Header = () => {
         <div className="bg-gradient-to-r from-slate-800 to-slate-900 border-b border-slate-700">
           <div className="container mx-auto px-6 h-12 flex justify-between items-center">
             <div className="flex items-center space-x-6">
-              <Link 
-                href="/contact" 
+              <Link
+                href="/contact"
                 className="text-slate-300 hover:text-white text-sm font-medium transition-colors duration-200 hover:underline"
               >
                 Contact Us
               </Link>
-              <Link 
-                href="/fraud-alert" 
+              <Link
+                href="/fraud-alert"
                 className="text-slate-300 hover:text-amber-400 text-sm font-medium transition-colors duration-200 hover:underline"
               >
                 Fraud Alert
               </Link>
             </div>
-<div></div>
+            <div></div>
             <div className="flex items-center space-x-4">
-              <Link href="https://www.facebook.com/amaraa/" target="_blank" rel="noopener noreferrer">
-                <FaFacebookF className="w-5 h-5 text-slate-400 hover:text-blue-900 transition-colors duration-200" />
-              </Link>
               <Link href="https://x.com/HouseOfAmaraa" target="_blank" rel="noopener noreferrer">
                 <FaXTwitter className="w-5 h-5 text-slate-400 hover:text-gray-600 transition-colors duration-200" />
-              </Link>
-              <Link href="https://www.linkedin.com/amaraa/" target="_blank" rel="noopener noreferrer">
-                <FaLinkedin className="w-5 h-5 text-slate-400 hover:text-blue-600 transition-colors duration-200" />
-              </Link>
-              <Link href="https://www.youtube.com/amaraa/" target="_blank" rel="noopener noreferrer">
-                <FaYoutube className="w-5 h-5 text-slate-400 hover:text-red-700 transition-colors duration-200" />
               </Link>
               <Link href="https://www.youtube.com/amaraa/" target="_blank" rel="noopener noreferrer">
                 <FaInstagram className="w-5 h-5 text-slate-400 hover:text-pink-600 transition-colors duration-200" />
@@ -172,11 +163,10 @@ const Header = () => {
       </div>
 
       <header
-        className={`fixed left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
-          shouldAppearScrolled 
-            ? 'top-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-gray-200 dark:border-gray-700' 
+        className={`fixed left-0 right-0 z-50 transition-all duration-300 ease-in-out ${shouldAppearScrolled
+            ? 'top-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-gray-200 dark:border-gray-700'
             : 'top-12 bg-black/40 py-2'
-        }`}
+          }`}
       >
         <div className={`container mx-auto px-6 flex justify-between items-center transition-all duration-300 ease-in-out ${shouldAppearScrolled ? 'h-16' : 'h-20'}`}>
           <Link href="/" className="flex-shrink-0">
@@ -195,25 +185,22 @@ const Header = () => {
                 {!megaMenuData[link] || megaMenuData[link].length === 0 ? (
                   <Link
                     href={menuRoutes[link] || '#'}
-                    className={`relative px-4 py-2 mx-1 text-sm font-semibold transition-all duration-300 rounded-lg group ${
-                      shouldAppearScrolled
+                    className={`relative px-4 py-2 mx-1 text-sm font-semibold transition-all duration-300 rounded-lg group ${shouldAppearScrolled
                         ? 'text-gray-700 dark:text-gray-200 hover:text-[#c6a35d] dark:hover:text-[#c6a35d] hover:bg-gray-100 dark:hover:bg-gray-800'
                         : 'text-white/90 hover:text-white hover:bg-white/10'
-                    }`}
+                      }`}
                     onClick={() => handleMenuClick(link)}
                   >
                     <span className="relative z-10">{link}</span>
-                    <div className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-current transition-all duration-300 group-hover:w-3/4 transform -translate-x-1/2 ${
-                      shouldAppearScrolled ? 'bg-[#c6a35d] dark:bg-[#c6a35d]' : 'bg-white'
-                    }`} />
+                    <div className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-current transition-all duration-300 group-hover:w-3/4 transform -translate-x-1/2 ${shouldAppearScrolled ? 'bg-[#c6a35d] dark:bg-[#c6a35d]' : 'bg-white'
+                      }`} />
                   </Link>
                 ) : (
-                  <button 
-                    className={`relative px-4 py-2 mx-1 text-sm font-semibold transition-all duration-300 rounded-lg group flex items-center ${
-                      shouldAppearScrolled
+                  <button
+                    className={`relative px-4 py-2 mx-1 text-sm font-semibold transition-all duration-300 rounded-lg group flex items-center ${shouldAppearScrolled
                         ? 'text-gray-700 dark:text-gray-200 hover:text-[#c6a35d] dark:hover:text-[#c6a35d] hover:bg-gray-100 dark:hover:bg-gray-800'
                         : 'text-white/90 hover:text-white hover:bg-white/10'
-                    } ${activeMenu === link ? (shouldAppearScrolled ? 'text-[#c6a35d] dark:text-[#c6a35d] bg-gray-100 dark:bg-gray-800' : 'text-white bg-white/10') : ''}`}
+                      } ${activeMenu === link ? (shouldAppearScrolled ? 'text-[#c6a35d] dark:text-[#c6a35d] bg-gray-100 dark:bg-gray-800' : 'text-white bg-white/10') : ''}`}
                   >
                     <span className="relative z-10">{link}</span>
                     <ChevronDown
@@ -227,31 +214,28 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center space-x-4">
-            <button 
+            <button
               onClick={handleSearchToggle}
-              className={`p-2 rounded-lg transition-all duration-300 ${
-                shouldAppearScrolled
+              className={`p-2 rounded-lg transition-all duration-300 ${shouldAppearScrolled
                   ? 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
                   : 'text-white/80 hover:text-white hover:bg-white/10'
-              } ${searchOpen ? (shouldAppearScrolled ? 'text-blue-600 dark:text-blue-400 bg-gray-100 dark:bg-gray-800' : 'text-white bg-white/10') : ''}`}
+                } ${searchOpen ? (shouldAppearScrolled ? 'text-blue-600 dark:text-blue-400 bg-gray-100 dark:bg-gray-800' : 'text-white bg-white/10') : ''}`}
             >
               <Search size={20} />
             </button>
 
-            <div className={`transition-colors duration-300 ${
-              shouldAppearScrolled
+            <div className={`transition-colors duration-300 ${shouldAppearScrolled
                 ? 'text-gray-600 dark:text-gray-300'
                 : 'text-white'
-            }`}>
+              }`}>
               <ModeToggle />
             </div>
 
             <button
-              className={`lg:hidden p-2 rounded-lg transition-all duration-300 ${
-                shouldAppearScrolled
+              className={`lg:hidden p-2 rounded-lg transition-all duration-300 ${shouldAppearScrolled
                   ? 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
                   : 'text-white/80 hover:text-white hover:bg-white/10'
-              }`}
+                }`}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -261,11 +245,10 @@ const Header = () => {
       </header>
 
       <div
-        className={`fixed right-0 z-40 transition-all duration-500 ease-in-out ${
-          searchOpen
+        className={`fixed right-0 z-40 transition-all duration-500 ease-in-out ${searchOpen
             ? 'opacity-100 visible translate-y-0'
             : 'opacity-0 invisible -translate-y-4 pointer-events-none'
-        } ${shouldAppearScrolled ? 'top-16' : 'top-32'} lg:left-auto left-0`}
+          } ${shouldAppearScrolled ? 'top-16' : 'top-32'} lg:left-auto left-0`}
       >
         <div className="px-4 lg:px-6 py-3 lg:py-4">
           <form onSubmit={handleSearchSubmit} className="relative w-full lg:w-96">
@@ -292,20 +275,18 @@ const Header = () => {
       </div>
 
       <div
-        className={`fixed left-0 right-0 z-40 transition-all duration-300 ease-in-out ${
-          activeMenu && !searchOpen
+        className={`fixed left-0 right-0 z-40 transition-all duration-300 ease-in-out ${activeMenu && !searchOpen
             ? 'opacity-100 visible translate-y-0'
             : 'opacity-0 invisible -translate-y-4 pointer-events-none'
-        } ${shouldAppearScrolled ? 'top-16' : 'top-32'}`}
+          } ${shouldAppearScrolled ? 'top-16' : 'top-32'}`}
       >
         <div className="bg-white/40 dark:bg-slate-900/40 backdrop-blur-md shadow-2xl border-b border-gray-200 dark:border-gray-700">
           {activeMenu && (
             <div className="container mx-auto px-6 py-8">
-              <div className={` flex justify-around gap-8 ${
-                megaMenuData[activeMenu]?.length <= 2 
-                  ? 'grid-cols-1 md:grid-cols-2 max-w-4xl' 
+              <div className={` flex justify-around gap-8 ${megaMenuData[activeMenu]?.length <= 2
+                  ? 'grid-cols-1 md:grid-cols-2 max-w-4xl'
                   : 'grid-cols-1 md:grid-cols-3 lg:grid-cols-4'
-              }`}>
+                }`}>
                 {megaMenuData[activeMenu]?.map((section, index) => (
                   <div key={index} className="space-y-4">
                     {section.title && (
@@ -346,9 +327,8 @@ const Header = () => {
       )}
 
       <div
-        className={`fixed top-0 right-0 h-full w-80 bg-white dark:bg-slate-900 z-40 transform transition-transform duration-300 ease-in-out lg:hidden shadow-2xl ${
-          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        } ${shouldAppearScrolled ? 'pt-16' : 'pt-32'}`}
+        className={`fixed top-0 right-0 h-full w-80 bg-white dark:bg-slate-900 z-40 transform transition-transform duration-300 ease-in-out lg:hidden shadow-2xl ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          } ${shouldAppearScrolled ? 'pt-16' : 'pt-32'}`}
       >
         <div className="p-6 h-full overflow-y-auto">
           <div className="mb-6">
