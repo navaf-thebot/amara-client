@@ -168,7 +168,7 @@ export default function ContactSection() {
           <h3 className="text-4xl font-bold text-hoa-charcoal dark:text-white mb-12 text-center font-serif">
             Our Global Network
           </h3>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {globalLocations.map((location, index) => {
               const IconComponent = location.icon
@@ -189,20 +189,20 @@ export default function ContactSection() {
                       </div>
                       <IconComponent className="w-6 h-6 text-hoa-gold/60 grup-hover:text-hoa-gold transition-colors" />
                     </div>
-                    
+
                     {location.company && (
                       <h5 className="font-semibold text-hoa-charcoal dark:text-white mb-3">
                         {location.company}
                       </h5>
                     )}
-                    
+
                     <div className="flex items-start space-x-3 mb-4">
                       <MapPin className="w-4 h-4 text-hoa-gold mt-1 flex-shrink-0" />
                       <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
                         {location.address}
                       </p>
                     </div>
-                    
+
                     <div className="pt-3 border-t border-gray-100 dark:border-gray-700">
                       <p className="text-xs text-gray-500 dark:text-gray-400 italic">
                         {location.focus}
@@ -222,7 +222,7 @@ export default function ContactSection() {
                 Get in Touch
               </h3>
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-                Ready to explore opportunities with House of Amaraa? Reach out to our team for partnerships, 
+                Ready to explore opportunities with House of Amaraa? Reach out to our team for partnerships,
                 investments, or general inquiries.
               </p>
             </div>

@@ -61,7 +61,7 @@ const Meetings = () => {
             Shareholder Meetings
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl">
-            Find notices, minutes, and resolutions from past and upcoming shareholder meetings. 
+            Find notices, minutes, and resolutions from past and upcoming shareholder meetings.
             Stay informed about the decisions shaping our company&apos;s future.
           </p>
         </div>

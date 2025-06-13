@@ -85,14 +85,14 @@ const Notices = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      
+
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
             Regulatory Notices
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl">
-            Access legal disclosures, regulatory announcements, and public notices as per SEBI, MCA, and other statutory requirements. 
+            Access legal disclosures, regulatory announcements, and public notices as per SEBI, MCA, and other statutory requirements.
             Stay updated with our compliance status and regulatory communications to ensure transparency and legal adherence.
           </p>
         </div>
@@ -101,8 +101,8 @@ const Notices = () => {
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input 
-                placeholder="Search notices..." 
+              <Input
+                placeholder="Search notices..."
                 className="pl-10 border-amber-200 focus:border-amber-600"
               />
             </div>
@@ -230,7 +230,7 @@ const Notices = () => {
           <CardContent className="p-8">
             <h3 className="text-xl font-semibold text-foreground mb-4">Regulatory Compliance Status</h3>
             <p className="text-muted-foreground mb-6">
-              We maintain the highest standards of regulatory compliance across all jurisdictions. Our dedicated compliance team 
+              We maintain the highest standards of regulatory compliance across all jurisdictions. Our dedicated compliance team
               ensures timely filing of all required documents and maintains transparent communication with regulatory authorities.
             </p>
             <div className="grid md:grid-cols-3 gap-4 mb-6">
