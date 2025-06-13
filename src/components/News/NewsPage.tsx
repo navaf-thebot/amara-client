@@ -12,7 +12,7 @@ const newsData = [
     category: 'Awards & Recognitions',
     date: '2024-12-15',
     author: 'Amaraa Communications',
-    imageSrc: '/images/award-sustainability.jpg',
+    imageSrc: '/images/news/sustainability.jpg',
     videoUrl: 'https://www.youtube.com/',
     featured: true,
     tags: ['sustainability', 'award', 'environment']
@@ -25,7 +25,7 @@ const newsData = [
     category: 'Press Releases',
     date: '2024-12-10',
     author: 'Energy Division',
-    imageSrc: '/images/solar-dubai.jpg',
+    imageSrc: '/images/news/solar.jpg',
     videoUrl: '',
     featured: true,
     tags: ['solar', 'dubai', 'renewable energy']
@@ -38,7 +38,7 @@ const newsData = [
     category: 'Events & Conferences',
     date: '2024-12-05',
     author: 'Events Team',
-    imageSrc: '/images/tech-summit.jpg',
+    imageSrc: '/images/news/global.jpg',
     videoUrl: 'https://www.youtube.com/',
     featured: false,
     tags: ['tech summit', 'smart cities', 'keynote']
@@ -51,7 +51,7 @@ const newsData = [
     category: 'Media Coverage',
     date: '2024-11-28',
     author: 'Forbes Magazine',
-    imageSrc: '/images/forbes-feature.jpg',
+    imageSrc: '/images/news/innovative.jpg',
     videoUrl: '',
     featured: false,
     tags: ['forbes', 'innovation', 'recognition']
@@ -64,7 +64,7 @@ const newsData = [
     category: 'Press Releases',
     date: '2024-11-20',
     author: 'Finance Department',
-    imageSrc: '/images/financial-results.jpg',
+    imageSrc: '/images/news/financial.jpg',
     videoUrl: '',
     featured: false,
     tags: ['financial', 'results', 'growth']
@@ -77,7 +77,7 @@ const newsData = [
     category: 'Awards & Recognitions',
     date: '2024-11-15',
     author: 'Smart Cities Division',
-    imageSrc: '/images/smart-city-award.jpg',
+    imageSrc: '/images/news/smartcity.jpg',
     videoUrl: '',
     featured: false,
     tags: ['smart city', 'innovation', 'award']
@@ -90,7 +90,7 @@ const newsData = [
     category: 'Media Coverage',
     date: '2024-11-10',
     author: 'Real Estate Weekly',
-    imageSrc: '/images/ceo-interview.jpg',
+    imageSrc: '/images/news/realestate.jpg',
     videoUrl: 'https://www.youtube.com/',
     featured: false,
     tags: ['interview', 'real estate', 'market trends']
@@ -103,7 +103,7 @@ const newsData = [
     category: 'Events & Conferences',
     date: '2024-11-05',
     author: 'Events Team',
-    imageSrc: '/images/sustainability-conference.jpg',
+    imageSrc: '/images/news/sustainability-1.jpg',
     videoUrl: '',
     featured: false,
     tags: ['conference', 'sustainability', 'networking']
@@ -193,7 +193,7 @@ const NewsPage = () => {
                     setSelectedCategory(category.name);
                     setCurrentPage(1);
                   }}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-xl font-montserrat font-medium transition-all duration-300 ${
+                  className={`flex cursor-pointer items-center gap-2 px-6 py-3 rounded-xl font-montserrat font-medium transition-all duration-300 ${
                     selectedCategory === category.name
                       ? 'bg-[#c6a35d] text-white shadow-lg transform scale-105'
                       : 'bg-gray-100 dark:bg-[#232323] text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800'
@@ -218,7 +218,7 @@ const NewsPage = () => {
                 return (
                   <article
                     key={article.id}
-                    className="group bg-white dark:bg-black rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+                    className="group bg-white cursor-pointer dark:bg-black rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
                   >
                     <div className="relative overflow-hidden">
                       <img
@@ -279,7 +279,7 @@ const NewsPage = () => {
                 return (
                   <article
                     key={article.id}
-                    className="group bg-white dark:bg-black rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+                    className="group bg-white cursor-pointer dark:bg-black rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
                   >
                     <div className="relative overflow-hidden">
                       <img
