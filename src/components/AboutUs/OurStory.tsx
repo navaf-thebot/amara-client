@@ -70,7 +70,7 @@ export default function OurStoryPage() {
           </div>
 
           <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-hoa-gold/30 hidden lg:block"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-black dark:bg-white hidden lg:block"></div>
 
             <div className="space-y-12">
               {[
@@ -111,7 +111,7 @@ export default function OurStoryPage() {
                 },
               ].map((item, index) => (
                 <div key={item.year} className={`relative animate-fade-in-up animation-delay-${(index + 1) * 200}`}>
-                  <div className={`lg:flex items-center ${item.side === "right" ? "lg:flex-row-reverse" : ""}`}>
+                  <div className={`lg:flex bg-text-400 items-center ${item.side === "right" ? "lg:flex-row-reverse" : ""}`}>
                     <div className="lg:w-1/2 lg:px-8">
                       <div className="bg-white dark:bg-black p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
                         <div className="flex items-center mb-4">
@@ -125,10 +125,10 @@ export default function OurStoryPage() {
                         <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
                       </div>
                     </div>
-                    <div className="hidden lg:block lg:w-1/2"></div>
+                    <div className="hidden lg:block lg:w-1/2 "></div>
                   </div>
 
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-hoa-gold rounded-full border-4 border-white dark:border-hoa-charcoal hidden lg:block top-8"></div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-hoa-gold rounded-full border-4 border-black dark:border-white hidden lg:block top-8"></div>
                 </div>
               ))}
             </div>
