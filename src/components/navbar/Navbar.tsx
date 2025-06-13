@@ -154,7 +154,7 @@ const Header = () => {
               <Link href="https://x.com/HouseOfAmaraa" target="_blank" rel="noopener noreferrer">
                 <FaXTwitter className="w-5 h-5 text-slate-400 hover:text-gray-600 transition-colors duration-200" />
               </Link>
-              <Link href="https://www.youtube.com/amaraa/" target="_blank" rel="noopener noreferrer">
+              <Link href="https://www.instagram.com/house_of_amaraa/" target="_blank" rel="noopener noreferrer">
                 <FaInstagram className="w-5 h-5 text-slate-400 hover:text-pink-600 transition-colors duration-200" />
               </Link>
             </div>

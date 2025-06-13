@@ -91,13 +91,13 @@ const JobApplicationModal = ({ open, onOpenChange }: JobApplicationModalProps) =
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
 
     setIsLoading(true);
-    
+
     setTimeout(() => {
       setIsLoading(false);
       onOpenChange(false);
@@ -130,12 +130,12 @@ const JobApplicationModal = ({ open, onOpenChange }: JobApplicationModalProps) =
         setErrors(prev => ({ ...prev, resume: "Please upload a PDF or Word document" }));
         return;
       }
-      
+
       if (file.size > 5 * 1024 * 1024) {
         setErrors(prev => ({ ...prev, resume: "File size should be less than 5MB" }));
         return;
       }
-      
+
       handleInputChange("resume", file);
     }
   };
@@ -172,36 +172,37 @@ const JobApplicationModal = ({ open, onOpenChange }: JobApplicationModalProps) =
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div 
+      <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={() => handleOpenChange(false)}
       />
-      
-      <div className="relative bg-white dark:bg-gray-900 rounded-lg shadow-xl max-w-3xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-        <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+
+      <div className="relative bg-white dark:bg-gray-900 rounded-lg shadow-xl max-w-3xl w-full mx-2 sm:mx-4 max-h-[90vh] overflow-y-auto">
+        {/* Sticky Header with Close Button */}
+        <div className="sticky top-0 z-10 bg-white dark:bg-gray-900 p-4 sm:p-6 border-b border-gray-200 dark:border-gray-700 rounded-t-lg">
           <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-              <UserPlus className="h-6 w-6 text-amber-600" />
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+              <UserPlus className="h-5 w-5 sm:h-6 sm:w-6 text-amber-600" />
               Apply for Position
             </h2>
             <button
               onClick={() => handleOpenChange(false)}
-              className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+              className="text-gray-400 cursor-pointer hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-200 p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full"
             >
-              <X className="w-6 h-6" />
+              <X className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
             </button>
           </div>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">Join our team and make an impact</p>
+          <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm sm:text-base">Join our team and make an impact</p>
         </div>
 
-        <div className="p-6 space-y-6">
+        <div className="p-4 sm:p-6 space-y-6">
           <div>
             <p className="text-center text-xs text-gray-500 dark:text-gray-400 mb-4">Trusted by leading organizations</p>
-            <div className="grid grid-cols-6 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
               {clientLogos.map((client, index) => (
                 <div key={index} className="flex flex-col items-center p-2 bg-gray-50 dark:bg-gray-800 rounded border border-amber-200 dark:border-amber-800">
                   {client.icon}
-                  <span className="text-xs text-gray-500 dark:text-gray-400 mt-1 text-center">{client.name}</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400 mt-1 text-center leading-tight">{client.name}</span>
                 </div>
               ))}
             </div>
@@ -212,7 +213,7 @@ const JobApplicationModal = ({ open, onOpenChange }: JobApplicationModalProps) =
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
                 Personal Information
               </h3>
-              
+
               <div className="space-y-2">
                 <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Full Name *
@@ -222,9 +223,8 @@ const JobApplicationModal = ({ open, onOpenChange }: JobApplicationModalProps) =
                   type="text"
                   value={formData.fullName}
                   onChange={(e) => handleInputChange("fullName", e.target.value)}
-                  className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white ${
-                    errors.fullName ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                  }`}
+                  className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white ${errors.fullName ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                    }`}
                   placeholder="Enter your full name"
                 />
                 {errors.fullName && (
@@ -241,9 +241,8 @@ const JobApplicationModal = ({ open, onOpenChange }: JobApplicationModalProps) =
                   type="email"
                   value={formData.email}
                   onChange={(e) => handleInputChange("email", e.target.value)}
-                  className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white ${
-                    errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                  }`}
+                  className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white ${errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                    }`}
                   placeholder="Enter your email address"
                 />
                 {errors.email && (
@@ -266,7 +265,7 @@ const JobApplicationModal = ({ open, onOpenChange }: JobApplicationModalProps) =
                       <span className="text-sm text-gray-700 dark:text-gray-300">{selectedCountry.phoneCode}</span>
                       <ChevronDown className="ml-1 h-4 w-4 text-gray-500" />
                     </button>
-                    
+
                     {showCountryDropdown && (
                       <div className="absolute top-full left-0 mt-1 w-64 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg z-10 max-h-60 overflow-y-auto">
                         {countries.map((country) => (
@@ -284,15 +283,14 @@ const JobApplicationModal = ({ open, onOpenChange }: JobApplicationModalProps) =
                       </div>
                     )}
                   </div>
-                  
+
                   <input
                     id="phone"
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => handleInputChange("phone", e.target.value)}
-                    className={`flex-1 px-3 py-2 border rounded-r-md shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white ${
-                      errors.phone ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                    }`}
+                    className={`flex-1 px-3 py-2 border rounded-r-md shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white ${errors.phone ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                      }`}
                     placeholder="Enter your phone number"
                   />
                 </div>
@@ -306,15 +304,14 @@ const JobApplicationModal = ({ open, onOpenChange }: JobApplicationModalProps) =
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
                 Documents
               </h3>
-              
+
               <div className="space-y-2">
                 <label htmlFor="resume" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Resume *
                 </label>
                 <div className="flex items-center justify-center w-full">
-                  <label htmlFor="resume" className={`flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 ${
-                    errors.resume ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                  } ${formData.resume ? 'bg-green-50 dark:bg-green-900/20 border-green-300 dark:border-green-700' : 'bg-gray-50 dark:bg-gray-900'}`}>
+                  <label htmlFor="resume" className={`flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 ${errors.resume ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                    } ${formData.resume ? 'bg-green-50 dark:bg-green-900/20 border-green-300 dark:border-green-700' : 'bg-gray-50 dark:bg-gray-900'}`}>
                     <div className="flex flex-col items-center justify-center pt-5 pb-6">
                       {formData.resume ? (
                         <>
@@ -363,7 +360,7 @@ const JobApplicationModal = ({ open, onOpenChange }: JobApplicationModalProps) =
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
                 Cover Letter
               </h3>
-              
+
               <div className="space-y-2">
                 <label htmlFor="coverLetter" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Cover Letter *
@@ -373,9 +370,8 @@ const JobApplicationModal = ({ open, onOpenChange }: JobApplicationModalProps) =
                   value={formData.coverLetter}
                   onChange={(e) => handleInputChange("coverLetter", e.target.value)}
                   rows={6}
-                  className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white resize-none ${
-                    errors.coverLetter ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                  }`}
+                  className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white resize-none ${errors.coverLetter ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                    }`}
                   placeholder="Tell us why you're interested in this position and what makes you a great fit for our team..."
                 />
                 <div className="flex justify-between items-center">
@@ -389,8 +385,8 @@ const JobApplicationModal = ({ open, onOpenChange }: JobApplicationModalProps) =
               </div>
             </div>
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 text-lg shadow-lg hover:shadow-xl transition-all duration-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               disabled={isLoading}
             >

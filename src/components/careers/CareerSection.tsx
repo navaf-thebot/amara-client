@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client"
 
-import AuthModal from "@/modal/AuthModal";
+import JobApplicationModal from "@/modal/AuthModal";
 import {
   Users,
   Heart,
@@ -426,52 +426,41 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white dark:bg-black/50">
+    <section className="py-20 bg-gray-50 dark:bg-black/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl sm:text-5xl font-serif font-bold text-hoa-charcoal dark:text-white mb-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bodoni font-bold text-hoa-charcoal dark:text-white mb-6">
               Current Opportunities
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto font-montserrat">
               Ready to make your mark? Explore our current openings and find the perfect role to start your journey.
             </p>
           </div>
 
           <div className="space-y-4">
-            {openRoles.map((role, index) => (
-              <div key={role.title} className={`animate-fade-in-up animation-delay-${(index + 1) * 100}`}>
-                <div className="bg-white dark:bg-black/80 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 group">
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <div className="flex items-center space-x-4 mb-2">
-                        <h3 className="text-xl font-bold text-hoa-charcoal dark:text-white group-hover:text-hoa-gold transition-colors">
-                          {role.title}
-                        </h3>
-                        {role.urgent && (
-                          <span className="px-3 py-1 bg-red-100 text-red-800 text-xs font-semibold rounded-full">
-                            Urgent
-                          </span>
-                        )}
-                      </div>
-                      <div className="flex items-center space-x-6 text-gray-600 dark:text-gray-300">
-                        <span className="flex items-center space-x-1">
-                          <Users className="w-4 h-4" />
-                          <span>{role.department}</span>
+            {openRoles.map((role) => (
+              <div key={role.title} className="bg-white dark:bg-black/80 p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 group">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                  <div className="flex-1">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                      <h3 className="text-xl font-bold text-hoa-charcoal dark:text-white group-hover:text-hoa-gold transition-colors">
+                        {role.title}
+                      </h3>
+                      {role.urgent && (
+                        <span className="mt-2 sm:mt-0 px-3 py-1 bg-red-100 text-red-800 text-xs font-semibold rounded-full self-start sm:self-center">
+                          Urgent
                         </span>
-                        <span className="flex items-center space-x-1">
-                          <MapPin className="w-4 h-4" />
-                          <span>{role.location}</span>
-                        </span>
-                        <span className="flex items-center space-x-1">
-                          <Clock className="w-4 h-4" />
-                          <span>{role.type}</span>
-                        </span>
-                        <span className="px-2 py-1 bg-hoa-gold/10 text-hoa-gold text-xs font-semibold rounded">
-                          {role.level}
-                        </span>
-                      </div>
+                      )}
                     </div>
-                    <button onClick={()=>setIsAuthModalOpen(true)} className="px-6 py-3 bg-hoa-gold hover:bg-hoa-gold/80 text-black dark:text-white  font-semibold rounded-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2">
+                    <div className="flex items-center flex-wrap gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
+                      <span className="flex items-center gap-1.5"><Users className="w-4 h-4" /><span>{role.department}</span></span>
+                      <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4" /><span>{role.location}</span></span>
+                      <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" /><span>{role.type}</span></span>
+                      <span className="px-2 py-1 bg-hoa-gold/10 text-hoa-gold text-xs font-semibold rounded">{role.level}</span>
+                    </div>
+                  </div>
+                  <div className="md:ml-6 flex-shrink-0">
+                    <button onClick={() => setIsAuthModalOpen(true)} className="w-full md:w-auto px-6 py-3 bg-black text-white dark:text-black dark:bg-white hover:bg-amber-500 font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
                       <span>Apply Now</span>
                       <ArrowRight className="w-4 h-4" />
                     </button>
@@ -480,10 +469,10 @@ export default function CareersPage() {
               </div>
             ))}
 
-            {isAuthModalOpen && <AuthModal open={isAuthModalOpen} onOpenChange={setIsAuthModalOpen} />}
+            {isAuthModalOpen && <JobApplicationModal open={isAuthModalOpen} onOpenChange={setIsAuthModalOpen} />}
           </div>
           <div className="text-center mt-12">
-            <button className="px-8 py-4 border-2 border-hoa-gold text-hoa-gold hover:bg-hoa-gold hover:text-[#c6a35d] cursor-pointer font-semibold rounded-lg transition-all duration-300">
+            <button className="px-8 py-4 border-2 border-hoa-gold text-hoa-gold hover:bg-hoa-gold hover:text-black font-semibold rounded-lg transition-all duration-300">
               View All Positions
             </button>
           </div>

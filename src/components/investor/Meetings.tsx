@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/card/Card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/card/badge";
@@ -56,15 +55,14 @@ const Meetings = () => {
 
   return (
     <div className="min-h-screen bg-background">
-
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Shareholder Meetings
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl">
             Find notices, minutes, and resolutions from past and upcoming shareholder meetings. 
-            Stay informed about the decisions shaping our company&apos;s future and participate in our democratic governance process.
+            Stay informed about the decisions shaping our company&apos;s future.
           </p>
         </div>
 
@@ -74,25 +72,16 @@ const Meetings = () => {
             {upcomingMeetings.map((meeting, index) => (
               <Card key={index} className="border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/20">
                 <CardHeader>
-                  <div className="flex items-start justify-between">
+                  <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
                     <div>
                       <CardTitle className="text-xl text-foreground mb-2">{meeting.title}</CardTitle>
-                      <div className="flex items-center gap-4 text-muted-foreground">
-                        <div className="flex items-center gap-1">
-                          <Calendar className="h-4 w-4" />
-                          <span>{meeting.date}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Clock className="h-4 w-4" />
-                          <span>{meeting.time}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <MapPin className="h-4 w-4" />
-                          <span>{meeting.location}</span>
-                        </div>
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 text-muted-foreground">
+                        <div className="flex items-center gap-1.5"><Calendar className="h-4 w-4" /><span>{meeting.date}</span></div>
+                        <div className="flex items-center gap-1.5"><Clock className="h-4 w-4" /><span>{meeting.time}</span></div>
+                        <div className="flex items-center gap-1.5"><MapPin className="h-4 w-4" /><span>{meeting.location}</span></div>
                       </div>
                     </div>
-                    <Badge className="bg-amber-600 text-black">{meeting.status}</Badge>
+                    <Badge className="bg-amber-600 text-black self-start sm:self-center">{meeting.status}</Badge>
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -100,18 +89,9 @@ const Meetings = () => {
                     <strong>Agenda:</strong> {meeting.agenda}
                   </CardDescription>
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <Button className="bg-amber-600 hover:bg-amber-700 text-black">
-                      <Users className="mr-2 h-4 w-4" />
-                      Register to Attend
-                    </Button>
-                    <Button variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10">
-                      <Video className="mr-2 h-4 w-4" />
-                      Join Virtual Session
-                    </Button>
-                    <Button variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10">
-                      <Download className="mr-2 h-4 w-4" />
-                      Download Notice
-                    </Button>
+                    <Button className="bg-amber-600 hover:bg-amber-700 text-black"><Users className="mr-2 h-4 w-4" />Register to Attend</Button>
+                    <Button variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10"><Video className="mr-2 h-4 w-4" />Join Virtual Session</Button>
+                    <Button variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10"><Download className="mr-2 h-4 w-4" />Download Notice</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -127,9 +107,7 @@ const Meetings = () => {
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between mb-2">
                     <h3 className="font-medium text-foreground">{resolution.title}</h3>
-                    <Badge variant="secondary" className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
-                      {resolution.status}
-                    </Badge>
+                    <Badge variant="secondary" className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100 flex-shrink-0 ml-2">{resolution.status}</Badge>
                   </div>
                   <p className="text-2xl font-bold text-amber-600">{resolution.votes}</p>
                   <p className="text-sm text-muted-foreground">Shareholder Approval</p>
@@ -140,56 +118,35 @@ const Meetings = () => {
         </div>
 
         <div className="mb-12">
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-4 mb-6">
             <h2 className="text-2xl font-semibold text-foreground">Past Meetings</h2>
-            <Button variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10">
-              <FileText className="mr-2 h-4 w-4" />
-              View All Archives
-            </Button>
+            <Button variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10 self-start sm:self-center"><FileText className="mr-2 h-4 w-4" />View All Archives</Button>
           </div>
 
           <div className="grid gap-6">
             {pastMeetings.map((meeting, index) => (
               <Card key={index} className="border-amber-200 dark:border-amber-800 hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <div className="flex items-start justify-between">
+                  <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
                     <div>
                       <CardTitle className="text-lg text-foreground mb-2">{meeting.title}</CardTitle>
-                      <div className="flex items-center gap-4 text-muted-foreground text-sm">
-                        <div className="flex items-center gap-1">
-                          <Calendar className="h-3 w-3" />
-                          <span>{meeting.date}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Clock className="h-3 w-3" />
-                          <span>{meeting.time}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <MapPin className="h-3 w-3" />
-                          <span>{meeting.location}</span>
-                        </div>
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 text-muted-foreground text-sm">
+                        <div className="flex items-center gap-1.5"><Calendar className="h-4 w-4" /><span>{meeting.date}</span></div>
+                        <div className="flex items-center gap-1.5"><Clock className="h-4 w-4" /><span>{meeting.time}</span></div>
+                        <div className="flex items-center gap-1.5"><MapPin className="h-4 w-4" /><span>{meeting.location}</span></div>
                       </div>
                     </div>
-                    <Badge variant="secondary">{meeting.status}</Badge>
+                    <Badge variant="secondary" className="self-start sm:self-center">{meeting.status}</Badge>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-muted-foreground mb-4">
                     <strong>Agenda:</strong> {meeting.agenda}
                   </CardDescription>
-                  <div className="flex gap-2">
-                    <Button size="sm" variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10">
-                      <Download className="mr-2 h-3 w-3" />
-                      Minutes
-                    </Button>
-                    <Button size="sm" variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10">
-                      <FileText className="mr-2 h-3 w-3" />
-                      Resolutions
-                    </Button>
-                    <Button size="sm" variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10">
-                      <Video className="mr-2 h-3 w-3" />
-                      Recording
-                    </Button>
+                  <div className="flex flex-wrap gap-2">
+                    <Button size="sm" variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10"><Download className="mr-2 h-3 w-3" />Minutes</Button>
+                    <Button size="sm" variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10"><FileText className="mr-2 h-3 w-3" />Resolutions</Button>
+                    <Button size="sm" variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10"><Video className="mr-2 h-3 w-3" />Recording</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -198,19 +155,14 @@ const Meetings = () => {
         </div>
 
         <Card className="border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/20">
-          <CardContent className="p-8">
+          <CardContent className="p-6 sm:p-8">
             <h3 className="text-xl font-semibold text-foreground mb-4">Shareholder Participation</h3>
-            <p className="text-muted-foreground mb-4">
-              We encourage active participation from all shareholders in our governance process. Your voice matters in shaping 
-              the future of our company. Join our meetings, ask questions, and exercise your voting rights to make your opinion count.
+            <p className="text-muted-foreground mb-6">
+              Your voice matters in shaping the future of our company. Join our meetings, ask questions, and exercise your voting rights to make your opinion count.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="bg-amber-600 hover:bg-amber-700 text-black">
-                Register for Updates
-              </Button>
-              <Button variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10">
-                Shareholder Services
-              </Button>
+              <Button className="bg-amber-600 hover:bg-amber-700 text-black">Register for Updates</Button>
+              <Button variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10">Shareholder Services</Button>
             </div>
           </CardContent>
         </Card>
