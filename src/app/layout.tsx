@@ -7,8 +7,8 @@ import LayoutWrapper from '@/components/LayoutWrapper'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Amara Global',
-  description: 'Amara Global',
+  title: 'Amaraa Global',
+  description: 'Amaraa Global',
    icons: {
     icon: '/favicon.ico',
   },
