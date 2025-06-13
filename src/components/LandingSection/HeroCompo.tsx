@@ -40,7 +40,7 @@ const heroSlides = [
   {
     id: 5,
     title: "Carbon Footprint ",
-    subtitle: "Turning Emissions Into Actionable Insights",
+    subtitle: "zero% carbon footprint",
     description: "Empowering carbon footprint management through real‑time data, AI optimization, more efficient operations.",
     image: "./images/carbon.jpg",
     cta: "Trace Carbon Footprint"
