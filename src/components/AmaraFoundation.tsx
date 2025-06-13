@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
-import React, { useState, useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 
 const companies = [
@@ -118,20 +118,48 @@ const LegacySection = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScrollability = useCallback(() => {
+    const el = scrollContainerRef.current;
+    if (el) {
+      const isScrollable = el.scrollWidth > el.clientWidth;
+      setCanScrollLeft(el.scrollLeft > 1);
+      setCanScrollRight(isScrollable && el.scrollLeft < el.scrollWidth - el.clientWidth - 1);
+    }
+  }, []);
+
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (el) {
+      checkScrollability();
+      el.addEventListener('scroll', checkScrollability, { passive: true });
+      window.addEventListener('resize', checkScrollability);
+      return () => {
+        el.removeEventListener('scroll', checkScrollability);
+        window.removeEventListener('resize', checkScrollability);
+      };
+    }
+  }, [checkScrollability]);
+
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!scrollContainerRef.current) return;
     setIsDragging(true);
     setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
     setScrollLeft(scrollContainerRef.current.scrollLeft);
+    scrollContainerRef.current.style.cursor = 'grabbing';
   };
 
   const handleMouseLeave = () => {
     setIsDragging(false);
+    if(scrollContainerRef.current) scrollContainerRef.current.style.cursor = 'grab';
   };
 
   const handleMouseUp = () => {
     setIsDragging(false);
+    if(scrollContainerRef.current) scrollContainerRef.current.style.cursor = 'grab';
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -142,23 +170,25 @@ const LegacySection = () => {
     scrollContainerRef.current.scrollLeft = scrollLeft - walk;
   };
 
+  const handleArrowScroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 350 + 32;
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <section className="bg-white dark:bg-black text-gray-800 font-sans py-20">
       <style jsx>{`
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .font-serif {
-          font-family: 'Georgia', 'Times New Roman', serif;
-        }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .font-serif { font-family: 'Georgia', 'Times New Roman', serif; }
       `}</style>
-
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#c6a35d]  mb-4">
             Amaraa Foundation
@@ -167,7 +197,6 @@ const LegacySection = () => {
             Where Dreams Take Flight and Innovation Knows No Boundaries. A constellation of visionaries, dreamers, and doers, weaving together industries and creating the future.
           </p>
         </div>
-
         <div>
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-[#f0efe2] mb-3">
             The Chapters of Our Legacy
@@ -179,38 +208,62 @@ const LegacySection = () => {
             EXPLORE MORE
           </button>
         </div>
+      </div>
 
-        <div
-          ref={scrollContainerRef}
-          onMouseDown={handleMouseDown}
-          onMouseLeave={handleMouseLeave}
-          onMouseUp={handleMouseUp}
-          onMouseMove={handleMouseMove}
-          className="flex overflow-x-auto gap-8 mt-12 pb-8 cursor-grab active:cursor-grabbing scrollbar-hide"
-        >
-          {companies.map((company, index) => (
-            <div key={index} className="group min-w-[350px] max-w-[350px] bg-[#c6a35d] rounded-2xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2">
-              <div className="relative">
-                <img
-                  src={company.image}
-                  alt={company.name}
-                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
-              </div>
-              <div className="p-6 text-white dark:text-[#232323]">
-                <h3 className="text-2xl font-bodoni font-bold mb-2">{company.name}</h3>
-                <p className="text-[#f0efe2] dark:text-[#232323] font-montserrat text-base leading-relaxed mb-6 line-clamp-3">
-                  {company.description}
-                </p>
-                <a href="#" className="inline-flex items-center gap-2 font-semibold text-sm text-[#f0efe2] dark:text-[#232323] group-hover:text-white transition-colors">
-                  KNOW MORE
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </a>
-              </div>
+      <div className="relative mt-12">
+        {canScrollLeft && (
+            <button
+            onClick={() => handleArrowScroll('left')}
+            className="absolute left-2 md:left-4 top-1/2 z-20 -translate-y-1/2 p-2 hover:bg-white dark:hover:bg-gray-800 rounded-full shadow-lg transition-all duration-300"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft className="h-6 w-6 text-gray-800 dark:text-gray-200" />
+          </button>
+        )}
+        
+        <div className="max-w-7xl ms-4  mx-auto">
+            <div
+                ref={scrollContainerRef}
+                onMouseDown={handleMouseDown}
+                onMouseLeave={handleMouseLeave}
+                onMouseUp={handleMouseUp}
+                onMouseMove={handleMouseMove}
+                className="flex overflow-x-auto gap-8 pb-8 cursor-grab scrollbar-hide scroll-smooth px-4 sm:px-6 lg:px-8 -mx-4 sm:-mx-6 lg:-mx-8"
+            >
+                {companies.map((company, index) => (
+                <div key={index} className="group min-w-[350px] max-w-[350px] bg-[#c6a35d] rounded-2xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2">
+                    <div className="relative">
+                    <img
+                        src={company.image}
+                        alt={company.name}
+                        className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+                    </div>
+                    <div className="p-6 text-white dark:text-[#232323]">
+                    <h3 className="text-2xl font-bodoni font-bold mb-2">{company.name}</h3>
+                    <p className="text-[#f0efe2] dark:text-[#232323] font-montserrat text-base leading-relaxed mb-6 line-clamp-3">
+                        {company.description}
+                    </p>
+                    <a href="#" className="inline-flex items-center gap-2 font-semibold text-sm text-[#f0efe2] dark:text-[#232323] group-hover:text-white transition-colors">
+                        KNOW MORE
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </a>
+                    </div>
+                </div>
+                ))}
             </div>
-          ))}
         </div>
+        
+        {canScrollRight && (
+          <button
+            onClick={() => handleArrowScroll('right')}
+            className="absolute right-2 md:right-4 top-1/2 z-20 -translate-y-1/2 p-2  hover:bg-white dark:hover:bg-gray-800 rounded-full shadow-lg transition-all duration-300"
+            aria-label="Scroll right"
+          >
+            <ChevronRight className="h-6 w-6 text-gray-800 dark:text-gray-200" />
+          </button>
+        )}
       </div>
     </section>
   );
