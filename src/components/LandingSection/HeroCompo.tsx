@@ -44,6 +44,14 @@ const heroSlides = [
     description: "Empowering carbon footprint management through real‑time data, AI optimization, more efficient operations.",
     image: "./images/carbon.jpg",
     cta: "Trace Carbon Footprint"
+  },
+  {
+    id: 6,
+    title: "Sustainability",
+    subtitle: "Building a Greener Tomorrow with Smart Tech",
+    description: "Integrating eco-conscious design, and efficient operations to drive long-term environmental impact.",
+    image: "./images/Sustain.jpg",
+    cta: "Explore Our Green Journey"
   }
 ]
 
