@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Search, ChevronDown, Facebook, Twitter, Linkedin, ExternalLink, Menu, X } from 'lucide-react';
+import { Search, ChevronDown,ExternalLink, Menu, X } from 'lucide-react';
+import { FaFacebookF, FaLinkedin,  FaYoutube , FaInstagram, } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { ModeToggle } from '../themes/ModeToggle';
 
 const navLinks = [
@@ -60,6 +62,8 @@ const Header = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileSubMenuOpen, setMobileSubMenuOpen] = useState<string | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const pathname = usePathname();
 
   const isHomePage = pathname === '/';
@@ -109,6 +113,21 @@ const Header = () => {
     setMobileSubMenuOpen(null);
   };
 
+  const handleSearchToggle = () => {
+    setSearchOpen(!searchOpen);
+    if (searchOpen) {
+      setSearchQuery('');
+    }
+  };
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      setSearchOpen(false);
+      setSearchQuery('');
+    }
+  };
+
   const shouldAppearScrolled = !isHomePage || scrolled || activeMenu;
 
   return (
@@ -116,9 +135,10 @@ const Header = () => {
       <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${shouldAppearScrolled ? 'opacity-0 -translate-y-full pointer-events-none' : 'opacity-100 translate-y-0'}`}>
         <div className="bg-gradient-to-r from-slate-800 to-slate-900 border-b border-slate-700">
           <div className="container mx-auto px-6 h-12 flex justify-between items-center">
+            <div></div>
             <div className="flex items-center space-x-6">
               <Link 
-                href="/contact-us" 
+                href="/contact" 
                 className="text-slate-300 hover:text-white text-sm font-medium transition-colors duration-200 hover:underline"
               >
                 Contact Us
@@ -132,14 +152,20 @@ const Header = () => {
             </div>
 
             <div className="flex items-center space-x-4">
-              <Link href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-                <Facebook className="w-5 h-5 text-slate-400 hover:text-blue-500 transition-colors duration-200" />
+              <Link href="https://www.facebook.com/amaraa/" target="_blank" rel="noopener noreferrer">
+                <FaFacebookF className="w-5 h-5 text-slate-400 hover:text-blue-900 transition-colors duration-200" />
               </Link>
-              <Link href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
-                <Twitter className="w-5 h-5 text-slate-400 hover:text-sky-400 transition-colors duration-200" />
+              <Link href="https://x.com/HouseOfAmaraa" target="_blank" rel="noopener noreferrer">
+                <FaXTwitter className="w-5 h-5 text-slate-400 hover:text-gray-600 transition-colors duration-200" />
               </Link>
-              <Link href="https://www.linkedin.com/company/" target="_blank" rel="noopener noreferrer">
-                <Linkedin className="w-5 h-5 text-slate-400 hover:text-blue-600 transition-colors duration-200" />
+              <Link href="https://www.linkedin.com/amaraa/" target="_blank" rel="noopener noreferrer">
+                <FaLinkedin className="w-5 h-5 text-slate-400 hover:text-blue-600 transition-colors duration-200" />
+              </Link>
+              <Link href="https://www.youtube.com/amaraa/" target="_blank" rel="noopener noreferrer">
+                <FaYoutube className="w-5 h-5 text-slate-400 hover:text-red-700 transition-colors duration-200" />
+              </Link>
+              <Link href="https://www.youtube.com/amaraa/" target="_blank" rel="noopener noreferrer">
+                <FaInstagram className="w-5 h-5 text-slate-400 hover:text-pink-600 transition-colors duration-200" />
               </Link>
             </div>
           </div>
@@ -202,11 +228,14 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center space-x-4">
-            <button className={`p-2 rounded-lg transition-all duration-300 ${
-              shouldAppearScrolled
-                ? 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
-                : 'text-white/80 hover:text-white hover:bg-white/10'
-            }`}>
+            <button 
+              onClick={handleSearchToggle}
+              className={`p-2 rounded-lg transition-all duration-300 ${
+                shouldAppearScrolled
+                  ? 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
+                  : 'text-white/80 hover:text-white hover:bg-white/10'
+              } ${searchOpen ? (shouldAppearScrolled ? 'text-blue-600 dark:text-blue-400 bg-gray-100 dark:bg-gray-800' : 'text-white bg-white/10') : ''}`}
+            >
               <Search size={20} />
             </button>
 
@@ -233,8 +262,39 @@ const Header = () => {
       </header>
 
       <div
+        className={`fixed right-0 z-40 transition-all duration-500 ease-in-out ${
+          searchOpen
+            ? 'opacity-100 visible translate-y-0'
+            : 'opacity-0 invisible -translate-y-4 pointer-events-none'
+        } ${shouldAppearScrolled ? 'top-16' : 'top-32'} lg:left-auto left-0`}
+      >
+        <div className="px-4 lg:px-6 py-3 lg:py-4">
+          <form onSubmit={handleSearchSubmit} className="relative w-full lg:w-96">
+            <div className="relative">
+              <Search className="absolute left-3 lg:left-4 top-1/2 transform -translate-y-1/2 text-[#c6a35d] " size={18} />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search..."
+                className="w-full pl-10 lg:pl-12 pr-10 lg:pr-12 py-2.5 lg:py-3 bg-transparent border lg:border-2 border-[#c6a35d] rounded-lg lg:rounded-xl focus:outline-none focus:ring-0 focus:border-[#c6a35d] text-[#c6a35d] placeholder-[#c6a35d] text-sm lg:text-base"
+                autoFocus
+              />
+              <button
+                type="button"
+                onClick={handleSearchToggle}
+                className="absolute right-3 lg:right-4 top-1/2 transform -translate-y-1/2 text-white/80 hover:text-white transition-colors duration-200"
+              >
+                <X size={18} />
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div
         className={`fixed left-0 right-0 z-40 transition-all duration-300 ease-in-out ${
-          activeMenu
+          activeMenu && !searchOpen
             ? 'opacity-100 visible translate-y-0'
             : 'opacity-0 invisible -translate-y-4 pointer-events-none'
         } ${shouldAppearScrolled ? 'top-16' : 'top-32'}`}
@@ -292,6 +352,19 @@ const Header = () => {
         } ${shouldAppearScrolled ? 'pt-16' : 'pt-32'}`}
       >
         <div className="p-6 h-full overflow-y-auto">
+          <div className="mb-6">
+            <form onSubmit={handleSearchSubmit} className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500" size={18} />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search..."
+                className="w-full pl-10 pr-4 py-3 bg-gray-100 dark:bg-slate-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+              />
+            </form>
+          </div>
+
           <nav className="space-y-2">
             {navLinks.map((link) => (
               <div key={link}>
@@ -349,6 +422,25 @@ const Header = () => {
           </nav>
         </div>
       </div>
+
+      {searchOpen && (
+        <div
+          className="fixed inset-0 bg-transparent z-30"
+          onClick={() => setSearchOpen(false)}
+        />
+      )}
+
+      {searchOpen && (
+        <div
+          className="fixed inset-0 pointer-events-none z-50"
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') {
+              setSearchOpen(false);
+            }
+          }}
+          tabIndex={-1}
+        />
+      )}
     </div>
   );
 };

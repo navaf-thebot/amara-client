@@ -1,12 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-
+import { FaFacebookF, FaLinkedin,  FaYoutube , FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 const Footer: React.FC = () => {
   return (
     <footer className="bg-[#232323] text-[#f0efe2] pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-5">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-8 mb-10">
-          
+
           <div className="xl:col-span-2">
             <div className="font-bodoni text-5xl font-bold text-[#c6a35d] mb-5 tracking-wider">
               Amaraa
@@ -16,14 +17,22 @@ const Footer: React.FC = () => {
             </div>
             <div className="flex gap-4">
               <Link href="#" className="w-10 h-10 bg-[#c6a35d] text-[#232323] flex items-center justify-center text-lg hover:bg-[#f0efe2] transition-colors duration-300" aria-label="Facebook">
-                <span>f</span>
+                <FaFacebookF className="w-5 h-5 text-blue-900 transition-colors duration-200" />
               </Link>
+              
+              <Link href="https://x.com/HouseOfAmaraa" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-[#c6a35d] text-[#232323] flex items-center justify-center text-lg hover:bg-[#f0efe2] transition-colors duration-300" aria-label="Facebook">
+                <FaXTwitter className="w-5 h-5 text-black transition-colors duration-200" />
+              </Link>
+
               <Link href="#" className="w-10 h-10 bg-[#c6a35d] text-[#232323] flex items-center justify-center text-lg hover:bg-[#f0efe2] transition-colors duration-300" aria-label="LinkedIn">
-                <span>in</span>
+                <FaLinkedin className="w-5 h-5 text-blue-900 transition-colors duration-200" />
               </Link>
               <Link href="#" className="w-10 h-10 bg-[#c6a35d] text-[#232323] flex items-center justify-center text-lg hover:bg-[#f0efe2] transition-colors duration-300" aria-label="YouTube">
-                <span>▶</span>
+                <FaYoutube className="w-5 h-5 text-red-900 transition-colors duration-200" />
               </Link>
+              <a href="https://www.instagram.com/house_of_amaraa/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-[#c6a35d] text-[#232323] flex items-center justify-center text-lg hover:bg-[#f0efe2] transition-colors duration-300" aria-label="Instagram">
+                <FaInstagram className="w-5 h-5 text-pink-900 transition-colors duration-200" />
+              </a>
             </div>
           </div>
 
@@ -81,7 +90,7 @@ const Footer: React.FC = () => {
               <li><Link href="/careers" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Careers</Link></li>
               <li><Link href="/about/csr" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">CSR Projects</Link></li>
             </ul>
-            
+
             <h3 className="font-bodoni text-lg font-semibold text-[#c6a35d] mb-3 uppercase tracking-wide">
               Contact
             </h3>
@@ -94,10 +103,10 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           <div className="font-montserrat text-sm leading-relaxed">
             <p><span className="text-[#c6a35d] font-medium">Corporate Office:</span><br />
-            715, Samarth Aishwarya, Oshiswara,<br />
-            Andheri West, Mumbai - 400 053, India</p>
+              715, Samarth Aishwarya, Oshiswara,<br />
+              Andheri West, Mumbai - 400 053, India</p>
           </div>
-          
+
           <div className="flex flex-wrap gap-6 font-montserrat text-xs">
             <Link href="/privacy-policy" className="text-gray-400 hover:text-[#c6a35d] transition-colors duration-300">
               Privacy Policy

@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client"
 
+import AuthModal from "@/modal/AuthModal";
 import {
   Users,
   Heart,
@@ -14,9 +15,10 @@ import {
   ArrowRight,
   Play,
 } from "lucide-react"
+import { useState } from "react";
 
 export default function CareersPage() {
-
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   const careerJourney = [
     {
@@ -469,7 +471,7 @@ export default function CareersPage() {
                         </span>
                       </div>
                     </div>
-                    <button className="px-6 py-3 bg-hoa-gold hover:bg-hoa-gold/80 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2">
+                    <button onClick={()=>setIsAuthModalOpen(true)} className="px-6 py-3 bg-hoa-gold hover:bg-hoa-gold/80 text-black dark:text-white  font-semibold rounded-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2">
                       <span>Apply Now</span>
                       <ArrowRight className="w-4 h-4" />
                     </button>
@@ -477,8 +479,9 @@ export default function CareersPage() {
                 </div>
               </div>
             ))}
-          </div>
 
+            {isAuthModalOpen && <AuthModal open={isAuthModalOpen} onOpenChange={setIsAuthModalOpen} />}
+          </div>
           <div className="text-center mt-12">
             <button className="px-8 py-4 border-2 border-hoa-gold text-hoa-gold hover:bg-hoa-gold hover:text-[#c6a35d] cursor-pointer font-semibold rounded-lg transition-all duration-300">
               View All Positions
