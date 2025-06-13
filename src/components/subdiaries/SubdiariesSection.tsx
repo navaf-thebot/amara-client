@@ -247,7 +247,7 @@ function SubsidiariesPage() {
 
                   <div className="p-6 flex-1 flex flex-col">
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 flex-1">{subsidiary.description}</p>
-                    
+
                     <div className="border-t border-gray-200 dark:border-gray-700 pt-4 mb-4">
                       <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed min-h-[2.5rem]">{subsidiary.details}</p>
                     </div>

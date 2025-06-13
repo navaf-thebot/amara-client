@@ -75,11 +75,10 @@ function PrivacyPolicyPage() {
                     <button
                       key={item.id}
                       onClick={() => scrollToSection(item.id)}
-                      className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 flex items-center space-x-3 ${
-                        activeSection === item.id
+                      className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 flex items-center space-x-3 ${activeSection === item.id
                           ? "bg-hoa-gold text-[#bc7a00] hover:bg-hoa-gold/80 hover:text-[#bc7a00]"
                           : "text-gray-600 dark:text-gray-300 hover:bg-hoa-gold/10 hover:text-hoa-gold"
-                      }`}
+                        }`}
                     >
                       <item.icon className="w-5 h-5" />
                       <span className="text-sm font-medium cursor-pointer">{item.title}</span>
