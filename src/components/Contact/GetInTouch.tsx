@@ -247,7 +247,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-hoa-charcoal dark:text-white mb-1">Email</h4>
-                    <p className="text-gray-600 dark:text-gray-300">amaraagroup@gmail.com</p>
+                    <p className="text-gray-600 dark:text-gray-300">info@amaraagroup.com</p>
                   </div>
                 </CardContent>
               </Card>
