@@ -10,7 +10,7 @@ const heroSlides = [
     title: "Pioneering Excellence",
     subtitle: "Transforming Industries Through Innovation",
     description: "Leading the future with cutting-edge solutions across real estate, manufacturing, and technology sectors.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+    image: "/images/HeroContent/Pioneering-Excellence.jpg",
     cta: "Discover Our Vision"
   },
   {
@@ -18,7 +18,7 @@ const heroSlides = [
     title: "Sustainable Future",
     subtitle: "Building Tomorrow's World Today",
     description: "Committed to environmental responsibility and sustainable development practices across all our ventures.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+    image: "/images/HeroContent/Sustainable-Future.jpg",
     cta: "Learn About CSR"
   },
   {
@@ -26,7 +26,7 @@ const heroSlides = [
     title: "Global Leadership",
     subtitle: "Excellence Across Continents",
     description: "A trusted partner for businesses worldwide, delivering exceptional value through strategic innovation.",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+    image: "/images/HeroContent/Global-Leadership.jpg",
     cta: "Explore Our Reach"
   },
   {
@@ -34,7 +34,7 @@ const heroSlides = [
     title: "Technology Innovation",
     subtitle: "Shaping Digital Transformation",
     description: "Advancing technological frontiers to create smarter, more efficient solutions for modern challenges.",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+    image: "/images/HeroContent/Technology-Innovation.jpg",
     cta: "View Our Tech"
   }
 ]
