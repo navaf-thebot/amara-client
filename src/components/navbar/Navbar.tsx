@@ -239,7 +239,7 @@ const Header = () => {
             : 'opacity-0 invisible -translate-y-4 pointer-events-none'
         } ${shouldAppearScrolled ? 'top-16' : 'top-32'}`}
       >
-        <div className="bg-white/98 dark:bg-slate-900/98 backdrop-blur-md shadow-2xl border-b border-gray-200 dark:border-gray-700">
+        <div className="bg-white/40 dark:bg-slate-900/40 backdrop-blur-md shadow-2xl border-b border-gray-200 dark:border-gray-700">
           {activeMenu && (
             <div className="container mx-auto px-6 py-8">
               <div className={` flex justify-around gap-8 ${
@@ -259,7 +259,7 @@ const Header = () => {
                         <li key={link}>
                           <Link
                             href={menuRoutes[link] || '#'}
-                            className="flex items-center text-sm text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 group py-1"
+                            className="flex items-center text-sm text-black dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 group py-1"
                             onClick={() => setActiveMenu(null)}
                           >
                             <span className="group-hover:translate-x-1 transition-transform duration-200">{link}</span>
