@@ -36,6 +36,14 @@ const heroSlides = [
     description: "Advancing technological frontiers to create smarter, more efficient solutions for modern challenges.",
     image: "/images/HeroContent/Technology-Innovation.jpg",
     cta: "View Our Tech"
+  },
+  {
+    id: 5,
+    title: "Carbon Footprint ",
+    subtitle: "Turning Emissions Into Actionable Insights",
+    description: "Empowering carbon footprint management through real‑time data, AI optimization, more efficient operations.",
+    image: "./images/carbon.jpg",
+    cta: "Trace Carbon Footprint"
   }
 ]
 

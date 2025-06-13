@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
               Amaraa
             </div>
             <div className="font-montserrat text-sm leading-relaxed mb-5">
-              <p>Amaraa - Leading diversified business conglomerate with excellence across multiple industries and sectors.</p>
+              <p>Amaraa - Leading diversified business conglomerate with excellence across multiple industries & sectors.</p>
             </div>
             <div className="flex gap-4">
               <Link href="#" className="w-10 h-10 bg-[#c6a35d] text-[#232323] flex items-center justify-center text-lg hover:bg-[#f0efe2] transition-colors duration-300" aria-label="Facebook">
