@@ -9,10 +9,10 @@ const Footer: React.FC = () => {
           
           <div className="xl:col-span-2">
             <div className="font-bodoni text-5xl font-bold text-[#c6a35d] mb-5 tracking-wider">
-              AGC
+              Amaraa
             </div>
             <div className="font-montserrat text-sm leading-relaxed mb-5">
-              <p>Amaraja Group of Companies - Leading diversified business conglomerate with excellence across multiple industries and sectors.</p>
+              <p>Amaraa  - Leading diversified business conglomerate with excellence across multiple industries and sectors.</p>
             </div>
             <div className="flex gap-4">
               <Link href="#" className="w-10 h-10 bg-[#c6a35d] text-[#232323] flex items-center justify-center text-lg hover:bg-[#f0efe2] transition-colors duration-300" aria-label="Facebook">
@@ -32,10 +32,10 @@ const Footer: React.FC = () => {
               About
             </h3>
             <ul className="font-montserrat space-y-3">
-              <li><Link href="/about" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">About Amaraja Group</Link></li>
-              <li><Link href="/vision-mission" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Vision & Mission</Link></li>
+              <li><Link href="/our-story" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Story</Link></li>
+              <li><Link href="/values-culture" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Values & Culture</Link></li>
               <li><Link href="/leadership" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Leadership Team</Link></li>
-              <li><Link href="/group-profile" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Group Profile</Link></li>
+              <li><Link href="/governance" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Governance</Link></li>
               <li><Link href="/csr-activities" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">CSR Activities</Link></li>
             </ul>
           </div>
@@ -44,21 +44,30 @@ const Footer: React.FC = () => {
             <h3 className="font-bodoni text-lg font-semibold text-[#c6a35d] mb-5 uppercase tracking-wide">
               Business
             </h3>
-            <ul className="font-montserrat space-y-3">
-              <li><Link href="/agro-group" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Agro Group</Link></li>
-              <li><Link href="/security-shield" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Security Shield Group</Link></li>
-              <li><Link href="/auto-group" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Auto Group</Link></li>
-              <li><Link href="/it-services" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">IT Services Group</Link></li>
-              <li><Link href="/food-beverages" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Food and Beverages Group</Link></li>
-              <li><Link href="/aviation" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Aviation Group</Link></li>
-              <li><Link href="/hotels" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Hotels Group</Link></li>
-              <li><Link href="/defense" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Defense Group</Link></li>
-              <li><Link href="/energy" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Energy Group</Link></li>
-              <li><Link href="/financial" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Financial Group</Link></li>
-              <li><Link href="/realty" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Realty Group</Link></li>
-              <li><Link href="/executive-jet" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Executive Jet</Link></li>
-              <li><Link href="/mro" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">MRO</Link></li>
-            </ul>
+           <ul className="font-montserrat space-y-3">
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Agro Group Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Security Shield Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Auto Group Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa IT Services Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Food & Beverages Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Aviation Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Real Estate Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Energy Solutions Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Healthcare Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Education Foundation</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Logistics Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Manufacturing Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Engineering Services Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Global Trading Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Tech Innovations Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Financial Services Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Hospitality Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Media & Communications Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Sports & Recreation Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Environmental Solutions Ltd.</Link></li>
+  <li><Link href="/business" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Amaraa Consulting Ltd.</Link></li>
+</ul>
+
           </div>
 
           <div>
@@ -96,7 +105,7 @@ const Footer: React.FC = () => {
             </h3>
             <ul className="font-montserrat space-y-3">
               <li><Link href="/current-openings" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Current Openings</Link></li>
-              <li><Link href="/culture-life" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Culture & Life at Amaraja</Link></li>
+              <li><Link href="/culture-life" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Culture & Life at Amaraa</Link></li>
               <li><Link href="/employee-testimonials" className="text-sm hover:text-[#c6a35d] transition-colors duration-300">Employee Testimonials</Link></li>
             </ul>
           </div>
@@ -124,7 +133,7 @@ const Footer: React.FC = () => {
 
         <div className="border-t border-gray-600 pt-8 flex flex-col lg:flex-row justify-between items-center gap-5">
           <p className="font-montserrat text-xs text-gray-400">
-            &copy; 2024 Amaraja Group of Companies. All rights reserved.
+            &copy; 2024 Amaraa Group of Companies. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-8 font-montserrat text-xs">
             <Link href="/privacy-policy" className="text-gray-400 hover:text-[#c6a35d] transition-colors duration-300">

@@ -25,7 +25,7 @@ import {
 function SubsidiariesPage() {
   const subsidiaries = [
     {
-      name: "Amaraa Agro Group Pvt. Ltd.",
+      name: "Amaraa Agro Group Ltd.",
       chapter: "Chapter of Growth",
       description:
         "Sustainable agriculture and biodiversity innovation, cultivating the future of farming with eco-conscious practices and cutting-edge technology.",
@@ -35,7 +35,7 @@ function SubsidiariesPage() {
         "Leading sustainable farming practices across 50,000+ acres with organic certification and smart irrigation systems.",
     },
     {
-      name: "Amaraa Security Shield Pvt. Ltd.",
+      name: "Amaraa Security Shield Ltd.",
       chapter: "Chapter of Safety",
       description:
         "Armed security and surveillance services, protecting what matters most with advanced technology and trained professionals.",
@@ -45,7 +45,7 @@ function SubsidiariesPage() {
         "Comprehensive security solutions serving 500+ clients with 24/7 monitoring and rapid response capabilities.",
     },
     {
-      name: "Amaraa Auto Group Pvt. Ltd.",
+      name: "Amaraa Auto Group Ltd.",
       chapter: "Chapter of Innovation",
       description:
         "Auto import/export and electric vehicle design, driving the future of sustainable transportation solutions.",
@@ -55,7 +55,7 @@ function SubsidiariesPage() {
         "Pioneering electric vehicle technology with partnerships across 15 countries and zero-emission fleet solutions.",
     },
     {
-      name: "Amaraa IT Services Pvt. Ltd.",
+      name: "Amaraa IT Services Ltd.",
       chapter: "Chapter of Connectivity",
       description:
         "Software development and cybersecurity, connecting the world through innovative digital solutions and secure platforms.",
@@ -64,7 +64,7 @@ function SubsidiariesPage() {
       details: "Delivering enterprise software solutions and cybersecurity services to Fortune 500 companies globally.",
     },
     {
-      name: "Amaraa Food & Beverages Pvt. Ltd.",
+      name: "Amaraa Food & Beverages Ltd.",
       chapter: "Chapter of Taste",
       description:
         "Farm-to-table products with a focus on sustainability, bringing authentic flavors while preserving our planet.",
@@ -74,7 +74,7 @@ function SubsidiariesPage() {
         "Organic food production with direct farmer partnerships and sustainable packaging across 25 product lines.",
     },
     {
-      name: "Amaraa Aviation Pvt. Ltd.",
+      name: "Amaraa Aviation Ltd.",
       chapter: "Chapter of Exploration",
       description:
         "Full-service airline and eco-conscious aviation services, connecting destinations while caring for the environment.",
@@ -84,7 +84,7 @@ function SubsidiariesPage() {
         "Operating 50+ aircraft with carbon-neutral flights and premium passenger services across 100+ destinations.",
     },
     {
-      name: "Amaraa Real Estate Pvt. Ltd.",
+      name: "Amaraa Real Estate Ltd.",
       chapter: "Chapter of Foundation",
       description:
         "Sustainable urban development and green building solutions, creating spaces that harmonize with nature.",
@@ -93,7 +93,7 @@ function SubsidiariesPage() {
       details: "LEED-certified developments with smart city integration and affordable housing initiatives.",
     },
     {
-      name: "Amaraa Energy Solutions Pvt. Ltd.",
+      name: "Amaraa Energy Solutions Ltd.",
       chapter: "Chapter of Power",
       description: "Renewable energy and clean power generation, illuminating the path to a sustainable future.",
       icon: Zap,
@@ -101,7 +101,7 @@ function SubsidiariesPage() {
       details: "Solar and wind energy projects generating 500MW+ clean power with battery storage solutions.",
     },
     {
-      name: "Amaraa Healthcare Pvt. Ltd.",
+      name: "Amaraa Healthcare Ltd.",
       chapter: "Chapter of Wellness",
       description:
         "Comprehensive healthcare services and medical innovation, nurturing health and healing communities.",
@@ -119,7 +119,7 @@ function SubsidiariesPage() {
       details: "Educational institutions serving 10,000+ students with scholarship programs and vocational training.",
     },
     {
-      name: "Amaraa Logistics Pvt. Ltd.",
+      name: "Amaraa Logistics Ltd.",
       chapter: "Chapter of Movement",
       description:
         "Efficient supply chain and transportation solutions, moving goods and connecting markets seamlessly.",
@@ -128,7 +128,7 @@ function SubsidiariesPage() {
       details: "End-to-end logistics with AI-powered route optimization and cold chain capabilities.",
     },
     {
-      name: "Amaraa Manufacturing Pvt. Ltd.",
+      name: "Amaraa Manufacturing Ltd.",
       chapter: "Chapter of Creation",
       description:
         "Advanced manufacturing and industrial solutions, crafting quality products with precision and care.",
@@ -137,7 +137,7 @@ function SubsidiariesPage() {
       details: "Smart manufacturing facilities with Industry 4.0 integration and zero-waste production processes.",
     },
     {
-      name: "Amaraa Engineering Services Pvt. Ltd.",
+      name: "Amaraa Engineering Services Ltd.",
       chapter: "Chapter of Precision",
       description: "Expert engineering consultancy and project management, building the infrastructure of tomorrow.",
       icon: Wrench,
@@ -146,7 +146,7 @@ function SubsidiariesPage() {
         "Engineering excellence in infrastructure projects with BIM technology and sustainable design practices.",
     },
     {
-      name: "Amaraa Global Trading Pvt. Ltd.",
+      name: "Amaraa Global Trading Ltd.",
       chapter: "Chapter of Commerce",
       description: "International trade and export services, bridging markets and fostering global partnerships.",
       icon: Globe,
@@ -154,7 +154,7 @@ function SubsidiariesPage() {
       details: "Trade partnerships across 40+ countries with commodity trading and export financing solutions.",
     },
     {
-      name: "Amaraa Tech Innovations Pvt. Ltd.",
+      name: "Amaraa Tech Innovations Ltd.",
       chapter: "Chapter of Future",
       description: "Cutting-edge technology research and AI solutions, pioneering the next generation of innovation.",
       icon: Smartphone,
@@ -162,7 +162,7 @@ function SubsidiariesPage() {
       details: "AI and IoT solutions with 50+ patents and research partnerships with leading universities.",
     },
     {
-      name: "Amaraa Financial Services Pvt. Ltd.",
+      name: "Amaraa Financial Services Ltd.",
       chapter: "Chapter of Prosperity",
       description: "Comprehensive financial solutions and investment services, building wealth and securing futures.",
       icon: Briefcase,
@@ -170,7 +170,7 @@ function SubsidiariesPage() {
       details: "Investment banking and wealth management with $2B+ assets under management.",
     },
     {
-      name: "Amaraa Hospitality Pvt. Ltd.",
+      name: "Amaraa Hospitality Ltd.",
       chapter: "Chapter of Welcome",
       description: "Luxury hospitality and tourism services, creating memorable experiences with exceptional service.",
       icon: Home,
@@ -178,7 +178,7 @@ function SubsidiariesPage() {
       details: "Premium hotels and resorts with sustainable tourism practices and cultural preservation initiatives.",
     },
     {
-      name: "Amaraa Media & Communications Pvt. Ltd.",
+      name: "Amaraa Media & Communications Ltd.",
       chapter: "Chapter of Voice",
       description: "Digital media and communication solutions, amplifying stories and connecting communities.",
       icon: Users,
@@ -186,7 +186,7 @@ function SubsidiariesPage() {
       details: "Digital marketing and content creation with 100M+ audience reach across multiple platforms.",
     },
     {
-      name: "Amaraa Sports & Recreation Pvt. Ltd.",
+      name: "Amaraa Sports & Recreation Ltd.",
       chapter: "Chapter of Excellence",
       description: "Sports development and recreational facilities, promoting health, fitness, and competitive spirit.",
       icon: Award,
@@ -194,7 +194,7 @@ function SubsidiariesPage() {
       details: "Sports academies and recreational facilities promoting youth development and professional athletics.",
     },
     {
-      name: "Amaraa Environmental Solutions Pvt. Ltd.",
+      name: "Amaraa Environmental Solutions Ltd.",
       chapter: "Chapter of Stewardship",
       description: "Environmental conservation and waste management, protecting our planet for future generations.",
       icon: Target,
@@ -202,7 +202,7 @@ function SubsidiariesPage() {
       details: "Waste-to-energy projects and environmental remediation with carbon offset programs.",
     },
     {
-      name: "Amaraa Consulting Pvt. Ltd.",
+      name: "Amaraa Consulting Ltd.",
       chapter: "Chapter of Wisdom",
       description:
         "Strategic business consulting and advisory services, guiding organizations toward sustainable success.",
