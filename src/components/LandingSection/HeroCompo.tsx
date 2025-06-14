@@ -140,12 +140,12 @@ export default function HeroSection() {
 
                   <div className="flex flex-col sm:flex-row gap-4 pt-6">
                     <Link href={slide?.link}>
-                    <button className="group inline-flex items-center px-8 py-4 bg-[#c6a35d] text-white font-montserrat font-semibold rounded-lg hover:bg-[#b8954f] transition-all duration-300 transform hover:scale-105">
+                    <button className="cursor-pointer group inline-flex items-center px-8 py-4 bg-[#c6a35d] text-white font-montserrat font-semibold rounded-lg hover:bg-[#b8954f] transition-all duration-300 transform hover:scale-105">
                       {slide.cta}
                       <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                     </button>
                     </Link>
-                    <button className="group inline-flex items-center px-8 py-4 border-2 border-white text-white font-montserrat font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-all duration-300">
+                    <button className="cursor-pointer group inline-flex items-center px-8 py-4 border-2 border-white text-white font-montserrat font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-all duration-300">
                       Watch Story
                       <Play className="ml-2 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
                     </button>

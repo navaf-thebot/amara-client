@@ -130,3 +130,13 @@
 .font-montserrat {
   font-family: 'Montserrat', sans-serif;
 }
+
+::selection {
+  background-color: #c6a35d;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: #c6a35d;
+  color: white;
+}
