@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, Play, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 const heroSlides = [
   {
@@ -11,7 +12,8 @@ const heroSlides = [
     subtitle: "Transforming Industries Through Innovation",
     description: "Leading the future with cutting-edge solutions across real estate, manufacturing, and technology sectors.",
     image: "/images/HeroContent/Pioneering-Excellence.jpg",
-    cta: "Discover Our Vision"
+    cta: "Discover Our Vision",
+    link:'/about/values-culture'
   },
   {
     id: 2,
@@ -19,7 +21,8 @@ const heroSlides = [
     subtitle: "Building Tomorrow's World Today",
     description: "Committed to environmental responsibility and sustainable development practices across all our ventures.",
     image: "/images/HeroContent/Sustainable-Future.jpg",
-    cta: "Learn About CSR"
+    cta: "Learn About CSR",
+    link:'/about/csr'
   },
   {
     id: 3,
@@ -27,7 +30,8 @@ const heroSlides = [
     subtitle: "Excellence Across Continents",
     description: "A trusted partner for businesses worldwide, delivering exceptional value through strategic innovation.",
     image: "/images/HeroContent/Global-Leadership.jpg",
-    cta: "Explore Our Reach"
+    cta: "Explore Our Reach",
+    link:'/about/leadership'
   },
   {
     id: 4,
@@ -35,7 +39,8 @@ const heroSlides = [
     subtitle: "Shaping Digital Transformation",
     description: "Advancing technological frontiers to create smarter, more efficient solutions for modern challenges.",
     image: "/images/HeroContent/Technology-Innovation.jpg",
-    cta: "View Our Tech"
+    cta: "View Our Tech",
+    link:''
   },
   {
     id: 5,
@@ -43,7 +48,8 @@ const heroSlides = [
     subtitle: "zero% carbon footprint",
     description: "Empowering carbon footprint management through real‑time data, AI optimization, more efficient operations.",
     image: "./images/carbon.jpg",
-    cta: "Trace Carbon Footprint"
+    cta: "Trace Carbon Footprint",
+    link:''
   },
   {
     id: 6,
@@ -51,7 +57,8 @@ const heroSlides = [
     subtitle: "Building a Greener Tomorrow with Smart Tech",
     description: "Integrating eco-conscious design, and efficient operations to drive long-term environmental impact.",
     image: "./images/Sustain.jpg",
-    cta: "Explore Our Green Journey"
+    cta: "Explore Our Green Journey",
+    link:''
   }
 ]
 
@@ -132,10 +139,12 @@ export default function HeroSection() {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                    <Link href={slide?.link}>
                     <button className="group inline-flex items-center px-8 py-4 bg-[#c6a35d] text-white font-montserrat font-semibold rounded-lg hover:bg-[#b8954f] transition-all duration-300 transform hover:scale-105">
                       {slide.cta}
                       <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                     </button>
+                    </Link>
                     <button className="group inline-flex items-center px-8 py-4 border-2 border-white text-white font-montserrat font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-all duration-300">
                       Watch Story
                       <Play className="ml-2 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />

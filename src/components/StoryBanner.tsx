@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
+import Link from 'next/link';
 
 const StoryBannerSection = () => {
   const [mounted, setMounted] = useState(false);
@@ -84,13 +85,13 @@ const StoryBannerSection = () => {
                     page in our ever-expanding epic.
                   </p>
                   
-                  <button className="group relative px-10 py-4 bg-white/20 dark:bg-black/20 backdrop-blur-sm border-2 border-white/40 dark:border-black/40 text-white dark:text-black font-semibold rounded-xl transition-all duration-300 hover:bg-white dark:hover:bg-black hover:text-[#6d5f4c] dark:hover:text-white hover:scale-105 hover:shadow-xl">
-                    <span className="relative z-10 flex items-center gap-2">
+                  <button className="group cursor-pointer relative px-10 py-4 bg-white/20 dark:bg-black/20 backdrop-blur-sm border-2 border-white/40 dark:border-black/40 text-white dark:text-black font-semibold rounded-xl transition-all duration-300 hover:bg-white dark:hover:bg-black hover:text-[#6d5f4c] dark:hover:text-white hover:scale-105 hover:shadow-xl">
+                    <Link href="/about/our-story"><span className="relative z-10 flex items-center gap-2">
                       DISCOVER MORE
                       <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
-                    </span>
+                    </span></Link>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/0 to-white/20 dark:from-black/0 dark:to-black/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </button>
                 </div>

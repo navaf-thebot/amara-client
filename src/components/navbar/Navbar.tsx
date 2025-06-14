@@ -22,7 +22,7 @@ const menuRoutes: { [key: string]: string } = {
   'Contact US': '/contact',
   'Privacy Policy': '/privacy-policy',
 
-  'story': '/about/our-story',
+  'Story': '/about/our-story',
   'Values & Culture': '/about/values-culture',
   'Leadership': '/about/leadership',
   'Corporate Governance': '/about/governance',
@@ -41,7 +41,7 @@ const menuRoutes: { [key: string]: string } = {
 
 const megaMenuData: { [key: string]: { title: string; links: string[] }[] } = {
   'About Us': [
-    { title: 'Our Story', links: ['story', 'Values & Culture'] },
+    { title: 'Our Story', links: ['Story', 'Values & Culture'] },
     { title: 'Leadership', links: ['Leadership'] },
     { title: 'Governance', links: ['Corporate Governance'] },
     { title: 'CSR', links: ['CSR Initiatives'] },
