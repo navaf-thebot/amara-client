@@ -22,7 +22,7 @@ export default function NotFound() {
             <div className="absolute inset-0 bg-repeating-linear-gradient bg-[length:40px_40px] bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
           </div>
           
-          <div className="bg-white/90 backdrop-blur-sm dark:bg-black/90 rounded-2xl px-8 py-8 shadow-2xl border-4 border-[#c6a35d]/30 border-dashed">
+          <div className="bg-white/90 backdrop-blur-sm dark:bg-[#232323]/90 rounded-2xl px-8 py-8 shadow-2xl border-4 border-[#c6a35d]/30 border-dashed">
             <div className="flex justify-center mb-6">
               <div className="bg-[#c6a35d] p-4 rounded-full animate-bounce">
                 <HardHat size={48} className="text-white" />
