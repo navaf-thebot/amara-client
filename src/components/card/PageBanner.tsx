@@ -31,8 +31,8 @@ export default function PageBanner({
         }}
       />
 
-      <div className="absolute inset-0 bg-gradient-to-br from-hoa-charcoal/90 via-hoa-charcoal/70 to-hoa-gold/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20  dark:from-white/20 to-transparent " />
+      <div className="absolute inset-0 bg-white dark:bg-black" />
+      <div className="absolute inset-0  bg-white dark:bg-black" />
 
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         {breadcrumbs.length > 0 && (
@@ -52,7 +52,7 @@ export default function PageBanner({
           </nav>
         )}
 
-        <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white mb-6 font-serif tracking-wide animate-fade-in-up">
+        <h1 className="text-5xl md:text-7xl font-bold text-[#c6a35d] mb-6 font-serif tracking-wide animate-fade-in-up">
           {title}
         </h1>
 

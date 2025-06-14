@@ -145,10 +145,12 @@ export default function HeroSection() {
                       <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                     </button>
                     </Link>
+                    <Link href={'/about/our-story'}>
                     <button className="cursor-pointer group inline-flex items-center px-8 py-4 border-2 border-white text-white font-montserrat font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-all duration-300">
                       Watch Story
                       <Play className="ml-2 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
                     </button>
+                    </Link>
                   </div>
                 </div>
               </div>

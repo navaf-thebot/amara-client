@@ -198,10 +198,10 @@ export default function CareersPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in-up">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif font-bold text-black dark:text-white mb-6">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif font-bold text-[#c6a35d] mb-6">
                 Your Story
                 <br />
-                <span className="text-hoa-gold">Starts Here</span>
+                <span className="text-[#c6a35d]">Starts Here</span>
               </h1>
               <p className="text-xl text-black/90 dark:text-white/90 mb-8 leading-relaxed">
                 Join a legacy where your ambitions meet purpose, where innovation drives impact, and where every career

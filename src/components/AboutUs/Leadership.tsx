@@ -50,7 +50,7 @@ export default function LeadershipPage() {
         subtitle="The visionaries guiding our journey towards excellence"
       />
 
-      <main className="py-20 px-6">
+      <main className="py-5 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-4xl font-bold text-hoa-charcoal dark:text-white mb-6 font-serif">

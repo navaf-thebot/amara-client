@@ -147,7 +147,7 @@ const AboutUs = () => {
                                     : 'border-[#c6a35d] text-[#c6a35d] hover:bg-[#c6a35d] hover:text-[#232323]'
                                     }`}
                             >
-                                {section === 'governance' ? 'Governance' : section}
+                                {section.toUpperCase()}
                             </button>
                         ))}
                     </div>

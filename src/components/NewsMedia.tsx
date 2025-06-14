@@ -52,7 +52,6 @@ const NewsAndMedia = () => {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
 
-  // Use a ResizeObserver to check visibility on mount and on resize
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
@@ -69,10 +68,8 @@ const NewsAndMedia = () => {
     const resizeObserver = new ResizeObserver(checkArrowVisibility);
     resizeObserver.observe(container);
     
-    // Initial check
     checkArrowVisibility();
     
-    // Add scroll event listener
     container.addEventListener('scroll', checkArrowVisibility, { passive: true });
 
     return () => {
@@ -85,7 +82,6 @@ const NewsAndMedia = () => {
 
   const handleArrowScroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
-      // Card width (360px) + gap (32px from gap-8)
       const scrollAmount = 360 + 32;
       
       scrollContainerRef.current.scrollBy({
@@ -135,7 +131,6 @@ const NewsAndMedia = () => {
           </p>
         </div>
 
-        {/* This relative container is key for positioning the absolute buttons */}
         <div className="relative">
           <div
             ref={scrollContainerRef}
@@ -143,7 +138,6 @@ const NewsAndMedia = () => {
             onMouseLeave={handleMouseLeave}
             onMouseUp={handleMouseUp}
             onMouseMove={handleMouseMove}
-            // Add padding to the container so cards don't sit directly under the buttons
             className="flex overflow-x-auto gap-8 pb-8 cursor-grab active:cursor-grabbing select-none scrollbar-hide"
           >
             {newsData.map((item, index) => (
@@ -202,7 +196,6 @@ const NewsAndMedia = () => {
             ))}
           </div>
 
-          {/* Left Arrow Button - Positioned INSIDE the container */}
           <button
             onClick={() => handleArrowScroll('left')}
             className={`absolute top-1/2 -translate-y-1/2 left-[-50px] w-14 h-14 rounded-full   text-[#c6a35d] shadow-lg hover:bg-[#c6a35d] hover:text-white transition-all duration-300 z-10 hidden lg:flex items-center justify-center
@@ -212,7 +205,6 @@ const NewsAndMedia = () => {
             <ChevronLeft className="w-7 h-7" />
           </button>
 
-          {/* Right Arrow Button - Positioned INSIDE the container */}
           <button
             onClick={() => handleArrowScroll('right')}
             className={`absolute top-1/2 -translate-y-1/2 right-[-50px] w-14 h-14 rounded-full  text-[#c6a35d] shadow-lg hover:bg-[#c6a35d] hover:text-white transition-all duration-300 z-10 hidden lg:flex items-center justify-center

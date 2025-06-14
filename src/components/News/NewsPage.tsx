@@ -159,7 +159,7 @@ const NewsPage = () => {
       <div className="bg-white dark:bg-black py-16 sm:py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-5xl sm:text-6xl font-bold font-bodoni text-[#232323] dark:text-white mb-6">
+            <h1 className="text-5xl sm:text-6xl font-bold font-bodoni text-[#c6a35d] mb-6">
               News & Media
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 font-montserrat max-w-3xl mx-auto">
@@ -393,7 +393,7 @@ const NewsPage = () => {
             ].map((item, index) => (
               <div
                 key={index}
-                className="group bg-[#f0efe2] dark:bg-[#232323] rounded-xl p-6 hover:bg-[#c6a35d] hover:text-white transition-all duration-300 cursor-pointer"
+                className="group bg-[#f0efe2] dark:bg-[#232323] rounded-xl p-6 hover:bg-[#c6a35d] dark:hover:bg-[#c6a35d] hover:text-white dark:hover:text-black transition-all duration-300 cursor-pointer"
               >
                 <item.icon className="w-8 h-8 mb-4 group-hover:scale-110 transition-transform" />
                 <h3 className="font-bodoni font-bold text-lg mb-2">{item.name}</h3>

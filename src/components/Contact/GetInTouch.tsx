@@ -153,12 +153,12 @@ export default function ContactSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-20">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-hoa-gold/10 rounded-full mb-6">
-            <Globe className="w-8 h-8 text-hoa-gold" />
+            <Globe className="w-8 h-8 text-[#c6a35d]" />
           </div>
-          <h2 className="text-6xl font-bold text-hoa-charcoal dark:text-white mb-6 font-serif">
-            Global <span className="text-hoa-gold">Presence</span>
+          <h2 className="text-6xl font-bold text-[#c6a35d] mb-6 font-serif">
+            Global <span className="text-[#c6a35d]">Presence</span>
           </h2>
-          <div className="w-32 h-1.5 bg-gradient-to-r from-hoa-gold to-amber-400 mx-auto mb-8 rounded-full" />
+          <div className="w-32 h-1.5 bg-gradient-to-r from-hoa-gold to-[#c6a35d] mx-auto mb-8 rounded-full" />
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
             Connect with House of Amaraa across our worldwide network of strategic locations and partnerships.
           </p>
@@ -247,7 +247,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-hoa-charcoal dark:text-white mb-1">Email</h4>
-                    <p className="text-gray-600 dark:text-gray-300">info@amaraagroup.com</p>
+                    <p className="text-gray-600 dark:text-gray-300">info@amaraagroups.com</p>
                   </div>
                 </CardContent>
               </Card>

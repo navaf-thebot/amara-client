@@ -218,10 +218,10 @@ function SubsidiariesPage() {
         <div className="absolute inset-0 bg-white dark:bg-black"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-gray-800 dark:text-white mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-[#c6a35d] mb-6">
               Our Businesses
             </h1>
-            <p className="text-xl sm:text-2xl text-[#c6a35d] font-serif mb-8">The Pillars of Our Vision</p>
+            <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 font-serif mb-8">The Pillars of Our Vision</p>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
               Each subsidiary of Amaraa Holding is a chapter in our greater story. Together, they form a tapestry of
               sustainability, innovation, and impact that spans across industries and continents.

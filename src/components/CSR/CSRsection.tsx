@@ -32,7 +32,7 @@ function CSRSection() {
     <section id="csr" className="py-24 bg-hoa-charcoal">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-black dark:text-white mb-8 font-serif">
+          <h2 className="text-5xl font-bold text-[#c6a35d] mb-8 font-serif">
             Corporate <span className="text-hoa-gold">Social Responsibility</span>
           </h2>
           <div className="w-24 h-1 bg-hoa-gold mx-auto mb-8" />

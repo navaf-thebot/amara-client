@@ -178,7 +178,6 @@ const JobApplicationModal = ({ open, onOpenChange }: JobApplicationModalProps) =
       />
 
       <div className="relative bg-white dark:bg-gray-900 rounded-lg shadow-xl max-w-3xl w-full mx-2 sm:mx-4 max-h-[90vh] overflow-y-auto">
-        {/* Sticky Header with Close Button */}
         <div className="sticky top-0 z-10 bg-white dark:bg-gray-900 p-4 sm:p-6 border-b border-gray-200 dark:border-gray-700 rounded-t-lg">
           <div className="flex items-center justify-between">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
