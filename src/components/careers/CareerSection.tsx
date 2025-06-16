@@ -460,7 +460,7 @@ export default function CareersPage() {
                     </div>
                   </div>
                   <div className="md:ml-6 flex-shrink-0">
-                    <button onClick={() => setIsAuthModalOpen(true)} className="w-full md:w-auto px-6 py-3 bg-black text-white dark:text-black dark:bg-white hover:bg-amber-500 font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
+                    <button onClick={() => setIsAuthModalOpen(true)} className="w-full md:w-auto px-6 py-3 bg-black text-white dark:text-black dark:bg-white hover:bg-[#c6a35d] dark:hover:bg-[#c6a35d] dark:hover:text-white cursor-pointer font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
                       <span>Apply Now</span>
                       <ArrowRight className="w-4 h-4" />
                     </button>
@@ -490,10 +490,10 @@ export default function CareersPage() {
               transcends generations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-12 py-4 bg-hoa-gold hover:bg-hoa-gold/80 text-black dark:text-white  hover:text-[#c6a35d] dark:hover:text-[#c6a35d] font-semibold text-lg rounded-lg transition-all duration-300 hover:scale-105 shadow-lg">
+              <button className="px-12 py-4 cursor-pointer bg-hoa-gold hover:bg-hoa-gold/80 text-black dark:text-white  hover:text-[#c6a35d] dark:hover:text-[#c6a35d] font-semibold text-lg rounded-lg transition-all duration-300 hover:scale-105 shadow-lg">
                 Start Your Journey
               </button>
-              <button className="px-12 py-4 border-2 border-hoa-gold text-hoa-gold hover:bg-hoa-gold hover:text-[#c6a35d] font-semibold text-lg rounded-lg transition-all duration-300">
+              <button className="px-12 py-4 cursor-pointer border-2 border-hoa-gold text-hoa-gold hover:bg-hoa-gold hover:text-[#c6a35d] font-semibold text-lg rounded-lg transition-all duration-300">
                 Learn More About Us
               </button>
             </div>

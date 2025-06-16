@@ -131,6 +131,14 @@ export default function ContactSection() {
       address: "10th floor Panchsil Business Park, Laxman Nagar, Baner, Pune 411045",
       focus: "Technology, ESG, Research, Compliance Back Office",
       icon: Building2
+    },
+    {
+      country: "Ireland",
+      flag: "🇮🇪",
+      title: "IP & Patent Holding",
+      address: "The Academy, 42 Pearse St, Dublin 2",
+      focus: "IP-Patent Holding; Aircraft Leasing",
+      icon: Briefcase
     }
   ]
 
@@ -247,7 +255,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-hoa-charcoal dark:text-white mb-1">Email</h4>
-                    <p className="text-gray-600 dark:text-gray-300">info@amaraagroups.com</p>
+                    <p className="text-gray-600 dark:text-gray-300">info@amaraaglobal.com</p>
                   </div>
                 </CardContent>
               </Card>

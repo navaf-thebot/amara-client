@@ -4,7 +4,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
-
 const companies = [
   {
     name: 'Amaraa Agro Group Ltd.',
@@ -120,6 +119,7 @@ const LegacySection = () => {
   const [scrollLeft, setScrollLeft] = useState(0);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const rafRef = useRef<number | null>(null);
 
   const checkScrollability = useCallback(() => {
     const el = scrollContainerRef.current;
@@ -134,43 +134,73 @@ const LegacySection = () => {
     const el = scrollContainerRef.current;
     if (el) {
       checkScrollability();
-      el.addEventListener('scroll', checkScrollability, { passive: true });
-      window.addEventListener('resize', checkScrollability);
+      
+      
+      const handleScroll = () => {
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
+        rafRef.current = requestAnimationFrame(checkScrollability);
+      };
+      
+      el.addEventListener('scroll', handleScroll, { passive: true });
+      window.addEventListener('resize', checkScrollability, { passive: true });
+      
       return () => {
-        el.removeEventListener('scroll', checkScrollability);
+        el.removeEventListener('scroll', handleScroll);
         window.removeEventListener('resize', checkScrollability);
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
       };
     }
   }, [checkScrollability]);
 
-
-  const handleMouseDown = (e: React.MouseEvent) => {
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
     if (!scrollContainerRef.current) return;
+    e.preventDefault();
+    
     setIsDragging(true);
     setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
     setScrollLeft(scrollContainerRef.current.scrollLeft);
+    
+    
+    scrollContainerRef.current.style.scrollBehavior = 'unset';
     scrollContainerRef.current.style.cursor = 'grabbing';
-  };
+    scrollContainerRef.current.style.userSelect = 'none';
+  }, []);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     setIsDragging(false);
-    if(scrollContainerRef.current) scrollContainerRef.current.style.cursor = 'grab';
-  };
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.style.cursor = 'grab';
+      scrollContainerRef.current.style.userSelect = 'auto';
+      scrollContainerRef.current.style.scrollBehavior = 'smooth';
+    }
+  }, []);
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     setIsDragging(false);
-    if(scrollContainerRef.current) scrollContainerRef.current.style.cursor = 'grab';
-  };
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.style.cursor = 'grab';
+      scrollContainerRef.current.style.userSelect = 'auto';
+      scrollContainerRef.current.style.scrollBehavior = 'smooth';
+    }
+  }, []);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (!isDragging || !scrollContainerRef.current) return;
+    
     e.preventDefault();
     const x = e.pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
-  };
+    const walk = (x - startX) * 1.5; 
+    
+    
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+      }
+    });
+  }, [isDragging, startX, scrollLeft]);
 
-  const handleArrowScroll = (direction: 'left' | 'right') => {
+  const handleArrowScroll = useCallback((direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
       const scrollAmount = 350 + 32;
       scrollContainerRef.current.scrollBy({
@@ -178,19 +208,71 @@ const LegacySection = () => {
         behavior: 'smooth',
       });
     }
-  };
+  }, []);
+
+  
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    if (!scrollContainerRef.current) return;
+    
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+    scrollContainerRef.current.style.scrollBehavior = 'unset';
+  }, []);
+
+  const handleTouchMove = useCallback((e: React.TouchEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    
+    const x = e.touches[0].pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+      }
+    });
+  }, [isDragging, startX, scrollLeft]);
+
+  const handleTouchEnd = useCallback(() => {
+    setIsDragging(false);
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.style.scrollBehavior = 'smooth';
+    }
+  }, []);
 
   return (
     <section className="bg-white dark:bg-black text-gray-800 font-sans py-20">
       <style jsx>{`
-        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .font-serif { font-family: 'Georgia', 'Times New Roman', serif; }
+        .scrollbar-hide { 
+          -ms-overflow-style: none; 
+          scrollbar-width: none; 
+        }
+        .scrollbar-hide::-webkit-scrollbar { 
+          display: none; 
+        }
+        .font-serif { 
+          font-family: 'Georgia', 'Times New Roman', serif; 
+        }
+        .scroll-smooth {
+          scroll-behavior: smooth;
+        }
+        .will-change-scroll {
+          will-change: scroll-position;
+        }
+        .backface-hidden {
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+        }
+        .transform-gpu {
+          transform: translateZ(0);
+          -webkit-transform: translateZ(0);
+        }
       `}</style>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#c6a35d]  mb-4">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#c6a35d] mb-4">
             Amaraa Foundation
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -212,53 +294,66 @@ const LegacySection = () => {
 
       <div className="relative mt-12">
         {canScrollLeft && (
-            <button
+          <button
             onClick={() => handleArrowScroll('left')}
-            className="absolute left-2 md:left-4 top-1/2 z-20 -translate-y-1/2 p-2 hover:bg-white dark:hover:bg-gray-800 rounded-full shadow-lg transition-all duration-300"
+            className="absolute left-2 md:left-4 top-1/2 z-20 -translate-y-1/2 p-2 hover:bg-white dark:hover:bg-gray-800 rounded-full shadow-lg transition-all duration-300 backface-hidden"
             aria-label="Scroll left"
           >
             <ChevronLeft className="h-6 w-6 text-gray-800 dark:text-gray-200" />
           </button>
         )}
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-            <div
-                ref={scrollContainerRef}
-                onMouseDown={handleMouseDown}
-                onMouseLeave={handleMouseLeave}
-                onMouseUp={handleMouseUp}
-                onMouseMove={handleMouseMove}
-                className="flex overflow-x-auto gap-8 pb-8 cursor-grab scrollbar-hide scroll-smooth px-4 sm:px-6 lg:px-8 -mx-4 sm:-mx-6 lg:-mx-8"
-            >
-                {companies.map((company, index) => (
-                <div key={index} className="group min-w-[350px] max-w-[350px] bg-[#c6a35d] rounded-2xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2">
-                    <div className="relative">
-                    <img
-                        src={company.image}
-                        alt={company.name}
-                        className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
-                    </div>
-                    <div className="p-6 text-white dark:text-[#232323]">
-                    <h3 className="text-2xl font-bodoni font-bold mb-2">{company.name}</h3>
-                    <p className="text-[#f0efe2] dark:text-[#232323] font-montserrat text-base leading-relaxed mb-6 line-clamp-3">
-                        {company.description}
-                    </p>
-                    <a href="#" className="inline-flex items-center gap-2 font-semibold text-sm text-[#f0efe2] dark:text-[#232323] group-hover:text-white transition-colors">
-                        KNOW MORE
-                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </a>
-                    </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ms-5">
+          <div
+            ref={scrollContainerRef}
+            onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseLeave}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            className="flex overflow-x-auto gap-8 pb-8 cursor-grab scrollbar-hide scroll-smooth px-4 sm:px-6 lg:px-8 -mx-4 sm:-mx-6 lg:-mx-8 will-change-scroll transform-gpu"
+            style={{ 
+              WebkitOverflowScrolling: 'touch',
+              scrollSnapType: 'x proximity'
+            }}
+          >
+            {companies.map((company, index) => (
+              <div 
+                key={index} 
+                className="group min-w-[350px] max-w-[350px] bg-[#c6a35d] rounded-2xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 backface-hidden flex-shrink-0"
+                style={{ scrollSnapAlign: 'start' }}
+              >
+                <div className="relative overflow-hidden">
+                  <img
+                    src={company.image}
+                    alt={company.name}
+                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105 backface-hidden"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
                 </div>
-                ))}
-            </div>
+                <div className="p-6 text-white dark:text-[#232323]">
+                  <h3 className="text-2xl font-bodoni font-bold mb-2">{company.name}</h3>
+                  <p className="text-[#f0efe2] dark:text-[#232323] font-montserrat text-base leading-relaxed mb-6 line-clamp-3">
+                    {company.description}
+                  </p>
+                  <a href="#" className="inline-flex items-center gap-2 font-semibold text-sm text-[#f0efe2] dark:text-[#232323] group-hover:text-white transition-colors">
+                    KNOW MORE
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
         
         {canScrollRight && (
           <button
             onClick={() => handleArrowScroll('right')}
-            className="absolute right-2 md:right-4 top-1/2 z-20 -translate-y-1/2 p-2  hover:bg-white dark:hover:bg-gray-800 rounded-full shadow-lg transition-all duration-300"
+            className="absolute right-2 md:right-4 top-1/2 z-20 -translate-y-1/2 p-2 hover:bg-white dark:hover:bg-gray-800 rounded-full shadow-lg transition-all duration-300 backface-hidden"
             aria-label="Scroll right"
           >
             <ChevronRight className="h-6 w-6 text-gray-800 dark:text-gray-200" />

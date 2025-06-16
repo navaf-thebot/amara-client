@@ -38,7 +38,7 @@ export default function FraudAlert() {
 
   const verificationSteps = [
     "Check the official Amaraa Group website for announcements",
-    "Contact us directly at info@amaraagroups.com",
+    "Contact us directly at info@amaraaglobal.com",
     "Verify through our official social media channels",
     "Ask for official identification and credentials",
     "Request written confirmation on official letterhead"
