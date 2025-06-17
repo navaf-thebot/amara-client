@@ -228,14 +228,14 @@ export default function OurStoryPage() {
       <section className="py-16 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-black" data-animate>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-black dark:text-white mb-6">
+            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-black dark:text-white mb-4 sm:mb-6">
               Milestones of Magnificence
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+            <p className="text-base sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8">
               Each chapter of our story marks a significant leap forward in our quest for excellence
             </p>
 
-            <div className="flex justify-center items-center space-x-4 mb-8">
+            <div className="flex justify-center items-center flex-wrap gap-3 mb-8">
               <button
                 onClick={() => setIsAutoPlaying(!isAutoPlaying)}
                 className="flex items-center space-x-2 px-4 py-2 bg-[#c6a35d] text-white rounded-full hover:bg-[#b8954f] transition-colors"
@@ -246,7 +246,7 @@ export default function OurStoryPage() {
             </div>
           </div>
 
-          <div className="flex justify-center mb-12 space-x-4 overflow-x-auto pb-4">
+          <div className="flex flex-wrap justify-center mb-12 space-x-2 sm:space-x-4 overflow-x-auto pb-4 scrollbar-hide">
             {timelineData.map((item, index) => (
               <button
                 key={item.year}
@@ -254,9 +254,9 @@ export default function OurStoryPage() {
                   setActiveTimeline(index)
                   setIsAutoPlaying(false)
                 }}
-                className={`px-6 cursor-pointer py-3 rounded-full font-semibold transition-all duration-300 whitespace-nowrap ${activeTimeline === index
-                  ? 'bg-[#c6a35d] text-white shadow-lg scale-105'
-                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold transition-all duration-300 whitespace-nowrap mb-2 sm:mb-0 ${activeTimeline === index
+                    ? 'bg-[#c6a35d] text-white shadow-lg scale-105'
+                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
                   }`}
               >
                 {item.year}
@@ -264,18 +264,20 @@ export default function OurStoryPage() {
             ))}
           </div>
 
-          <div className="relative max-w-4xl mx-auto">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 border border-gray-200 dark:border-gray-700">
+          <div className="relative max-w-4xl mx-auto px-2 sm:px-0">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 sm:p-8 border border-gray-200 dark:border-gray-700">
               <div className={`w-full h-2 bg-gradient-to-r ${timelineData[activeTimeline].color} rounded-full mb-6`}></div>
 
-              <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-center">
                 <div>
                   <div className="flex items-center mb-4">
-                    <div className={`w-16 h-16 bg-gradient-to-r ${timelineData[activeTimeline].color} rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg`}>
+                    <div
+                      className={`w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r ${timelineData[activeTimeline].color} rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl shadow-lg`}
+                    >
                       {timelineData[activeTimeline].year}
                     </div>
                     <div className="ml-4">
-                      <h3 className="text-2xl font-serif font-bold text-black dark:text-white">
+                      <h3 className="text-xl sm:text-2xl font-serif font-bold text-black dark:text-white">
                         {timelineData[activeTimeline].title}
                       </h3>
                       <p className="text-sm text-[#c6a35d] font-semibold">
@@ -283,14 +285,16 @@ export default function OurStoryPage() {
                       </p>
                     </div>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg leading-relaxed">
                     {timelineData[activeTimeline].description}
                   </p>
                 </div>
 
                 <div className="relative">
-                  <div className={`w-full h-64 bg-gradient-to-br ${timelineData[activeTimeline].color} rounded-xl flex items-center justify-center`}>
-                    <div className="text-white text-6xl font-bold opacity-20">
+                  <div
+                    className={`w-full h-48 sm:h-64 bg-gradient-to-br ${timelineData[activeTimeline].color} rounded-xl flex items-center justify-center`}
+                  >
+                    <div className="text-white text-4xl sm:text-6xl font-bold opacity-20">
                       {timelineData[activeTimeline].year}
                     </div>
                   </div>
@@ -299,17 +303,18 @@ export default function OurStoryPage() {
             </div>
           </div>
 
-          <div className="flex justify-center mt-8 space-x-2">
+          <div className="flex justify-center mt-8 space-x-1 sm:space-x-2">
             {timelineData.map((_, index) => (
               <div
                 key={index}
-                className={`h-2 rounded-full transition-all duration-300 ${index === activeTimeline ? 'w-8 bg-[#c6a35d]' : 'w-2 bg-gray-300 dark:bg-gray-600'
+                className={`h-2 rounded-full transition-all duration-300 ${index === activeTimeline ? 'w-6 sm:w-8 bg-[#c6a35d]' : 'w-2 bg-gray-300 dark:bg-gray-600'
                   }`}
               />
             ))}
           </div>
         </div>
       </section>
+
 
       <section className="py-16 bg-white dark:bg-black" data-animate>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
