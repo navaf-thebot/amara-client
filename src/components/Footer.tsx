@@ -41,8 +41,8 @@ const Footer: React.FC = () => {
             <h3 className="font-bodoni text-lg font-semibold text-[#c6a35d] mb-5 uppercase tracking-wide">
               Our Companies
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
-              <ul className="font-montserrat space-y-2">
+            <div className="overflow-x-auto max-h-[200px] pr-1 scrollbar-thin scrollbar-thumb-[#c6a35d] scrollbar-track-[#2f2f2f]">
+              <ul className="space-y-2 text-xs">
                 <li><Link href="/business" className="text-xs hover:text-[#c6a35d] transition-colors duration-300">Agro Group Ltd.</Link></li>
                 <li><Link href="/business" className="text-xs hover:text-[#c6a35d] transition-colors duration-300">Security Shield Ltd.</Link></li>
                 <li><Link href="/business" className="text-xs hover:text-[#c6a35d] transition-colors duration-300">Auto Group Ltd.</Link></li>
@@ -90,24 +90,27 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-
-        <div className="flex flex-wrap gap-6 font-montserrat text-xs justify-center mb-8">
-          <Link href="/privacy-policy" className="text-gray-400 hover:text-[#c6a35d] transition-colors duration-300">
+        <div className="flex flex-wrap justify-center items-center font-montserrat text-[13px] text-gray-400 mb-6 gap-2">
+          <Link href="/privacy-policy" className="hover:text-[#c6a35d] transition-colors duration-300">
             Privacy Policy
           </Link>
-          <Link href="/privacy-policy" className="text-gray-400 hover:text-[#c6a35d] transition-colors duration-300">
+          <span className="mx-1 text-gray-500">•</span>
+          <Link href="/terms-of-service" className="hover:text-[#c6a35d] transition-colors duration-300">
             Terms of Service
           </Link>
-          <Link href="/privacy-policy" className="text-gray-400 hover:text-[#c6a35d] transition-colors duration-300">
+          <span className="mx-1 text-gray-500">•</span>
+          <Link href="/cookie-policy" className="hover:text-[#c6a35d] transition-colors duration-300">
             Cookie Policy
           </Link>
         </div>
 
-        <div className="border-t border-gray-600 pt-6 text-center">
-          <p className="font-montserrat text-xs text-gray-400">
-            &copy; 2024 Amaraa Group of Companies. All rights reserved.
+        <div className="border-t border-gray-700 pt-4 text-center">
+          <p className="font-montserrat text-[12px] text-gray-500 tracking-wide">
+            © 2024 Amaraa Group of Companies. All rights reserved.
           </p>
         </div>
+
+
       </div>
     </footer>
   );

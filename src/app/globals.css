@@ -140,3 +140,18 @@
   background-color: #c6a35d;
   color: white;
 }
+
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #2f2f2f;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #c6a35d;
+  border-radius: 10px;
+}

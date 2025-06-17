@@ -1,10 +1,10 @@
-import PrivacyPolicyPage from '@/components/privacy-policy/PrivacyPolicy'
+import CookiePolicyPage from '@/components/legal/cookie-policy'
 import React from 'react'
 
 function page() {
   return (
     <div>
-      <PrivacyPolicyPage/>
+      <CookiePolicyPage/>
     </div>
   )
 }

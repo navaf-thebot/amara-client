@@ -1,9 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import React, { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, Play, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const heroSlides = [
   {
@@ -47,7 +47,7 @@ const heroSlides = [
     title: "Carbon Footprint ",
     subtitle: "zero% carbon footprint",
     description: "Empowering carbon footprint management through real‑time data, AI optimization, more efficient operations.",
-    image: "./images/carbon.jpg",
+    image: "/images/carbon.jpg",
     cta: "Trace Carbon Footprint",
     link:''
   },
@@ -56,7 +56,7 @@ const heroSlides = [
     title: "Sustainability",
     subtitle: "Building a Greener Tomorrow with Smart Tech",
     description: "Integrating eco-conscious design, and efficient operations to drive long-term environmental impact.",
-    image: "./images/Sustain.jpg",
+    image: "/images/Sustain.jpg",
     cta: "Explore Our Green Journey",
     link:''
   }
@@ -101,9 +101,12 @@ export default function HeroSection() {
             className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
               }`}
           >
-            <img
+            <Image
               src={slide.image}
               alt={slide.title}
+              fill
+              sizes="100vw"
+              priority={index === 0}
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/40" />

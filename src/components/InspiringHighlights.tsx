@@ -1,8 +1,8 @@
-/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 
 const highlightsData = [
   {
@@ -38,172 +38,89 @@ const highlightsData = [
 ];
 
 const InspiringHighlights = () => {
+
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [showLeftArrow, setShowLeftArrow] = useState(false);
-  const [showRightArrow, setShowRightArrow] = useState(false);
-  const rafRef = useRef<number | null>(null);
-  const resizeObserverRef = useRef<ResizeObserver | null>(null);
+  const dragInfo = useRef({ startX: 0, scrollLeft: 0, velocity: 0, lastScrollLeft: 0 });
+  const animationFrameRef = useRef<number | null>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
-  const checkArrowVisibility = useCallback(() => {  
-    const container = scrollContainerRef.current;
-    if (!container) return;
 
-    const { scrollLeft, scrollWidth, clientWidth } = container;
-    const isScrollable = scrollWidth > clientWidth;
-    setShowLeftArrow(isScrollable && scrollLeft > 1);
-    setShowRightArrow(isScrollable && scrollLeft < scrollWidth - clientWidth - 1);
+  const checkScrollability = useCallback(() => {
+    const el = scrollContainerRef.current;
+    if (el) {
+      const isScrollable = el.scrollWidth > el.clientWidth;
+      setCanScrollLeft(el.scrollLeft > 5);
+      setCanScrollRight(isScrollable && el.scrollLeft < el.scrollWidth - el.clientWidth - 5);
+    }
   }, []);
 
   useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
+    const el = scrollContainerRef.current;
+    if (el) {
+      checkScrollability();
+      el.addEventListener('scroll', checkScrollability, { passive: true });
+      window.addEventListener('resize', checkScrollability, { passive: true });
+      return () => {
+        el.removeEventListener('scroll', checkScrollability);
+        window.removeEventListener('resize', checkScrollability);
+        if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+      };
+    }
+  }, [checkScrollability]);
 
-    
-    const handleScroll = () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(checkArrowVisibility);
-    };
-
-    
-    resizeObserverRef.current = new ResizeObserver(() => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(checkArrowVisibility);
-    });
-    
-    resizeObserverRef.current.observe(container);
-    checkArrowVisibility();
-    
-    container.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      if (resizeObserverRef.current) {
-        resizeObserverRef.current.disconnect();
-      }
-      if (container) {
-        container.removeEventListener('scroll', handleScroll);
-      }
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-      }
-    };
-  }, [checkArrowVisibility]);
-
-  const handleArrowScroll = useCallback((direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = 380 + 32;
-      scrollContainerRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth',
-      });
+  const momentumScroll = useCallback(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    el.scrollLeft += dragInfo.current.velocity;
+    dragInfo.current.velocity *= 0.95;
+    if (Math.abs(dragInfo.current.velocity) > 0.5) {
+      animationFrameRef.current = requestAnimationFrame(momentumScroll);
     }
   }, []);
 
-  const handleMouseDown = useCallback((e: React.MouseEvent) => {
-    if (!scrollContainerRef.current) return;
-    e.preventDefault();
-    
+  const handleDragStart = useCallback((clientX: number) => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
     setIsDragging(true);
-    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
-    setScrollLeft(scrollContainerRef.current.scrollLeft);
-    
-    
-    scrollContainerRef.current.style.scrollBehavior = 'unset';
-    scrollContainerRef.current.style.cursor = 'grabbing';
-    scrollContainerRef.current.style.userSelect = 'none';
+    dragInfo.current.startX = clientX;
+    dragInfo.current.scrollLeft = el.scrollLeft;
+    dragInfo.current.velocity = 0;
+    dragInfo.current.lastScrollLeft = el.scrollLeft;
   }, []);
 
-  const handleMouseLeave = useCallback(() => {
+  const handleDragEnd = useCallback(() => {
+    if (!isDragging) return;
     setIsDragging(false);
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.style.cursor = 'grab';
-      scrollContainerRef.current.style.userSelect = 'auto';
-      scrollContainerRef.current.style.scrollBehavior = 'smooth';
-    }
-  }, []);
+    momentumScroll();
+  }, [isDragging, momentumScroll]);
 
-  const handleMouseUp = useCallback(() => {
-    setIsDragging(false);
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.style.cursor = 'grab';
-      scrollContainerRef.current.style.userSelect = 'auto';
-      scrollContainerRef.current.style.scrollBehavior = 'smooth';
-    }
-  }, []);
-
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+  const handleDragMove = useCallback((clientX: number) => {
     if (!isDragging || !scrollContainerRef.current) return;
-    
-    e.preventDefault();
-    const x = e.pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5; 
-    
-    
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    rafRef.current = requestAnimationFrame(() => {
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollLeft = scrollLeft - walk;
-      }
-    });
-  }, [isDragging, startX, scrollLeft]);
+    const el = scrollContainerRef.current;
+    const walk = clientX - dragInfo.current.startX;
+    const newScrollLeft = dragInfo.current.scrollLeft - walk;
+    dragInfo.current.velocity = newScrollLeft - dragInfo.current.lastScrollLeft;
+    el.scrollLeft = newScrollLeft;
+    dragInfo.current.lastScrollLeft = newScrollLeft;
+  }, [isDragging]);
 
-  
-  const handleTouchStart = useCallback((e: React.TouchEvent) => {
-    if (!scrollContainerRef.current) return;
-    
-    setIsDragging(true);
-    setStartX(e.touches[0].pageX - scrollContainerRef.current.offsetLeft);
-    setScrollLeft(scrollContainerRef.current.scrollLeft);
-    scrollContainerRef.current.style.scrollBehavior = 'unset';
-  }, []);
-
-  const handleTouchMove = useCallback((e: React.TouchEvent) => {
-    if (!isDragging || !scrollContainerRef.current) return;
-    
-    const x = e.touches[0].pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    rafRef.current = requestAnimationFrame(() => {
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollLeft = scrollLeft - walk;
-      }
-    });
-  }, [isDragging, startX, scrollLeft]);
-
-  const handleTouchEnd = useCallback(() => {
-    setIsDragging(false);
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.style.scrollBehavior = 'smooth';
+  const handleArrowScroll = (direction: 'left' | 'right') => {
+    const el = scrollContainerRef.current;
+    if (el) {
+      const scrollAmount = (380 + 32) * Math.floor(el.clientWidth / (380 + 32));
+      el.scrollBy({ left: (direction === 'left' ? -1 : 1) * scrollAmount, behavior: 'smooth' });
     }
-  }, []);
+  };
 
   return (
     <section className="bg-white dark:bg-black py-16 sm:py-24">
       <style jsx>{`
-        .scrollbar-hide {
-          -ms-overflow-style: none; 
-          scrollbar-width: none;
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .will-change-scroll {
-          will-change: scroll-position;
-        }
-        .backface-hidden {
-          backface-visibility: hidden;
-          -webkit-backface-visibility: hidden;
-        }
-        .transform-gpu {
-          transform: translateZ(0);
-          -webkit-transform: translateZ(0);
-        }
-        .scroll-smooth {
-          scroll-behavior: smooth;
-        }
+        .scrollbar-hide { scrollbar-width: none; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .is-dragging { cursor: grabbing; user-select: none; }
       `}</style>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -220,33 +137,30 @@ const InspiringHighlights = () => {
         <div className="relative">
           <div
             ref={scrollContainerRef}
-            onMouseDown={handleMouseDown}
-            onMouseLeave={handleMouseLeave}
-            onMouseUp={handleMouseUp}
-            onMouseMove={handleMouseMove}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-            className="flex overflow-x-auto gap-8 pb-4 cursor-grab active:cursor-grabbing select-none scrollbar-hide scroll-smooth will-change-scroll transform-gpu"
-            style={{ 
-              WebkitOverflowScrolling: 'touch',
-              scrollSnapType: 'x proximity'
-            }}
+            onMouseDown={(e) => { e.preventDefault(); handleDragStart(e.pageX); }}
+            onMouseUp={handleDragEnd}
+            onMouseLeave={handleDragEnd}
+            onMouseMove={(e) => handleDragMove(e.pageX)}
+            onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
+            onTouchEnd={handleDragEnd}
+            onTouchMove={(e) => handleDragMove(e.touches[0].clientX)}
+            className={`flex overflow-x-auto gap-8 pb-4 cursor-grab scrollbar-hide ${isDragging ? 'is-dragging' : ''}`}
+          
           >
             {highlightsData.map((item, index) => (
               <article 
                 key={index} 
-                className="group relative flex flex-col overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 w-[380px] min-w-[380px] flex-shrink-0 backface-hidden"
-                style={{ scrollSnapAlign: 'start' }}
+                className="group relative flex flex-col overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 w-[380px] min-w-[380px] flex-shrink-0"
               >
-                <div className="flex-shrink-0 overflow-hidden">
-                  <img 
-                    className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105 backface-hidden" 
+                <div className="flex-shrink-0 overflow-hidden relative h-64 w-full">
+                  <Image
+                    className="object-cover transition-transform duration-500 group-hover:scale-105" 
                     src={item.image} 
                     alt={item.title} 
+                    fill
+                    sizes="(min-width: 1280px) 380px, (min-width: 768px) 45vw, 90vw"
+                    priority={index < 2}
                     draggable="false"
-                    loading="lazy"
-                    decoding="async"
                   />
                 </div>
                 <div className="flex flex-1 flex-col justify-between bg-white dark:bg-black p-6">
@@ -271,24 +185,21 @@ const InspiringHighlights = () => {
                     </a>
                   </div>
                 </div>
-                <div className="absolute bottom-0 left-0 h-1 w-full bg-[#c6a35d] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left transform-gpu" />
+                <div className="absolute bottom-0 left-0 h-1 w-full bg-[#c6a35d] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </article>
             ))}
           </div>
 
           <button
             onClick={() => handleArrowScroll('left')}
-            className={`absolute top-1/2 -translate-y-1/2 left-[-50px] w-14 h-14 rounded-full text-[#c6a35d] shadow-lg hover:bg-[#c6a35d] hover:text-white transition-all duration-300 z-10 hidden lg:flex items-center justify-center backface-hidden hover:scale-110
-                        ${showLeftArrow ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            className={`absolute top-1/2 -translate-y-1/2 left-[-50px] w-14 h-14 rounded-full text-[#c6a35d] shadow-lg hover:bg-[#c6a35d] hover:text-white transition-all duration-300 z-10 hidden lg:flex items-center justify-center hover:scale-110 ${canScrollLeft ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             aria-label="Scroll left"
           >
             <ChevronLeft className="w-7 h-7" />
           </button>
-
           <button
             onClick={() => handleArrowScroll('right')}
-            className={`absolute top-1/2 -translate-y-1/2 right-[-50px] w-14 h-14 rounded-full text-[#c6a35d] shadow-lg hover:bg-[#c6a35d] hover:text-white transition-all duration-300 z-10 hidden lg:flex items-center justify-center backface-hidden hover:scale-110
-                        ${showRightArrow ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            className={`absolute top-1/2 -translate-y-1/2 right-[-50px] w-14 h-14 rounded-full text-[#c6a35d] shadow-lg hover:bg-[#c6a35d] hover:text-white transition-all duration-300 z-10 hidden lg:flex items-center justify-center hover:scale-110 ${canScrollRight ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             aria-label="Scroll right"
           >
             <ChevronRight className="w-7 h-7" />
