@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation'; 
 import { ArrowRight, Play, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const newsData = [
@@ -198,7 +198,7 @@ const NewsAndMedia = () => {
 
           <button
             onClick={() => handleArrowScroll('left')}
-            className={`absolute top-1/2 -translate-y-1/2 left-[-50px] w-14 h-14 rounded-full   text-[#c6a35d] shadow-lg hover:bg-[#c6a35d] hover:text-white transition-all duration-300 z-10 hidden lg:flex items-center justify-center
+            className={`absolute top-1/2 -translate-y-1/2 left-0 w-14 h-14 rounded-full   text-[#c6a35d] shadow-lg hover:bg-[#c6a35d] hover:text-white transition-all duration-300 z-10 hidden lg:flex items-center justify-center
                         ${showLeftArrow ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             aria-label="Scroll left"
           >
@@ -207,7 +207,7 @@ const NewsAndMedia = () => {
 
           <button
             onClick={() => handleArrowScroll('right')}
-            className={`absolute top-1/2 -translate-y-1/2 right-[-50px] w-14 h-14 rounded-full  text-[#c6a35d] shadow-lg hover:bg-[#c6a35d] hover:text-white transition-all duration-300 z-10 hidden lg:flex items-center justify-center
+            className={`absolute top-1/2 -translate-y-1/2 right-0 w-14 h-14 rounded-full  text-[#c6a35d] shadow-lg hover:bg-[#c6a35d] hover:text-white transition-all duration-300 z-10 hidden lg:flex items-center justify-center
                         ${showRightArrow ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             aria-label="Scroll right"
           >

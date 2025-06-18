@@ -186,7 +186,7 @@ export default function ValuesCulturePage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white/50 dark:bg-[#232323]/80 backdrop-blur-sm relative">
+      <section className="py-20 bg-white/50 dark:bg-[#1f1f1f]/80 backdrop-blur-sm relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-32">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -310,7 +310,7 @@ export default function ValuesCulturePage() {
         </div>
       </section>
 
-      <section className="py-20 relative overflow-hidden">
+      <section className="py-20 relative overflow-hidden dark:bg-[#1f1f1f]">
         <div className="relative z-10">
           <TypewriterQuote
             quote="Culture is not just what we do—it's who we are. It's the invisible force that transforms individual talents into collective genius, turning ordinary moments into extraordinary achievements."

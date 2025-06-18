@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
 import React, { useState } from "react"
@@ -8,7 +7,6 @@ import { Input } from "@/components/ui/input"
 import { MapPin, Phone, Mail, Globe, Building2, Briefcase } from "lucide-react"
 
 type PhoneInputProps = {
-  value: string
   onChange: (e: React.ChangeEvent<HTMLInputElement> | { target: { name: string; value: string } }) => void
   name?: string
   id?: string
@@ -16,7 +14,7 @@ type PhoneInputProps = {
   [key: string]: unknown
 }
 
-const PhoneInput = ({ value, onChange, ...props }: PhoneInputProps) => {
+const PhoneInput = ({ onChange, ...props }: PhoneInputProps) => {
   const [countryCode, setCountryCode] = useState("+91")
   const [phoneNumber, setPhoneNumber] = useState("")
 
@@ -31,9 +29,11 @@ const PhoneInput = ({ value, onChange, ...props }: PhoneInputProps) => {
   ]
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newPhone = e.target.value
-    setPhoneNumber(newPhone)
-    onChange({ target: { name: props.name ?? "", value: `${countryCode} ${newPhone}` } })
+    const raw = e.target.value
+    const numbersOnly = raw.replace(/\D/g, "")
+    if (numbersOnly.length > 15) return
+    setPhoneNumber(numbersOnly)
+    onChange({ target: { name: props.name ?? "", value: `${countryCode} ${numbersOnly}` } })
   }
 
   const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

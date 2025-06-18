@@ -1,0 +1,127 @@
+{
+  "TestPage": {
+    "title": "Page de Test",
+    "description": "Ceci est une page de test pour démontrer l'internationalisation.",
+    "status": {
+      "title": "Statut",
+      "message": "L'application fonctionne avec succès avec la localisation française."
+    }
+  },
+  "FinancialPage": {
+    "title": "Rapports Financiers",
+    "description": "Explorez nos publications financières trimestrielles et annuelles, nos résumés de performance, nos présentations aux investisseurs et nos rapports audités. La transparence est au cœur de notre engagement envers les parties prenantes et motive notre succès continu sur le marché.",
+    "recentReportsTitle": "Rapports Récents",
+    "viewAllButton": "Voir tous les rapports",
+    "downloadPdfButton": "Télécharger le PDF",
+    "viewOnlineButton": "Voir en ligne",
+    "commitmentTitle": "Engagement de Transparence Financière",
+    "commitmentDescription": "Nous nous engageons à fournir des informations financières opportunes, précises et complètes à toutes nos parties prenantes. Nos rapports sont préparés conformément aux normes comptables internationales et sont soumis à des processus d'audit rigoureux.",
+    "subscribeButton": "S'abonner aux mises à jour",
+    "contactButton": "Contacter les Relations Investisseurs",
+    "metrics": [
+      { "label": "Croissance du chiffre d'affaires" },
+      { "label": "Marge bénéficiaire nette" },
+      { "label": "ROE" },
+      { "label": "Ratio d'endettement" }
+    ],
+    "reports": [
+      {
+        "title": "Résultats Financiers T3 2024",
+        "type": "Rapport Trimestriel",
+        "date": "Octobre 2024",
+        "status": "Récent",
+        "description": "Résumé complet de la performance financière pour le troisième trimestre 2024, incluant la croissance des revenus, les marges bénéficiaires et les indicateurs clés."
+      },
+      {
+        "title": "Rapport Annuel 2023",
+        "type": "Rapport Annuel",
+        "date": "Mars 2024",
+        "status": "Audité",
+        "description": "États financiers annuels complets avec rapport de l'auditeur, discussion de la direction et analyse détaillée de la performance de l'entreprise."
+      },
+      {
+        "title": "Présentation aux Investisseurs T2 2024",
+        "type": "Présentation",
+        "date": "Juillet 2024",
+        "status": "Archivé",
+        "description": "Aperçu stratégique et faits saillants financiers présentés aux investisseurs institutionnels et aux analystes lors de l'appel sur les résultats trimestriels."
+      }
+    ]
+  },
+    "AboutUsSection": {
+    "title": "Notre Histoire",
+    "description": "Dans les pages de chaque récit épique, il y a un courant sous-jacent — une force invisible qui motive les personnages, façonne leurs choix et définit leur héritage. Chez Amaraa Holding, cette force, ce sont nos valeurs et notre culture.",
+    "buttons": {
+      "our-story": "Notre Histoire",
+      "values-culture": "Valeurs & Culture",
+      "governance": "Gouvernance",
+      "leadership": "Direction",
+      "csr": "RSE"
+    }
+},
+  "LegacySection": {
+    "mainTitle": "Fondation Amaraa",
+    "mainDescription": "Là où les rêves prennent leur envol et où l'innovation ne connaît pas de limites. Une constellation de visionnaires, de rêveurs et de bâtisseurs, qui unissent les industries et créent l'avenir.",
+    "subTitle": "Les Chapitres de Notre Héritage",
+    "subDescription": "Un voyage à travers nos étapes clés, nos réalisations et l'esprit visionnaire qui définit l'héritage durable du Groupe Amaraa.",
+    "exploreButton": "DÉCOUVRIR PLUS",
+    "knowMoreButton": "EN SAVOIR PLUS",
+    "companies": [
+      { "name": "Groupe Amaraa Agro Ltée.", "description": "Innovation en agriculture durable et biodiversité, cultivant l'avenir de l'agriculture avec des pratiques éco-conscientes et une technologie de pointe. Leader des pratiques agricoles durables sur plus de 50 000 acres avec certification biologique et systèmes d'irrigation intelligents." },
+      { "name": "Amaraa Security Shield Ltée.", "description": "Services de sécurité armée et de surveillance, protégeant ce qui compte le plus avec une technologie avancée et des professionnels formés. Solutions de sécurité complètes pour plus de 500 clients avec surveillance 24/7 et capacités de réponse rapide." },
+      { "name": "Groupe Amaraa Auto Ltée.", "description": "Import/export automobile et conception de véhicules électriques, menant l'avenir des solutions de transport durable. Pionnier de la technologie des véhicules électriques avec des partenariats dans 15 pays et des solutions de flotte à zéro émission." },
+      { "name": "Amaraa Services Informatiques Ltée.", "description": "Développement de logiciels et cybersécurité, connectant le monde grâce à des solutions numériques innovantes et des plateformes sécurisées. Fourniture de solutions logicielles d'entreprise et de services de cybersécurité aux entreprises du Fortune 500 dans le monde entier." },
+      { "name": "Amaraa Aliments & Boissons Ltée.", "description": "Produits de la ferme à la table axés sur la durabilité, apportant des saveurs authentiques tout en préservant notre planète. Production alimentaire biologique avec des partenariats directs avec les agriculteurs et des emballages durables pour 25 gammes de produits." },
+      { "name": "Amaraa Aviation Ltée.", "description": "Compagnie aérienne à service complet et services d'aviation éco-conscients, reliant les destinations tout en prenant soin de l'environnement. Exploitation de plus de 50 avions avec des vols neutres en carbone et des services passagers premium vers plus de 100 destinations." },
+      { "name": "Amaraa Immobilier Ltée.", "description": "Développement urbain durable et solutions de construction écologique, créant des espaces en harmonie avec la nature. Projets certifiés LEED avec intégration de villes intelligentes et initiatives de logements abordables." },
+      { "name": "Amaraa Solutions Énergétiques Ltée.", "description": "Énergie renouvelable et production d'électricité propre, éclairant la voie vers un avenir durable. Projets solaires et éoliens générant plus de 500 MW d'énergie propre avec des solutions de stockage par batterie." },
+      { "name": "Amaraa Santé Ltée.", "description": "Services de santé complets et innovation médicale, favorisant la santé et la guérison des communautés. Hôpitaux multi-spécialités et services de télémédecine atteignant les communautés rurales avec des soins médicaux avancés." },
+      { "name": "Fondation Amaraa pour l'Éducation", "description": "Excellence éducative et programmes de développement des compétences, donnant aux esprits les moyens de façonner demain. Établissements d'enseignement desservant plus de 10 000 étudiants avec des programmes de bourses et une formation professionnelle." },
+      { "name": "Amaraa Logistique Ltée.", "description": "Chaîne d'approvisionnement efficace et solutions de transport, déplaçant les marchandises et connectant les marchés de manière transparente. Logistique de bout en bout avec optimisation d'itinéraire par IA et capacités de chaîne du froid." },
+      { "name": "Amaraa Fabrication Ltée.", "description": "Fabrication de pointe et solutions industrielles, créant des produits de qualité avec précision et soin. Usines de fabrication intelligentes avec intégration de l'Industrie 4.0 et processus de production sans déchets." },
+      { "name": "Amaraa Services d'Ingénierie Ltée.", "description": "Conseil en ingénierie expert et gestion de projet, construisant l'infrastructure de demain. Excellence en ingénierie dans les projets d'infrastructure avec la technologie BIM et des pratiques de conception durables." },
+      { "name": "Amaraa Commerce Mondial Ltée.", "description": "Commerce international et services d'exportation, reliant les marchés et favorisant les partenariats mondiaux. Partenariats commerciaux dans plus de 40 pays avec le négoce de matières premières et des solutions de financement à l'exportation." },
+      { "name": "Amaraa Innovations Technologiques Ltée.", "description": "Recherche technologique de pointe et solutions d'IA, pionnier de la prochaine génération d'innovation. Solutions d'IA et d'IoT avec plus de 50 brevets et des partenariats de recherche avec des universités de premier plan." },
+      { "name": "Amaraa Services Financiers Ltée.", "description": "Solutions financières complètes et services d'investissement, créant de la richesse et sécurisant l'avenir. Banque d'investissement et gestion de patrimoine avec plus de 2 milliards de dollars d'actifs sous gestion." },
+      { "name": "Amaraa Hôtellerie Ltée.", "description": "Hôtellerie de luxe et services touristiques, créant des expériences mémorables avec un service exceptionnel. Hôtels et complexes hôteliers de luxe avec des pratiques de tourisme durable et des initiatives de préservation culturelle." },
+      { "name": "Amaraa Médias & Communications Ltée.", "description": "Médias numériques et solutions de communication, amplifiant les histoires et connectant les communautés. Marketing numérique et création de contenu avec une audience de plus de 100 millions de personnes sur plusieurs plateformes." },
+      { "name": "Amaraa Sports & Loisirs Ltée.", "description": "Développement sportif et installations de loisirs, promouvant la santé, la forme physique et l'esprit de compétition. Académies sportives et installations de loisirs promouvant le développement des jeunes et l'athlétisme professionnel." },
+      { "name": "Amaraa Solutions Environnementales Ltée.", "description": "Conservation de l'environnement et gestion des déchets, protégeant notre planète pour les générations futures. Projets de valorisation énergétique des déchets et assainissement de l'environnement avec des programmes de compensation carbone." },
+      { "name": "Amaraa Conseil Ltée.", "description": "Conseil stratégique en affaires et services consultatifs, guidant les organisations vers un succès durable. Conseil en gestion avec une expertise en transformation numérique et en stratégies de durabilité." }
+    ]
+  },
+  "InspiringHighlights": {
+    "title": "Moments Forts Inspirants",
+    "description": "Découvrez nos communiqués de presse, nos analyses sectorielles et notre couverture médiatique, qui mettent en lumière nos réalisations, nos innovations et nos contributions dans tous les secteurs.",
+    "readNowButton": "LIRE MAINTENANT",
+    "highlights": [
+      {
+        "title": "Construire des Communautés Durables : Notre Vision Immobilière",
+        "description": "Les projets immobiliers du Groupe Amaraa créent des espaces verts, inclusifs et prêts pour l'avenir pour un mode de vie moderne."
+      },
+      {
+        "title": "Renforcer la Nation : La Contribution d'Amaraa à la Défense",
+        "description": "Plongez dans le rôle central du Groupe Amaraa dans l'avancement des capacités de défense de l'Inde et la garantie de la sécurité nationale."
+      },
+      {
+        "title": "Alimenter un Avenir Plus Vert : Les Initiatives Énergétiques d'Amaraa",
+        "description": "Découvrez comment le Groupe Amaraa stimule l'innovation dans les énergies renouvelables, des parcs solaires aux projets éoliens."
+      },
+      {
+        "title": "Construire des Communautés Durables : Notre Vision Immobilière",
+        "description": "Les projets immobiliers du Groupe Amaraa créent des espaces verts, inclusifs et prêts pour l'avenir pour un mode de vie moderne."
+      },
+      {
+        "title": "Renforcer la Nation : La Contribution d'Amaraa à la Défense",
+        "description": "Plongez dans le rôle central du Groupe Amaraa dans l'avancement des capacités de défense de l'Inde et la garantie de la sécurité nationale."
+      }
+    ]
+  },
+  "StoryBannerSection": {
+    "title": "Une Histoire Écrite dans les Étoiles",
+    "descriptionMobile": "Le cœur d'Amaraa Holding bat au rythme de l'ambition. Nous ne sommes pas simplement une entreprise ; nous sommes un mouvement, une idée qui a jailli des salles de conseil pour entrer dans le monde réel.",
+    "descriptionDesktop": "Le cœur d'Amaraa Holding bat au rythme de l'ambition. Nous ne sommes pas simplement une entreprise ; nous sommes un mouvement, une idée qui a jailli des salles de conseil pour entrer dans le monde réel. Chaque filiale, chaque innovation, est une nouvelle page de notre épopée en constante expansion.",
+    "discoverButton": "DÉCOUVRIR PLUS",
+    "logoAlt": "Logo d'Amaraa Holding"
+  }
+}

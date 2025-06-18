@@ -1,35 +1,28 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
-import { ThemeProvider } from '../components/themes/theme-provider'
-import LayoutWrapper from '@/components/LayoutWrapper'
-
-const inter = Inter({ subsets: ['latin'] })
+import { headers } from 'next/headers'
 
 export const metadata: Metadata = {
   title: 'Amaraa Global',
   description: 'Amaraa Global',
-   icons: {
+  icons: {
     icon: '/favicon.ico',
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const headersList = await headers()
+  const pathname = headersList.get('x-pathname') || ''
+  const locale = pathname.split('/')[1] || 'en' 
+  
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-        <LayoutWrapper>{children}</LayoutWrapper>
-        </ThemeProvider>
+    <html lang={locale}>
+      <body>
+        {children}
       </body>
     </html>
   )

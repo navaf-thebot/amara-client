@@ -1,11 +1,11 @@
 'use client';
-import { usePathname } from 'next/navigation';
+import { usePathname } from '@/i18n/navigation';
 import Navbar from './navbar/Navbar';
 import Footer from './Footer';
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  
+
   const isHome = pathname === '/';
 
   return (

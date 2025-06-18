@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, Play, ArrowRight } from 'lucide-react'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'; 
 import Image from 'next/image'
 
 const heroSlides = [
@@ -105,7 +105,7 @@ export default function HeroSection() {
               src={slide.image}
               alt={slide.title}
               fill
-              sizes="100vw"
+              sizes=""
               priority={index === 0}
               className="w-full h-full object-cover"
             />

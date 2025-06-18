@@ -2,7 +2,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Shield, Eye, Scale, Leaf, ChevronRight, Users, FileText } from "lucide-react";
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation'; 
 import TypewriterQuote from '@/shared/TypewriterQuote';
 
 

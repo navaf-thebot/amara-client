@@ -14,7 +14,7 @@ import {
   Zap
 } from "lucide-react";
 import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation'; 
 
 function CSRSection() {
   const [activeTab, setActiveTab] = useState('impact');

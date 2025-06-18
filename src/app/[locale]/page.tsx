@@ -1,5 +1,5 @@
 import AboutUs from '@/components/AboutUs/About'
-import HeroSection from '../components/LandingSection/HeroCompo'
+import HeroSection from '@/components/LandingSection/HeroCompo'
 import AmaraaHolding from '@/components/AmaraFoundation'
 import InspiringHighlights from '@/components/InspiringHighlights'
 import StoryBannerSection from '@/components/StoryBanner'

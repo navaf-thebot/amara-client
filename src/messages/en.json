@@ -1,0 +1,190 @@
+{
+  "TestPage": {
+    "title": "Test Page",
+    "description": "This is a test page for demonstrating internationalization.",
+    "status": {
+      "title": "Status",
+      "message": "Application is running successfully with English localization."
+    }
+  },
+  "FinancialPage": {
+    "title": "Financial Reports",
+    "description": "Explore our quarterly and annual financial disclosures, performance summaries, investor presentations, and audited reports. Transparency is at the core of our commitment to stakeholders and drives our continued success in the marketplace.",
+    "recentReportsTitle": "Recent Reports",
+    "viewAllButton": "View All Reports",
+    "downloadPdfButton": "Download PDF",
+    "viewOnlineButton": "View Online",
+    "commitmentTitle": "Financial Transparency Commitment",
+    "commitmentDescription": "We are committed to providing timely, accurate, and comprehensive financial information to all our stakeholders. Our reports are prepared in accordance with international accounting standards and are subject to rigorous audit processes.",
+    "subscribeButton": "Subscribe to Updates",
+    "contactButton": "Contact Investor Relations",
+    "metrics": [
+      { "label": "Revenue Growth" },
+      { "label": "Net Profit Margin" },
+      { "label": "ROE" },
+      { "label": "Debt-to-Equity" }
+    ],
+    "reports": [
+      {
+        "title": "Q3 2024 Financial Results",
+        "type": "Quarterly Report",
+        "date": "October 2024",
+        "status": "Latest",
+        "description": "Comprehensive financial performance summary for the third quarter of 2024, including revenue growth, profit margins, and key metrics."
+      },
+      {
+        "title": "Annual Report 2023",
+        "type": "Annual Report",
+        "date": "March 2024",
+        "status": "Audited",
+        "description": "Complete annual financial statements with auditor's report, management discussion, and detailed analysis of business performance."
+      },
+      {
+        "title": "Investor Presentation Q2 2024",
+        "type": "Presentation",
+        "date": "July 2024",
+        "status": "Archived",
+        "description": "Strategic overview and financial highlights presented to institutional investors and analysts during the quarterly earnings call."
+      }
+    ]
+  },
+  "AboutUsSection": {
+    "title": "Our Story",
+    "description": "In the pages of every epic story, there is an undercurrent—an invisible force that drives the characters, shapes their choices, and defines their legacy. At Amaraa Holding, that force is our values and culture.",
+    "buttons": {
+      "our-story": "Our Story",
+      "values-culture": "Values & Culture",
+      "governance": "Governance",
+      "leadership": "Leadership",
+      "csr": "CSR"
+    }
+  },
+  "LegacySection": {
+    "mainTitle": "Amaraa Foundation",
+    "mainDescription": "Where Dreams Take Flight and Innovation Knows No Boundaries. A constellation of visionaries, dreamers, and doers, weaving together industries and creating the future.",
+    "subTitle": "The Chapters of Our Legacy",
+    "subDescription": "A journey through our milestones, achievements, and the visionary spirit that defines Amaraa Group's enduring legacy.",
+    "exploreButton": "EXPLORE MORE",
+    "knowMoreButton": "KNOW MORE",
+    "companies": [
+      {
+        "name": "Amaraa Agro Group Ltd.",
+        "description": "Sustainable agriculture and biodiversity innovation, cultivating the future of farming with eco-conscious practices and cutting-edge technology. Leading sustainable farming practices across 50,000+ acres with organic certification and smart irrigation systems."
+      },
+      {
+        "name": "Amaraa Security Shield Ltd.",
+        "description": "Armed security and surveillance services, protecting what matters most with advanced technology and trained professionals. Comprehensive security solutions serving 500+ clients with 24/7 monitoring and rapid response capabilities."
+      },
+      {
+        "name": "Amaraa Auto Group Ltd.",
+        "description": "Auto import/export and electric vehicle design, driving the future of sustainable transportation solutions. Pioneering electric vehicle technology with partnerships across 15 countries and zero-emission fleet solutions."
+      },
+      {
+        "name": "Amaraa IT Services Ltd.",
+        "description": "Software development and cybersecurity, connecting the world through innovative digital solutions and secure platforms. Delivering enterprise software solutions and cybersecurity services to Fortune 500 companies globally."
+      },
+      {
+        "name": "Amaraa Food & Beverages Ltd.",
+        "description": "Farm-to-table products with a focus on sustainability, bringing authentic flavors while preserving our planet. Organic food production with direct farmer partnerships and sustainable packaging across 25 product lines."
+      },
+      {
+        "name": "Amaraa Aviation Ltd.",
+        "description": "Full-service airline and eco-conscious aviation services, connecting destinations while caring for the environment. Operating 50+ aircraft with carbon-neutral flights and premium passenger services across 100+ destinations."
+      },
+      {
+        "name": "Amaraa Real Estate Ltd.",
+        "description": "Sustainable urban development and green building solutions, creating spaces that harmonize with nature. LEED-certified developments with smart city integration and affordable housing initiatives."
+      },
+      {
+        "name": "Amaraa Energy Solutions Ltd.",
+        "description": "Renewable energy and clean power generation, illuminating the path to a sustainable future. Solar and wind energy projects generating 500MW+ clean power with battery storage solutions."
+      },
+      {
+        "name": "Amaraa Healthcare Ltd.",
+        "description": "Comprehensive healthcare services and medical innovation, nurturing health and healing communities. Multi-specialty hospitals and telemedicine services reaching rural communities with advanced medical care."
+      },
+      {
+        "name": "Amaraa Education Foundation",
+        "description": "Educational excellence and skill development programs, empowering minds to shape tomorrow. Educational institutions serving 10,000+ students with scholarship programs and vocational training."
+      },
+      {
+        "name": "Amaraa Logistics Ltd.",
+        "description": "Efficient supply chain and transportation solutions, moving goods and connecting markets seamlessly. End-to-end logistics with AI-powered route optimization and cold chain capabilities."
+      },
+      {
+        "name": "Amaraa Manufacturing Ltd.",
+        "description": "Advanced manufacturing and industrial solutions, crafting quality products with precision and care. Smart manufacturing facilities with Industry 4.0 integration and zero-waste production processes."
+      },
+      {
+        "name": "Amaraa Engineering Services Ltd.",
+        "description": "Expert engineering consultancy and project management, building the infrastructure of tomorrow. Engineering excellence in infrastructure projects with BIM technology and sustainable design practices."
+      },
+      {
+        "name": "Amaraa Global Trading Ltd.",
+        "description": "International trade and export services, bridging markets and fostering global partnerships. Trade partnerships across 40+ countries with commodity trading and export financing solutions."
+      },
+      {
+        "name": "Amaraa Tech Innovations Ltd.",
+        "description": "Cutting-edge technology research and AI solutions, pioneering the next generation of innovation. AI and IoT solutions with 50+ patents and research partnerships with leading universities."
+      },
+      {
+        "name": "Amaraa Financial Services Ltd.",
+        "description": "Comprehensive financial solutions and investment services, building wealth and securing futures. Investment banking and wealth management with $2B+ assets under management."
+      },
+      {
+        "name": "Amaraa Hospitality Ltd.",
+        "description": "Luxury hospitality and tourism services, creating memorable experiences with exceptional service. Premium hotels and resorts with sustainable tourism practices and cultural preservation initiatives."
+      },
+      {
+        "name": "Amaraa Media & Communications Ltd.",
+        "description": "Digital media and communication solutions, amplifying stories and connecting communities. Digital marketing and content creation with 100M+ audience reach across multiple platforms."
+      },
+      {
+        "name": "Amaraa Sports & Recreation Ltd.",
+        "description": "Sports development and recreational facilities, promoting health, fitness, and competitive spirit. Sports academies and recreational facilities promoting youth development and professional athletics."
+      },
+      {
+        "name": "Amaraa Environmental Solutions Ltd.",
+        "description": "Environmental conservation and waste management, protecting our planet for future generations. Waste-to-energy projects and environmental remediation with carbon offset programs."
+      },
+      {
+        "name": "Amaraa Consulting Ltd.",
+        "description": "Strategic business consulting and advisory services, guiding organizations toward sustainable success. Management consulting with expertise in digital transformation and sustainability strategies."
+      }
+    ]
+  },
+  "InspiringHighlights": {
+    "title": "Inspiring Highlights",
+    "description": "Explore our press releases, industry insights, and media coverage, highlighting our achievements, innovations, and contributions across sectors.",
+    "readNowButton": "READ NOW",
+    "highlights": [
+      {
+        "title": "Building Sustainable Communities: Our Real Estate Vision",
+        "description": "Amaraa Group's real estate ventures are creating green, inclusive, and future-ready spaces for modern living."
+      },
+      {
+        "title": "Empowering the Nation: Amaraa's Contribution to Defense",
+        "description": "Delve into Amaraa Group's pivotal role in advancing India's defense capabilities and ensuring national security."
+      },
+      {
+        "title": "Powering a Greener Future: Amaraa's Energy Initiatives",
+        "description": "Explore how Amaraa Group is driving innovation in renewable energy, from solar farms to wind power projects."
+      },
+      {
+        "title": "Building Sustainable Communities: Our Real Estate Vision",
+        "description": "Amaraa Group's real estate ventures are creating green, inclusive, and future-ready spaces for modern living."
+      },
+      {
+        "title": "Empowering the Nation: Amaraa's Contribution to Defense",
+        "description": "Delve into Amaraa Group's pivotal role in advancing India's defense capabilities and ensuring national security."
+      }
+    ]
+  },
+  "StoryBannerSection": {
+    "title": "A Story Written in the Stars",
+    "descriptionMobile": "The heart of Amaraa Holding beats with the rhythm of ambition. We are not merely a company; we are a movement, an idea that has leapt from boardrooms into the real world.",
+    "descriptionDesktop": "The heart of Amaraa Holding beats with the rhythm of ambition. We are not merely a company; we are a movement, an idea that has leapt from boardrooms into the real world. Every subsidiary, every innovation, is a new page in our ever-expanding epic.",
+    "discoverButton": "DISCOVER MORE",
+    "logoAlt": "Amaraa Holding Logo"
+  }
+}

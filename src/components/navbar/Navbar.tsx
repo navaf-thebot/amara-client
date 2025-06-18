@@ -1,12 +1,12 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import Link from 'next/link';
+import { usePathname, Link } from '@/i18n/navigation'; 
 import { Search, ChevronDown, ExternalLink, Menu, X } from 'lucide-react';
 import { FaInstagram, } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { ModeToggle } from '../themes/ModeToggle';
+import LanguageSwitcher from '../LanguageSwitcher';
 
 const navLinks = [
   'About Us',
@@ -66,7 +66,7 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const pathname = usePathname();
 
-  const isHomePage = pathname === '/';
+  const isHomePage = pathname === `/`;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -134,7 +134,7 @@ const Header = () => {
     <div onMouseLeave={handleMouseLeave} className="relative">
       <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${shouldAppearScrolled ? 'opacity-0 -translate-y-full pointer-events-none' : 'opacity-100 translate-y-0'}`}>
         <div className="bg-gradient-to-r from-slate-800 to-slate-900 border-b border-slate-700">
-          <div className="container mx-auto px-6 h-12 flex justify-between items-center">
+          <div className="container mx-auto px-6 h-16 flex justify-between items-center">
             <div className="flex items-center space-x-6">
               <Link
                 href="/contact"
@@ -165,7 +165,7 @@ const Header = () => {
       <header
         className={`fixed left-0 right-0 z-50 transition-all duration-300 ease-in-out ${shouldAppearScrolled
             ? 'top-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-gray-200 dark:border-gray-700'
-            : 'top-12 bg-black/40 py-2'
+            : 'top-16 bg-black/70 py-2'
           }`}
       >
         <div className={`container mx-auto px-6 flex justify-between items-center transition-all duration-300 ease-in-out ${shouldAppearScrolled ? 'h-16' : 'h-20'}`}>
@@ -173,9 +173,9 @@ const Header = () => {
             <Image
               src="/images/logo/white-logo.png"
               alt="RIL Logo"
-              width={shouldAppearScrolled ? 90 : 130}
+              width={shouldAppearScrolled ? 83 : 110}
               height={shouldAppearScrolled ? 35 : 50}
-              className="transition-all duration-300 mt-1 drop-shadow-lg"
+              className="transition-all duration-300 mt-2 drop-shadow-lg"
             />
           </Link>
 
@@ -229,6 +229,13 @@ const Header = () => {
                 : 'text-white'
               }`}>
               <ModeToggle />
+            </div>
+              
+            <div className={`transition-colors duration-300 ${shouldAppearScrolled
+                ? 'text-gray-600 dark:text-gray-300'
+                : 'text-white'
+              }`}>
+              <LanguageSwitcher />
             </div>
 
             <button
