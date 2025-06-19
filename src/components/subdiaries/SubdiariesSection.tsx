@@ -1,7 +1,7 @@
 'use client';
 import {
   Leaf, Shield, Car, Plane, Monitor, Coffee, Building, Zap, Heart, GraduationCap,
-  Truck, Factory, Wrench, Globe, Smartphone, Briefcase, Home, Users, Award, Target, Star,
+  Truck, Factory, Wrench, Globe, Briefcase, Home, Users, Award, Star,
 } from "lucide-react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useRef } from "react";
@@ -77,9 +77,6 @@ function SubsidiariesPage() {
       name: "Amaraa Global Trading Ltd.", chapter: "Chapter of Commerce", description: "International trade and export services, bridging markets and fostering global partnerships.", icon: Globe, details: "Trade partnerships across 40+ countries with commodity trading and export financing solutions.",
     },
     {
-      name: "Amaraa Tech Innovations Ltd.", chapter: "Chapter of Future", description: "Cutting-edge technology research and AI solutions, pioneering the next generation of innovation.", icon: Smartphone, details: "AI and IoT solutions with 50+ patents and research partnerships with leading universities.",
-    },
-    {
       name: "Amaraa Financial Services Ltd.", chapter: "Chapter of Prosperity", description: "Comprehensive financial solutions and investment services, building wealth and securing futures.", icon: Briefcase, details: "Investment banking and wealth management with $2B+ assets under management.",
     },
     {
@@ -92,18 +89,15 @@ function SubsidiariesPage() {
       name: "Amaraa Sports & Recreation Ltd.", chapter: "Chapter of Excellence", description: "Sports development and recreational facilities, promoting health, fitness, and competitive spirit.", icon: Award, details: "Sports academies and recreational facilities promoting youth development and professional athletics.",
     },
     {
-      name: "Amaraa Environmental Solutions Ltd.", chapter: "Chapter of Stewardship", description: "Environmental conservation and waste management, protecting our planet for future generations.", icon: Target, details: "Waste-to-energy projects and environmental remediation with carbon offset programs.",
-    },
-    {
       name: "Amaraa Consulting Ltd.", chapter: "Chapter of Wisdom", description: "Strategic business consulting and advisory services, guiding organizations toward sustainable success.", icon: Star, details: "Management consulting with expertise in digital transformation and sustainability strategies.",
     },
   ];
 
   const stats = [
     { value: 21, suffix: "+", label: "Subsidiaries", description: "Diverse business verticals" },
-    { value: 50, suffix: "+", label: "Countries", description: "Global presence" },
+    { value: 6, suffix: "+", label: "Countries", description: "Global presence" },
     { value: 100000, suffix: "+", label: "Employees", description: "Passionate professionals" },
-    { value: 5, suffix: "B+", label: "Revenue", description: "Annual consolidated" },
+    { value: 40, suffix: "B+", label: "Revenue", description: "Annual consolidated" },
   ];
 
   return (

@@ -156,7 +156,7 @@ export default function OurStoryPage() {
                 <div className="text-sm text-gray-600 dark:text-gray-400">Years Legacy</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-[#c6a35d]"> <CountUp end={50} suffix="+" /></div>
+                <div className="text-3xl font-bold text-[#c6a35d]"> <CountUp end={6} suffix="+" /></div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">Countries</div>
               </div>
               <div className="text-center">

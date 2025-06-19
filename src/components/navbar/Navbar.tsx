@@ -134,7 +134,7 @@ const Header = () => {
     <div onMouseLeave={handleMouseLeave} className="relative">
       <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${shouldAppearScrolled ? 'opacity-0 -translate-y-full pointer-events-none' : 'opacity-100 translate-y-0'}`}>
         <div className="bg-gradient-to-r from-slate-800 to-slate-900 border-b border-slate-700">
-          <div className="container mx-auto px-6 h-16 flex justify-between items-center">
+          <div className="container mx-auto px-6 h-16 flex justify-end gap-10 items-center">
             <div className="flex items-center space-x-6">
               <Link
                 href="/contact"
@@ -149,7 +149,6 @@ const Header = () => {
                 Fraud Alert
               </Link>
             </div>
-            <div></div>
             <div className="flex items-center space-x-4">
               <Link href="https://x.com/HouseOfAmaraa" target="_blank" rel="noopener noreferrer">
                 <FaXTwitter className="w-5 h-5 text-slate-400 hover:text-gray-600 transition-colors duration-200" />

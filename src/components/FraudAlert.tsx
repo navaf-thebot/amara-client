@@ -49,9 +49,9 @@ export default function FraudAlert() {
     "Amaraa IT Services Ltd.", "Amaraa Food & Beverages Ltd.", "Amaraa Aviation Ltd.",
     "Amaraa Real Estate Ltd.", "Amaraa Energy Solutions Ltd.", "Amaraa Healthcare Ltd.",
     "Amaraa Education Foundation", "Amaraa Logistics Ltd.", "Amaraa Manufacturing Ltd.",
-    "Amaraa Engineering Services Ltd.", "Amaraa Global Trading Ltd.", "Amaraa Tech Innovations Ltd.",
+     "Amaraa Global Trading Ltd.",
     "Amaraa Financial Services Ltd.", "Amaraa Hospitality Ltd.", "Amaraa Media & Communications Ltd.",
-    "Amaraa Sports & Recreation Ltd.", "Amaraa Environmental Solutions Ltd.", "Amaraa Consulting Ltd."
+    "Amaraa Sports & Recreation Ltd.", "Amaraa Consulting Ltd."
   ];
 
   return (

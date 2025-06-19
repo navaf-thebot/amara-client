@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 
 const companyStaticData = [
   { image: '/images/chapter-agra.jpg' },
@@ -133,9 +134,9 @@ const LegacySection = () => {
           <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">
             {t('subDescription')}
           </p>
-          <button className="px-6 py-3 border-2 border-[#c6a35d] text-[#c6a35d] font-semibold rounded-lg hover:bg-[#c6a35d] cursor-pointer hover:text-white transition-colors duration-300">
+          < Link href="/business" className="px-6 py-3 border-2 border-[#c6a35d] text-[#c6a35d] font-semibold rounded-lg hover:bg-[#c6a35d] cursor-pointer hover:text-white transition-colors duration-300">
             {t('exploreButton')}
-          </button>
+          </Link>
         </div>
       </div>
 

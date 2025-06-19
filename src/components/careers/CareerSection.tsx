@@ -1,7 +1,8 @@
-/* eslint-disable @next/next/no-img-element */
 "use client"
 
+import { Link } from "@/i18n/navigation";
 import JobApplicationModal from "@/modal/AuthModal";
+import CountUp from "@/shared/CountUp";
 import {
   Users,
   Heart,
@@ -23,6 +24,7 @@ import { useState, useEffect } from "react";
 
 export default function CareersPage() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [showAllJobs, setShowAllJobs] = useState(false);
   const [isVisible, setIsVisible] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
@@ -186,7 +188,7 @@ export default function CareersPage() {
   const openRoles = [
     {
       title: "Senior Software Engineer",
-      department: "Technology",
+      department: "IT Services",
       location: "Mumbai, India",
       type: "Full-time",
       level: "Senior",
@@ -213,7 +215,7 @@ export default function CareersPage() {
     },
     {
       title: "Agricultural Research Scientist",
-      department: "Agriculture",
+      department: "Agro Group",
       location: "Bangalore, India",
       type: "Full-time",
       level: "Senior",
@@ -222,14 +224,87 @@ export default function CareersPage() {
     },
     {
       title: "Financial Analyst",
-      department: "Finance",
+      department: "Financial Services",
       location: "London, UK",
       type: "Full-time",
       level: "Entry",
       urgent: false,
       salary: "£45-55K",
     },
-  ]
+    {
+      title: "Cybersecurity Specialist",
+      department: "Security Shield",
+      location: "Hyderabad, India",
+      type: "Full-time",
+      level: "Mid-level",
+      urgent: true,
+      salary: "₹20-28L",
+    },
+    {
+      title: "Logistics Coordinator",
+      department: "Logistics",
+      location: "Singapore",
+      type: "Full-time",
+      level: "Mid-level",
+      urgent: false,
+      salary: "SGD 60-75K",
+    },
+    {
+      title: "Real Estate Development Manager",
+      department: "Real Estate",
+      location: "New York, USA",
+      type: "Full-time",
+      level: "Senior",
+      urgent: false,
+      salary: "$120-150K",
+    },
+    {
+      title: "Renewable Energy Engineer",
+      department: "Energy Solutions",
+      location: "Berlin, Germany",
+      type: "Full-time",
+      level: "Mid-level",
+      urgent: true,
+      salary: "€70-85K",
+    },
+    {
+      title: "Brand Manager",
+      department: "Media & Communications",
+      location: "Mumbai, India",
+      type: "Full-time",
+      level: "Mid-level",
+      urgent: false,
+      salary: "₹15-22L",
+    },
+    {
+      title: "Supply Chain Analyst",
+      department: "Manufacturing",
+      location: "Pune, India",
+      type: "Full-time",
+      level: "Entry",
+      urgent: false,
+      salary: "₹12-16L",
+    },
+    {
+      title: "Hotel General Manager",
+      department: "Hospitality",
+      location: "Goa, India",
+      type: "Full-time",
+      level: "Senior",
+      urgent: true,
+      salary: "₹30-40L",
+    },
+    {
+      title: "Management Consultant",
+      department: "Consulting",
+      location: "Remote",
+      type: "Contract",
+      level: "Senior",
+      urgent: false,
+      salary: "$100-150/hr",
+    },
+  ];
+  const displayedRoles = showAllJobs ? openRoles : openRoles.slice(0, 5);
 
   const stats = [
     { number: "100K+", label: "Global Professionals", icon: Users },
@@ -264,14 +339,14 @@ export default function CareersPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="group px-8 py-4 bg-[#c6a35d] hover:bg-[#b8954f] text-white font-montserrat font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#c6a35d]/25 flex items-center justify-center space-x-2">
+                <a href="#section-jobs" className="group px-8 py-4 bg-[#c6a35d] hover:bg-[#b8954f] text-white font-montserrat font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#c6a35d]/25 flex items-center justify-center space-x-2">
                   <span>Explore Opportunities</span>
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                </button>
-                <button className="group px-8 py-4 border-2 border-[#232323] dark:border-white text-[#232323] dark:text-white hover:bg-[#232323] hover:text-white dark:hover:bg-white dark:hover:text-[#232323] font-montserrat font-semibold rounded-lg transition-all duration-300 flex items-center justify-center space-x-2">
+                </a>
+                <Link href="/about/our-story" className="group cursor-pointer px-8 py-4 border-2 border-[#232323] dark:border-white text-[#232323] dark:text-white hover:bg-[#232323] hover:text-white dark:hover:bg-white dark:hover:text-[#232323] font-montserrat font-semibold rounded-lg transition-all duration-300 flex items-center justify-center space-x-2">
                   <Play className="w-5 h-5" />
                   <span>Our Story</span>
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -284,7 +359,7 @@ export default function CareersPage() {
                       <div className="w-2 h-2 bg-[#c6a35d] rounded-full"></div>
                     </div>
                     <div className="font-bodoni text-3xl font-bold text-[#232323] dark:text-white mb-2">
-                      {stat.number}
+                      <CountUp end={parseInt(stat.number.replace(/\D/g, ''))} suffix="+" />
                     </div>
                     <div className="font-montserrat text-sm text-gray-600 dark:text-gray-400">
                       {stat.label}
@@ -524,8 +599,8 @@ export default function CareersPage() {
           </div>
 
           <div className="space-y-6">
-            {openRoles.map((role, index) => (
-              <div key={role.title} className={`group bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-800 rounded-2xl p-6 sm:p-8 hover:shadow-xl transition-all duration-300 hover:border-[#c6a35d]/50 ${isVisible['section-jobs'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: `${index * 100}ms` }}>
+=            {displayedRoles.map((role, index) => (
+              <div key={`${role.title}-${index}`} className={`group bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-800 rounded-2xl p-6 sm:p-8 hover:shadow-xl transition-all duration-300 hover:border-[#c6a35d]/50 ${isVisible['section-jobs'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: `${index * 100}ms` }}>
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
                   <div className="flex-1 space-y-4">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -579,9 +654,12 @@ export default function CareersPage() {
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <button className="px-10 py-4 border-2 border-[#c6a35d] text-[#c6a35d] hover:bg-[#c6a35d] hover:text-white font-montserrat font-semibold rounded-lg transition-all duration-300 hover:shadow-lg">
-              View All Open Positions
+=          <div className="text-center mt-12">
+            <button
+              onClick={() => setShowAllJobs(!showAllJobs)}
+              className="px-10 cursor-pointer py-4 border-2 border-[#c6a35d] text-[#c6a35d] hover:bg-[#c6a35d] hover:text-white font-montserrat font-semibold rounded-lg transition-all duration-300 hover:shadow-lg"
+            >
+              {showAllJobs ? 'Show Less Positions' : 'View All Open Positions'}
             </button>
           </div>
         </div>
@@ -608,12 +686,12 @@ export default function CareersPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button className="group px-12 py-5 bg-[#c6a35d] hover:bg-[#b8954f] text-white font-montserrat font-semibold text-lg rounded-lg transition-all duration-300 hover:shadow-xl hover:shadow-[#c6a35d]/25 hover:scale-105">
+              <button onClick={() => setIsAuthModalOpen(true)} className="group cursor-pointer px-12 py-5 bg-[#c6a35d] hover:bg-[#b8954f] text-white font-montserrat font-semibold text-lg rounded-lg transition-all duration-300 hover:shadow-xl hover:shadow-[#c6a35d]/25 hover:scale-105">
                 <span>Start Your Journey Today</span>
               </button>
-              <button className="group px-12 py-5 border-2 border-[#232323] dark:border-white text-[#232323] dark:text-white hover:bg-[#232323] hover:text-white dark:hover:bg-white dark:hover:text-[#232323] font-montserrat font-semibold text-lg rounded-lg transition-all duration-300 hover:shadow-lg">
+              <Link href="/about/values-culture" className="group cursor-pointer px-12 py-5 border-2 border-[#232323] dark:border-white text-[#232323] dark:text-white hover:bg-[#232323] hover:text-white dark:hover:bg-white dark:hover:text-[#232323] font-montserrat font-semibold text-lg rounded-lg transition-all duration-300 hover:shadow-lg">
                 <span>Learn About Our Culture</span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
