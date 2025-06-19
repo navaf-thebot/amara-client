@@ -2,39 +2,45 @@
 
 import { useState } from 'react';
 import { Link } from '@/i18n/navigation'; 
+import { useTranslations } from 'next-intl';
 import { Shield, Cookie, FileText } from 'lucide-react';
 
-const policiesData = [
+const policiesStaticData = [
   {
     id: 'privacy',
-    title: 'Our Commitment to Your Privacy',
-    description: 'We value the trust you place in us. Our Privacy Policy details how we handle your personal information with care and transparency.',
-    buttonText: 'Read Our Privacy Policy',
     href: '/privacy-policy',
     Icon: Shield,
   },
   {
     id: 'cookies',
-    title: 'How We Use Cookies',
-    description: 'Our website uses cookies to enhance your browsing experience. Learn about the types of cookies we use and how you can manage them.',
-    buttonText: 'View Our Cookie Policy',
     href: '/cookie-policy',
     Icon: Cookie,
   },
   {
     id: 'terms',
-    title: 'Terms of Service',
-    description: 'By using our platform, you agree to our terms. This document governs your use of the Amaraa website and services. Please read it carefully.',
-    buttonText: 'Review Our Terms of Service',
     href: '/terms-of-service',
     Icon: FileText,
   },
 ];
 
 const PolicySwitcherSection = () => {
+  
+  const t = useTranslations('PolicySwitcherSection');
   const [activePolicyId, setActivePolicyId] = useState('privacy');
 
-  const activePolicy = policiesData.find(p => p.id === activePolicyId);
+  
+  const translatedPolicies = t.raw('policies') as { 
+    tabName: string; 
+    title: string; 
+    description: string; 
+    buttonText: string 
+  }[];
+
+  
+  const activePolicyIndex = policiesStaticData.findIndex(p => p.id === activePolicyId);
+  const activePolicy = activePolicyIndex !== -1 
+    ? { ...policiesStaticData[activePolicyIndex], ...translatedPolicies[activePolicyIndex] }
+    : null;
 
   return (
     <section 
@@ -53,8 +59,11 @@ const PolicySwitcherSection = () => {
       
       <div className="mx-auto max-w-4xl px-6 py-16 sm:py-20 lg:px-8">
         <div className="flex justify-center items-center gap-2 sm:gap-4 mb-12 p-2 bg-gray-100 dark:bg-black/50 rounded-xl">
-          {policiesData.map((policy) => {
+          {policiesStaticData.map((policy, index) => {
             const Icon = policy.Icon;
+            const policyText = translatedPolicies[index];
+            if (!policyText) return null; 
+
             return (
               <button
                 key={policy.id}
@@ -77,8 +86,8 @@ const PolicySwitcherSection = () => {
                 `}
               >
                 <Icon className="h-5 w-5" aria-hidden="true" />
-                <span className="hidden sm:inline">{policy.title.split(' ')[2]} Policy</span>
-                <span className="sm:hidden">{policy.title.split(' ')[2]}</span>
+                <span className="hidden sm:inline">{policyText.tabName} Policy</span>
+                <span className="sm:hidden">{policyText.tabName}</span>
               </button>
             )
           })}

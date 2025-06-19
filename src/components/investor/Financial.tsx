@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/card/badge";
 import { Download, Calendar, TrendingUp, DollarSign, PieChart, BarChart3 } from "lucide-react";
+import { Report } from "@/lib/type";
 
 const staticMetricsData = [
     { value: "+12.5%", icon: <TrendingUp className="h-5 w-5" /> },
@@ -15,13 +16,6 @@ const staticMetricsData = [
 const Financial = () => {
   const t = useTranslations('FinancialPage');
 
-  type Report = {
-    title: string;
-    status: string;
-    type: string;
-    date: string;
-    description: string;
-  };
   const reports = t.raw('reports') as Report[];
   const translatedMetrics = t.raw('metrics') as unknown[];
 

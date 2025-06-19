@@ -1,12 +1,4 @@
 {
-  "TestPage": {
-    "title": "Test Page",
-    "description": "This is a test page for demonstrating internationalization.",
-    "status": {
-      "title": "Status",
-      "message": "Application is running successfully with English localization."
-    }
-  },
   "FinancialPage": {
     "title": "Financial Reports",
     "description": "Explore our quarterly and annual financial disclosures, performance summaries, investor presentations, and audited reports. Transparency is at the core of our commitment to stakeholders and drives our continued success in the marketplace.",
@@ -45,6 +37,151 @@
         "date": "July 2024",
         "status": "Archived",
         "description": "Strategic overview and financial highlights presented to institutional investors and analysts during the quarterly earnings call."
+      }
+    ]
+  },
+  "MeetingsPage": {
+    "mainTitle": "Shareholder Meetings",
+    "mainDescription": "Find notices, minutes, and resolutions from past and upcoming shareholder meetings. Stay informed about the decisions shaping our company's future.",
+    "upcomingTitle": "Upcoming Meetings",
+    "recentResolutionsTitle": "Recent Resolutions",
+    "pastMeetingsTitle": "Past Meetings",
+    "viewArchivesButton": "View All Archives",
+    "participationTitle": "Shareholder Participation",
+    "participationDescription": "Your voice matters in shaping the future of our company. Join our meetings, ask questions, and exercise your voting rights to make your opinion count.",
+    "registerUpdatesButton": "Register for Updates",
+    "shareholderServicesButton": "Shareholder Services",
+    "agendaLabel": "Agenda:",
+    "approvalLabel": "Shareholder Approval",
+    "upcomingMeetings": [
+      {
+        "title": "Annual General Meeting 2024",
+        "location": "Amara Conference Center, Mumbai",
+        "type": "AGM",
+        "status": "Upcoming",
+        "agenda": "Election of directors, approval of financial statements, dividend declaration, and strategic updates for 2025.",
+        "registerButton": "Register to Attend",
+        "joinButton": "Join Virtual Session",
+        "noticeButton": "Download Notice"
+      }
+    ],
+    "pastMeetings": [
+      {
+        "title": "Extraordinary General Meeting",
+        "location": "Virtual Meeting",
+        "type": "EGM",
+        "status": "Completed",
+        "agenda": "Approval of merger proposal with Synergy Corp and related regulatory compliance matters.",
+        "minutesButton": "Minutes",
+        "resolutionsButton": "Resolutions",
+        "recordingButton": "Recording"
+      },
+      {
+        "title": "Annual General Meeting 2023",
+        "location": "Amara Conference Center, Mumbai",
+        "type": "AGM",
+        "status": "Completed",
+        "agenda": "Annual report presentation, dividend approval, director appointments, and Q&A session with shareholders.",
+        "minutesButton": "Minutes",
+        "resolutionsButton": "Resolutions",
+        "recordingButton": "Recording"
+      },
+      {
+        "title": "Quarterly Shareholders Update",
+        "location": "Virtual Meeting",
+        "type": "Quarterly",
+        "status": "Completed",
+        "agenda": "Q1 2024 financial results, market outlook, and operational performance review.",
+        "minutesButton": "Minutes",
+        "resolutionsButton": "Resolutions",
+        "recordingButton": "Recording"
+      }
+    ],
+    "resolutions": [
+      { "title": "Dividend Declaration for FY 2023-24", "status": "Approved" },
+      { "title": "Re-appointment of Independent Directors", "status": "Approved" },
+      { "title": "Increase in Authorized Share Capital", "status": "Approved" },
+      { "title": "Approval of Related Party Transactions", "status": "Approved" }
+    ]
+  },
+  "NoticesPage": {
+    "mainTitle": "Regulatory Notices",
+    "mainDescription": "Access legal disclosures, regulatory announcements, and public notices as per SEBI, MCA, and other statutory requirements. Stay updated with our compliance status and regulatory communications to ensure transparency and legal adherence.",
+    "searchInputPlaceholder": "Search notices...",
+    "filterButton": "Filter",
+    "activeNoticesLabel": "Active Notices",
+    "urgentNoticesTitle": "Urgent Notices",
+    "recentNoticesTitle": "Recent Notices",
+    "viewAllButton": "View All Notices",
+    "complianceStatusTitle": "Regulatory Compliance Status",
+    "complianceStatusDescription": "We maintain the highest standards of regulatory compliance across all jurisdictions. Our dedicated compliance team ensures timely filing of all required documents and maintains transparent communication with regulatory authorities.",
+    "subscribeButton": "Subscribe to Alerts",
+    "contactButton": "Contact Compliance Team",
+    "regulatoryAuthorityLabel": "Regulatory Authority:",
+    "priorityLabel": "{priority} Priority",
+    "onTimeFilingsLabel": "On-time Filings",
+    "avgResponseTimeLabel": "Average Response Time",
+    "regulatoryBodiesLabel": "Regulatory Bodies",
+    "downloadNoticeButton": "Download Notice",
+    "viewDetailsButton": "View Details",
+    "downloadButton": "Download",
+    "viewButton": "View",
+    "categories": [
+      { "name": "SEBI" },
+      { "name": "MCA" },
+      { "name": "Tax" },
+      { "name": "Environmental" },
+      { "name": "Corporate" }
+    ],
+    "urgentNotices": [
+      {
+        "title": "SEBI Compliance Update - New Disclosure Requirements",
+        "category": "SEBI",
+        "priority": "High",
+        "description": "Important updates regarding enhanced disclosure requirements for listed companies effective January 1, 2025. All stakeholders must review the new compliance framework."
+      },
+      {
+        "title": "Board Meeting Outcome - Dividend Declaration",
+        "category": "Corporate",
+        "priority": "Medium",
+        "description": "Board of Directors has declared an interim dividend of ₹5 per equity share for the financial year 2024-25. Record date and payment details enclosed."
+      }
+    ],
+    "recentNotices": [
+      {
+        "title": "MCA Form Filing - Annual Return Submitted",
+        "category": "MCA",
+        "priority": "Low",
+        "description": "Annual Return for FY 2023-24 has been successfully filed with the Ministry of Corporate Affairs within the statutory timeline.",
+        "regulatory": "Ministry of Corporate Affairs"
+      },
+      {
+        "title": "Related Party Transaction Disclosure",
+        "category": "SEBI",
+        "priority": "Medium",
+        "description": "Quarterly disclosure of related party transactions as per SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015.",
+        "regulatory": "Securities and Exchange Board of India"
+      },
+      {
+        "title": "Environmental Compliance Certificate Renewal",
+        "category": "Environmental",
+        "priority": "Low",
+        "description": "Pollution Control Board certificate for manufacturing operations has been renewed for the period 2024-2027.",
+        "regulatory": "State Pollution Control Board"
+      },
+      {
+        "title": "GST Registration Update - New State Operations",
+        "category": "Tax",
+        "priority": "Medium",
+        "description": "New GST registration obtained for operations in Karnataka state. GSTIN: 29AAAAA0000A1Z5 effective from November 1, 2024.",
+        "regulatory": "Goods and Services Tax Network"
+      },
+      {
+        "title": "Insider Trading Policy - Annual Review Completed",
+        "category": "SEBI",
+        "priority": "Low",
+        "description": "Annual review of the Insider Trading Policy completed and approved by the Board. Updated policy is effective immediately.",
+        "regulatory": "Securities and Exchange Board of India"
       }
     ]
   },
@@ -186,5 +323,123 @@
     "descriptionDesktop": "The heart of Amaraa Holding beats with the rhythm of ambition. We are not merely a company; we are a movement, an idea that has leapt from boardrooms into the real world. Every subsidiary, every innovation, is a new page in our ever-expanding epic.",
     "discoverButton": "DISCOVER MORE",
     "logoAlt": "Amaraa Holding Logo"
+  },
+  "NewsAndMedia": {
+    "title": "News and Media",
+    "description": "Discover stories that showcase our leadership and commitment to shaping a better future.",
+    "readNowButton": "READ NOW",
+    "playVideoAriaLabel": "Play video for {title}",
+    "newsItems": [
+      {
+        "title": "A Visionary Leap: Renewable Energy Breakthrough",
+        "description": "Amaraa Group's expansion into renewable energy is nothing short of transformative, setting new benchmarks for sustainability."
+      },
+      {
+        "title": "Global Success: Expanding Horizons",
+        "description": "Our entry into three new international markets is a testament to Amaraa Group’s relentless pursuit of global excellence."
+      },
+      {
+        "title": "Revolutionizing Real Estate for Tomorrow",
+        "description": "Amaraa’s approach to real estate is redefining urban living. From sustainable architecture to smart homes, we build for the future."
+      },
+      {
+        "title": "Tech Innovations in Urban Development",
+        "description": "Our latest tech integrations are creating smarter, more efficient cities, proving our commitment to innovation."
+      },
+      {
+        "title": "Community-First Initiatives Launched",
+        "description": "We believe in giving back. Our new community-first programs aim to uplift and empower local neighborhoods."
+      }
+    ]
+  },
+  "PolicySwitcherSection": {
+    "policies": [
+      {
+        "tabName": "Privacy",
+        "title": "Our Commitment to Your Privacy",
+        "description": "We value the trust you place in us. Our Privacy Policy details how we handle your personal information with care and transparency.",
+        "buttonText": "Read Our Privacy Policy"
+      },
+      {
+        "tabName": "Cookie",
+        "title": "How We Use Cookies",
+        "description": "Our website uses cookies to enhance your browsing experience. Learn about the types of cookies we use and how you can manage them.",
+        "buttonText": "View Our Cookie Policy"
+      },
+      {
+        "tabName": "Terms",
+        "title": "Terms of Service",
+        "description": "By using our platform, you agree to our terms. This document governs your use of the Amaraa website and services. Please read it carefully.",
+        "buttonText": "Review Our Terms of Service"
+      }
+    ]
+  },
+  "Footer": {
+    "description": "Amaraa - Leading diversified business conglomerate with excellence across multiple industries & sectors.",
+    "aboutTitle": "About",
+    "aboutLinks": {
+      "story": "Story",
+      "values": "Values & Culture",
+      "leadership": "Leadership Team"
+    },
+    "companiesTitle": "Our Companies",
+    "quickLinksTitle": "Quick Links",
+    "quickLinks": {
+      "governance": "Governance",
+      "investors": "Investors",
+      "careers": "Careers",
+      "csr": "CSR Projects"
+    },
+    "contactTitle": "Contact",
+    "contactLinks": {
+      "getInTouch": "Get in Touch"
+    },
+    "legalLinks": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookie": "Cookie Policy"
+    },
+    "copyright": "© {currentYear} Amaraa Group of Companies. All rights reserved."
+  },
+  "HeroSection": {
+    "watchStoryButton": "Watch Story",
+    "slides": [
+      {
+        "title": "Pioneering Excellence",
+        "subtitle": "Transforming Industries Through Innovation",
+        "description": "Leading the future with cutting-edge solutions across real estate, manufacturing, and technology sectors.",
+        "cta": "Discover Our Vision"
+      },
+      {
+        "title": "Sustainable Future",
+        "subtitle": "Building Tomorrow's World Today",
+        "description": "Committed to environmental responsibility and sustainable development practices across all our ventures.",
+        "cta": "Learn About CSR"
+      },
+      {
+        "title": "Global Leadership",
+        "subtitle": "Excellence Across Continents",
+        "description": "A trusted partner for businesses worldwide, delivering exceptional value through strategic innovation.",
+        "cta": "Explore Our Reach"
+      },
+      {
+        "title": "Technology Innovation",
+        "subtitle": "Shaping Digital Transformation",
+        "description": "Advancing technological frontiers to create smarter, more efficient solutions for modern challenges.",
+        "cta": "View Our Tech"
+      },
+      {
+        "title": "Carbon Footprint",
+        "subtitle": "Zero% Carbon Footprint",
+        "description": "Empowering carbon footprint management through real‑time data, AI optimization, and more efficient operations.",
+        "cta": "Trace Carbon Footprint"
+      },
+      {
+        "title": "Sustainability",
+        "subtitle": "Building a Greener Tomorrow with Smart Tech",
+        "description": "Integrating eco-conscious design and efficient operations to drive long-term environmental impact.",
+        "cta": "Explore Our Green Journey"
+      }
+    ]
   }
 }

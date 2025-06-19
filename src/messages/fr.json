@@ -1,12 +1,4 @@
 {
-  "TestPage": {
-    "title": "Page de Test",
-    "description": "Ceci est une page de test pour démontrer l'internationalisation.",
-    "status": {
-      "title": "Statut",
-      "message": "L'application fonctionne avec succès avec la localisation française."
-    }
-  },
   "FinancialPage": {
     "title": "Rapports Financiers",
     "description": "Explorez nos publications financières trimestrielles et annuelles, nos résumés de performance, nos présentations aux investisseurs et nos rapports audités. La transparence est au cœur de notre engagement envers les parties prenantes et motive notre succès continu sur le marché.",
@@ -48,7 +40,164 @@
       }
     ]
   },
-    "AboutUsSection": {
+  "MeetingsPage": {
+    "mainTitle": "Assemblées des Actionnaires",
+    "mainDescription": "Trouvez les avis, procès-verbaux et résolutions des assemblées d'actionnaires passées et à venir. Restez informé des décisions qui façonnent l'avenir de notre entreprise.",
+    "upcomingTitle": "Assemblées à Venir",
+    "recentResolutionsTitle": "Résolutions Récentes",
+    "pastMeetingsTitle": "Assemblées Passées",
+    "viewArchivesButton": "Voir Toutes les Archives",
+    "participationTitle": "Participation des Actionnaires",
+    "participationDescription": "Votre voix est importante pour façonner l'avenir de notre entreprise. Participez à nos assemblées, posez des questions et exercez vos droits de vote pour que votre opinion compte.",
+    "registerUpdatesButton": "S'inscrire aux Mises à Jour",
+    "shareholderServicesButton": "Services aux Actionnaires",
+    "agendaLabel": "Ordre du jour :",
+    "approvalLabel": "Approbation des actionnaires",
+    "upcomingMeetings": [
+      {
+        "title": "Assemblée Générale Annuelle 2024",
+        "location": "Centre de Conférences Amara, Mumbai",
+        "type": "AGA",
+        "status": "À venir",
+        "agenda": "Élection des administrateurs, approbation des états financiers, déclaration de dividende et mises à jour stratégiques pour 2025.",
+        "registerButton": "S'inscrire pour Participer",
+        "joinButton": "Rejoindre la Session Virtuelle",
+        "noticeButton": "Télécharger l'Avis"
+      }
+    ],
+    "pastMeetings": [
+      {
+        "title": "Assemblée Générale Extraordinaire",
+        "location": "Réunion Virtuelle",
+        "type": "AGE",
+        "status": "Terminée",
+        "agenda": "Approbation de la proposition de fusion avec Synergy Corp et questions de conformité réglementaire connexes.",
+        "minutesButton": "Procès-verbal",
+        "resolutionsButton": "Résolutions",
+        "recordingButton": "Enregistrement"
+      },
+      {
+        "title": "Assemblée Générale Annuelle 2023",
+        "location": "Centre de Conférences Amara, Mumbai",
+        "type": "AGA",
+        "status": "Terminée",
+        "agenda": "Présentation du rapport annuel, approbation des dividendes, nomination des administrateurs et séance de questions-réponses avec les actionnaires.",
+        "minutesButton": "Procès-verbal",
+        "resolutionsButton": "Résolutions",
+        "recordingButton": "Enregistrement"
+      },
+      {
+        "title": "Mise à Jour Trimestrielle des Actionnaires",
+        "location": "Réunion Virtuelle",
+        "type": "Trimestriel",
+        "status": "Terminée",
+        "agenda": "Résultats financiers du T1 2024, perspectives du marché et examen des performances opérationnelles.",
+        "minutesButton": "Procès-verbal",
+        "resolutionsButton": "Résolutions",
+        "recordingButton": "Enregistrement"
+      }
+    ],
+    "resolutions": [
+      {
+        "title": "Déclaration de dividende pour l'exercice 2023-24",
+        "status": "Approuvée"
+      },
+      {
+        "title": "Renouvellement du mandat des administrateurs indépendants",
+        "status": "Approuvée"
+      },
+      {
+        "title": "Augmentation du capital social autorisé",
+        "status": "Approuvée"
+      },
+      {
+        "title": "Approbation des transactions avec des parties liées",
+        "status": "Approuvée"
+      }
+    ]
+  },
+  "NoticesPage": {
+    "mainTitle": "Avis Réglementaires",
+    "mainDescription": "Accédez aux divulgations légales, annonces réglementaires et avis publics conformément aux exigences du SEBI, du MCA et autres exigences légales. Restez à jour sur notre statut de conformité et nos communications réglementaires pour garantir la transparence et le respect de la loi.",
+    "searchInputPlaceholder": "Rechercher des avis...",
+    "filterButton": "Filtrer",
+    "activeNoticesLabel": "Avis Actifs",
+    "urgentNoticesTitle": "Avis Urgents",
+    "recentNoticesTitle": "Avis Récents",
+    "viewAllButton": "Voir Tous les Avis",
+    "complianceStatusTitle": "Statut de Conformité Réglementaire",
+    "complianceStatusDescription": "Nous maintenons les normes les plus élevées de conformité réglementaire dans toutes les juridictions. Notre équipe de conformité dédiée assure le dépôt en temps opportun de tous les documents requis et maintient une communication transparente avec les autorités de régulation.",
+    "subscribeButton": "S'abonner aux Alertes",
+    "contactButton": "Contacter l'Équipe de Conformité",
+    "regulatoryAuthorityLabel": "Autorité de Régulation :",
+    "priorityLabel": "Priorité {priority}",
+    "onTimeFilingsLabel": "Dépôts à Temps",
+    "avgResponseTimeLabel": "Temps de Réponse Moyen",
+    "regulatoryBodiesLabel": "Organismes de Régulation",
+    "downloadNoticeButton": "Télécharger l'Avis",
+    "viewDetailsButton": "Voir les Détails",
+    "downloadButton": "Télécharger",
+    "viewButton": "Voir",
+    "categories": [
+      { "name": "SEBI" },
+      { "name": "MCA" },
+      { "name": "Fiscal" },
+      { "name": "Environnemental" },
+      { "name": "Corporatif" }
+    ],
+    "urgentNotices": [
+      {
+        "title": "Mise à Jour de Conformité SEBI - Nouvelles Exigences de Divulgation",
+        "category": "SEBI",
+        "priority": "Élevée",
+        "description": "Mises à jour importantes concernant les exigences de divulgation renforcées pour les sociétés cotées, effectives le 1er janvier 2025. Toutes les parties prenantes doivent examiner le nouveau cadre de conformité."
+      },
+      {
+        "title": "Résultat de la Réunion du Conseil - Déclaration de Dividende",
+        "category": "Corporatif",
+        "priority": "Moyenne",
+        "description": "Le Conseil d'administration a déclaré un dividende intérimaire de 5 ₹ par action pour l'exercice 2024-25. La date d'enregistrement et les détails de paiement sont joints."
+      }
+    ],
+    "recentNotices": [
+      {
+        "title": "Dépôt de Formulaire MCA - Déclaration Annuelle Soumise",
+        "category": "MCA",
+        "priority": "Faible",
+        "description": "La déclaration annuelle pour l'exercice 2023-24 a été déposée avec succès auprès du Ministère des Affaires Corporatives dans les délais légaux.",
+        "regulatory": "Ministère des Affaires Corporatives"
+      },
+      {
+        "title": "Divulgation des Transactions avec des Parties Liées",
+        "category": "SEBI",
+        "priority": "Moyenne",
+        "description": "Divulgation trimestrielle des transactions avec des parties liées conformément aux réglementations SEBI (Obligations de Cotation et Exigences de Divulgation) de 2015.",
+        "regulatory": "Commission des valeurs mobilières et des changes de l'Inde"
+      },
+      {
+        "title": "Renouvellement du Certificat de Conformité Environnementale",
+        "category": "Environnemental",
+        "priority": "Faible",
+        "description": "Le certificat du Conseil de Contrôle de la Pollution pour les opérations de fabrication a été renouvelé pour la période 2024-2027.",
+        "regulatory": "Conseil de Contrôle de la Pollution de l'État"
+      },
+      {
+        "title": "Mise à Jour de l'Enregistrement GST - Nouvelles Opérations d'État",
+        "category": "Fiscal",
+        "priority": "Moyenne",
+        "description": "Nouvel enregistrement GST obtenu pour les opérations dans l'État du Karnataka. GSTIN : 29AAAAA0000A1Z5 effectif à partir du 1er novembre 2024.",
+        "regulatory": "Réseau de la Taxe sur les Produits et Services"
+      },
+      {
+        "title": "Politique sur les Délits d'Initié - Examen Annuel Terminé",
+        "category": "SEBI",
+        "priority": "Faible",
+        "description": "L'examen annuel de la politique sur les délits d'initié a été achevé et approuvé par le Conseil. La politique mise à jour est effective immédiatement.",
+        "regulatory": "Commission des valeurs mobilières et des changes de l'Inde"
+      }
+    ]
+  },
+  "AboutUsSection": {
     "title": "Notre Histoire",
     "description": "Dans les pages de chaque récit épique, il y a un courant sous-jacent — une force invisible qui motive les personnages, façonne leurs choix et définit leur héritage. Chez Amaraa Holding, cette force, ce sont nos valeurs et notre culture.",
     "buttons": {
@@ -58,7 +207,7 @@
       "leadership": "Direction",
       "csr": "RSE"
     }
-},
+  },
   "LegacySection": {
     "mainTitle": "Fondation Amaraa",
     "mainDescription": "Là où les rêves prennent leur envol et où l'innovation ne connaît pas de limites. Une constellation de visionnaires, de rêveurs et de bâtisseurs, qui unissent les industries et créent l'avenir.",
@@ -67,27 +216,90 @@
     "exploreButton": "DÉCOUVRIR PLUS",
     "knowMoreButton": "EN SAVOIR PLUS",
     "companies": [
-      { "name": "Groupe Amaraa Agro Ltée.", "description": "Innovation en agriculture durable et biodiversité, cultivant l'avenir de l'agriculture avec des pratiques éco-conscientes et une technologie de pointe. Leader des pratiques agricoles durables sur plus de 50 000 acres avec certification biologique et systèmes d'irrigation intelligents." },
-      { "name": "Amaraa Security Shield Ltée.", "description": "Services de sécurité armée et de surveillance, protégeant ce qui compte le plus avec une technologie avancée et des professionnels formés. Solutions de sécurité complètes pour plus de 500 clients avec surveillance 24/7 et capacités de réponse rapide." },
-      { "name": "Groupe Amaraa Auto Ltée.", "description": "Import/export automobile et conception de véhicules électriques, menant l'avenir des solutions de transport durable. Pionnier de la technologie des véhicules électriques avec des partenariats dans 15 pays et des solutions de flotte à zéro émission." },
-      { "name": "Amaraa Services Informatiques Ltée.", "description": "Développement de logiciels et cybersécurité, connectant le monde grâce à des solutions numériques innovantes et des plateformes sécurisées. Fourniture de solutions logicielles d'entreprise et de services de cybersécurité aux entreprises du Fortune 500 dans le monde entier." },
-      { "name": "Amaraa Aliments & Boissons Ltée.", "description": "Produits de la ferme à la table axés sur la durabilité, apportant des saveurs authentiques tout en préservant notre planète. Production alimentaire biologique avec des partenariats directs avec les agriculteurs et des emballages durables pour 25 gammes de produits." },
-      { "name": "Amaraa Aviation Ltée.", "description": "Compagnie aérienne à service complet et services d'aviation éco-conscients, reliant les destinations tout en prenant soin de l'environnement. Exploitation de plus de 50 avions avec des vols neutres en carbone et des services passagers premium vers plus de 100 destinations." },
-      { "name": "Amaraa Immobilier Ltée.", "description": "Développement urbain durable et solutions de construction écologique, créant des espaces en harmonie avec la nature. Projets certifiés LEED avec intégration de villes intelligentes et initiatives de logements abordables." },
-      { "name": "Amaraa Solutions Énergétiques Ltée.", "description": "Énergie renouvelable et production d'électricité propre, éclairant la voie vers un avenir durable. Projets solaires et éoliens générant plus de 500 MW d'énergie propre avec des solutions de stockage par batterie." },
-      { "name": "Amaraa Santé Ltée.", "description": "Services de santé complets et innovation médicale, favorisant la santé et la guérison des communautés. Hôpitaux multi-spécialités et services de télémédecine atteignant les communautés rurales avec des soins médicaux avancés." },
-      { "name": "Fondation Amaraa pour l'Éducation", "description": "Excellence éducative et programmes de développement des compétences, donnant aux esprits les moyens de façonner demain. Établissements d'enseignement desservant plus de 10 000 étudiants avec des programmes de bourses et une formation professionnelle." },
-      { "name": "Amaraa Logistique Ltée.", "description": "Chaîne d'approvisionnement efficace et solutions de transport, déplaçant les marchandises et connectant les marchés de manière transparente. Logistique de bout en bout avec optimisation d'itinéraire par IA et capacités de chaîne du froid." },
-      { "name": "Amaraa Fabrication Ltée.", "description": "Fabrication de pointe et solutions industrielles, créant des produits de qualité avec précision et soin. Usines de fabrication intelligentes avec intégration de l'Industrie 4.0 et processus de production sans déchets." },
-      { "name": "Amaraa Services d'Ingénierie Ltée.", "description": "Conseil en ingénierie expert et gestion de projet, construisant l'infrastructure de demain. Excellence en ingénierie dans les projets d'infrastructure avec la technologie BIM et des pratiques de conception durables." },
-      { "name": "Amaraa Commerce Mondial Ltée.", "description": "Commerce international et services d'exportation, reliant les marchés et favorisant les partenariats mondiaux. Partenariats commerciaux dans plus de 40 pays avec le négoce de matières premières et des solutions de financement à l'exportation." },
-      { "name": "Amaraa Innovations Technologiques Ltée.", "description": "Recherche technologique de pointe et solutions d'IA, pionnier de la prochaine génération d'innovation. Solutions d'IA et d'IoT avec plus de 50 brevets et des partenariats de recherche avec des universités de premier plan." },
-      { "name": "Amaraa Services Financiers Ltée.", "description": "Solutions financières complètes et services d'investissement, créant de la richesse et sécurisant l'avenir. Banque d'investissement et gestion de patrimoine avec plus de 2 milliards de dollars d'actifs sous gestion." },
-      { "name": "Amaraa Hôtellerie Ltée.", "description": "Hôtellerie de luxe et services touristiques, créant des expériences mémorables avec un service exceptionnel. Hôtels et complexes hôteliers de luxe avec des pratiques de tourisme durable et des initiatives de préservation culturelle." },
-      { "name": "Amaraa Médias & Communications Ltée.", "description": "Médias numériques et solutions de communication, amplifiant les histoires et connectant les communautés. Marketing numérique et création de contenu avec une audience de plus de 100 millions de personnes sur plusieurs plateformes." },
-      { "name": "Amaraa Sports & Loisirs Ltée.", "description": "Développement sportif et installations de loisirs, promouvant la santé, la forme physique et l'esprit de compétition. Académies sportives et installations de loisirs promouvant le développement des jeunes et l'athlétisme professionnel." },
-      { "name": "Amaraa Solutions Environnementales Ltée.", "description": "Conservation de l'environnement et gestion des déchets, protégeant notre planète pour les générations futures. Projets de valorisation énergétique des déchets et assainissement de l'environnement avec des programmes de compensation carbone." },
-      { "name": "Amaraa Conseil Ltée.", "description": "Conseil stratégique en affaires et services consultatifs, guidant les organisations vers un succès durable. Conseil en gestion avec une expertise en transformation numérique et en stratégies de durabilité." }
+      {
+        "name": "Groupe Amaraa Agro Ltée.",
+        "description": "Innovation en agriculture durable et biodiversité, cultivant l'avenir de l'agriculture avec des pratiques éco-conscientes et une technologie de pointe. Leader des pratiques agricoles durables sur plus de 50 000 acres avec certification biologique et systèmes d'irrigation intelligents."
+      },
+      {
+        "name": "Amaraa Security Shield Ltée.",
+        "description": "Services de sécurité armée et de surveillance, protégeant ce qui compte le plus avec une technologie avancée et des professionnels formés. Solutions de sécurité complètes pour plus de 500 clients avec surveillance 24/7 et capacités de réponse rapide."
+      },
+      {
+        "name": "Groupe Amaraa Auto Ltée.",
+        "description": "Import/export automobile et conception de véhicules électriques, menant l'avenir des solutions de transport durable. Pionnier de la technologie des véhicules électriques avec des partenariats dans 15 pays et des solutions de flotte à zéro émission."
+      },
+      {
+        "name": "Amaraa Services Informatiques Ltée.",
+        "description": "Développement de logiciels et cybersécurité, connectant le monde grâce à des solutions numériques innovantes et des plateformes sécurisées. Fourniture de solutions logicielles d'entreprise et de services de cybersécurité aux entreprises du Fortune 500 dans le monde entier."
+      },
+      {
+        "name": "Amaraa Aliments & Boissons Ltée.",
+        "description": "Produits de la ferme à la table axés sur la durabilité, apportant des saveurs authentiques tout en préservant notre planète. Production alimentaire biologique avec des partenariats directs avec les agriculteurs et des emballages durables pour 25 gammes de produits."
+      },
+      {
+        "name": "Amaraa Aviation Ltée.",
+        "description": "Compagnie aérienne à service complet et services d'aviation éco-conscients, reliant les destinations tout en prenant soin de l'environnement. Exploitation de plus de 50 avions avec des vols neutres en carbone et des services passagers premium vers plus de 100 destinations."
+      },
+      {
+        "name": "Amaraa Immobilier Ltée.",
+        "description": "Développement urbain durable et solutions de construction écologique, créant des espaces en harmonie avec la nature. Projets certifiés LEED avec intégration de villes intelligentes et initiatives de logements abordables."
+      },
+      {
+        "name": "Amaraa Solutions Énergétiques Ltée.",
+        "description": "Énergie renouvelable et production d'électricité propre, éclairant la voie vers un avenir durable. Projets solaires et éoliens générant plus de 500 MW d'énergie propre avec des solutions de stockage par batterie."
+      },
+      {
+        "name": "Amaraa Santé Ltée.",
+        "description": "Services de santé complets et innovation médicale, favorisant la santé et la guérison des communautés. Hôpitaux multi-spécialités et services de télémédecine atteignant les communautés rurales avec des soins médicaux avancés."
+      },
+      {
+        "name": "Fondation Amaraa pour l'Éducation",
+        "description": "Excellence éducative et programmes de développement des compétences, donnant aux esprits les moyens de façonner demain. Établissements d'enseignement desservant plus de 10 000 étudiants avec des programmes de bourses et une formation professionnelle."
+      },
+      {
+        "name": "Amaraa Logistique Ltée.",
+        "description": "Chaîne d'approvisionnement efficace et solutions de transport, déplaçant les marchandises et connectant les marchés de manière transparente. Logistique de bout en bout avec optimisation d'itinéraire par IA et capacités de chaîne du froid."
+      },
+      {
+        "name": "Amaraa Fabrication Ltée.",
+        "description": "Fabrication de pointe et solutions industrielles, créant des produits de qualité avec précision et soin. Usines de fabrication intelligentes avec intégration de l'Industrie 4.0 et processus de production sans déchets."
+      },
+      {
+        "name": "Amaraa Services d'Ingénierie Ltée.",
+        "description": "Conseil en ingénierie expert et gestion de projet, construisant l'infrastructure de demain. Excellence en ingénierie dans les projets d'infrastructure avec la technologie BIM et des pratiques de conception durables."
+      },
+      {
+        "name": "Amaraa Commerce Mondial Ltée.",
+        "description": "Commerce international et services d'exportation, reliant les marchés et favorisant les partenariats mondiaux. Partenariats commerciaux dans plus de 40 pays avec le négoce de matières premières et des solutions de financement à l'exportation."
+      },
+      {
+        "name": "Amaraa Innovations Technologiques Ltée.",
+        "description": "Recherche technologique de pointe et solutions d'IA, pionnier de la prochaine génération d'innovation. Solutions d'IA et d'IoT avec plus de 50 brevets et des partenariats de recherche avec des universités de premier plan."
+      },
+      {
+        "name": "Amaraa Services Financiers Ltée.",
+        "description": "Solutions financières complètes et services d'investissement, créant de la richesse et sécurisant l'avenir. Banque d'investissement et gestion de patrimoine avec plus de 2 milliards de dollars d'actifs sous gestion."
+      },
+      {
+        "name": "Amaraa Hôtellerie Ltée.",
+        "description": "Hôtellerie de luxe et services touristiques, créant des expériences mémorables avec un service exceptionnel. Hôtels et complexes hôteliers de luxe avec des pratiques de tourisme durable et des initiatives de préservation culturelle."
+      },
+      {
+        "name": "Amaraa Médias & Communications Ltée.",
+        "description": "Médias numériques et solutions de communication, amplifiant les histoires et connectant les communautés. Marketing numérique et création de contenu avec une audience de plus de 100 millions de personnes sur plusieurs plateformes."
+      },
+      {
+        "name": "Amaraa Sports & Loisirs Ltée.",
+        "description": "Développement sportif et installations de loisirs, promouvant la santé, la forme physique et l'esprit de compétition. Académies sportives et installations de loisirs promouvant le développement des jeunes et l'athlétisme professionnel."
+      },
+      {
+        "name": "Amaraa Solutions Environnementales Ltée.",
+        "description": "Conservation de l'environnement et gestion des déchets, protégeant notre planète pour les générations futures. Projets de valorisation énergétique des déchets et assainissement de l'environnement avec des programmes de compensation carbone."
+      },
+      {
+        "name": "Amaraa Conseil Ltée.",
+        "description": "Conseil stratégique en affaires et services consultatifs, guidant les organisations vers un succès durable. Conseil en gestion avec une expertise en transformation numérique et en stratégies de durabilité."
+      }
     ]
   },
   "InspiringHighlights": {
@@ -123,5 +335,123 @@
     "descriptionDesktop": "Le cœur d'Amaraa Holding bat au rythme de l'ambition. Nous ne sommes pas simplement une entreprise ; nous sommes un mouvement, une idée qui a jailli des salles de conseil pour entrer dans le monde réel. Chaque filiale, chaque innovation, est une nouvelle page de notre épopée en constante expansion.",
     "discoverButton": "DÉCOUVRIR PLUS",
     "logoAlt": "Logo d'Amaraa Holding"
+  },
+  "NewsAndMedia": {
+    "title": "Actualités et Médias",
+    "description": "Découvrez des histoires qui illustrent notre leadership et notre engagement à façonner un avenir meilleur.",
+    "readNowButton": "LIRE MAINTENANT",
+    "playVideoAriaLabel": "Lancer la vidéo pour {title}",
+    "newsItems": [
+      {
+        "title": "Un Saut Visionnaire : Percée dans les Énergies Renouvelables",
+        "description": "L'expansion du Groupe Amaraa dans les énergies renouvelables est tout simplement transformative, établissant de nouvelles normes en matière de durabilité."
+      },
+      {
+        "title": "Succès Mondial : Élargir les Horizons",
+        "description": "Notre entrée sur trois nouveaux marchés internationaux témoigne de la quête incessante d'excellence mondiale du Groupe Amaraa."
+      },
+      {
+        "title": "Révolutionner l'Immobilier pour Demain",
+        "description": "L'approche d'Amaraa en matière d'immobilier redéfinit la vie urbaine. De l'architecture durable aux maisons intelligentes, nous construisons pour l'avenir."
+      },
+      {
+        "title": "Innovations Technologiques dans le Développement Urbain",
+        "description": "Nos dernières intégrations technologiques créent des villes plus intelligentes et plus efficaces, prouvant notre engagement envers l'innovation."
+      },
+      {
+        "title": "Lancement d'Initiatives axées sur la Communauté",
+        "description": "Nous croyons au don en retour. Nos nouveaux programmes axés sur la communauté visent à soutenir et à autonomiser les quartiers locaux."
+      }
+    ]
+  },
+  "PolicySwitcherSection": {
+    "policies": [
+      {
+        "tabName": "Confidentialité",
+        "title": "Notre Engagement envers votre Confidentialité",
+        "description": "Nous apprécions la confiance que vous nous accordez. Notre Politique de Confidentialité détaille comment nous traitons vos informations personnelles avec soin et transparence.",
+        "buttonText": "Lire notre Politique de Confidentialité"
+      },
+      {
+        "tabName": "Cookie",
+        "title": "Comment nous utilisons les Cookies",
+        "description": "Notre site web utilise des cookies pour améliorer votre expérience de navigation. Découvrez les types de cookies que nous utilisons et comment vous pouvez les gérer.",
+        "buttonText": "Voir notre Politique de Cookies"
+      },
+      {
+        "tabName": "Conditions",
+        "title": "Conditions d'Utilisation",
+        "description": "En utilisant notre plateforme, vous acceptez nos conditions. Ce document régit votre utilisation du site web et des services d'Amaraa. Veuillez le lire attentivement.",
+        "buttonText": "Consulter nos Conditions d'Utilisation"
+      }
+    ]
+  },
+  "Footer": {
+    "description": "Amaraa - Conglomérat d'entreprises diversifiées de premier plan, avec une excellence dans de multiples industries et secteurs.",
+    "aboutTitle": "À Propos",
+    "aboutLinks": {
+      "story": "Histoire",
+      "values": "Valeurs & Culture",
+      "leadership": "Équipe de Direction"
+    },
+    "companiesTitle": "Nos Entreprises",
+    "quickLinksTitle": "Liens Rapides",
+    "quickLinks": {
+      "governance": "Gouvernance",
+      "investors": "Investisseurs",
+      "careers": "Carrières",
+      "csr": "Projets RSE"
+    },
+    "contactTitle": "Contact",
+    "contactLinks": {
+      "getInTouch": "Nous Contacter"
+    },
+    "legalLinks": {
+      "privacy": "Politique de Confidentialité",
+      "terms": "Conditions d'Utilisation",
+      "cookie": "Politique de Cookies"
+    },
+    "copyright": "© {currentYear} Groupe d'Entreprises Amaraa. Tous droits réservés."
+  },
+  "HeroSection": {
+    "watchStoryButton": "Voir l'Histoire",
+    "slides": [
+      {
+        "title": "Excellence Pionnière",
+        "subtitle": "Transformer les Industries par l'Innovation",
+        "description": "Mener l'avenir avec des solutions de pointe dans les secteurs de l'immobilier, de la fabrication et de la technologie.",
+        "cta": "Découvrir Notre Vision"
+      },
+      {
+        "title": "Avenir Durable",
+        "subtitle": "Construire le Monde de Demain, Aujourd'hui",
+        "description": "Engagés dans la responsabilité environnementale et les pratiques de développement durable dans toutes nos entreprises.",
+        "cta": "En Savoir Plus sur la RSE"
+      },
+      {
+        "title": "Leadership Mondial",
+        "subtitle": "L'Excellence à travers les Continents",
+        "description": "Un partenaire de confiance pour les entreprises du monde entier, offrant une valeur exceptionnelle grâce à l'innovation stratégique.",
+        "cta": "Explorer Notre Portée"
+      },
+      {
+        "title": "Innovation Technologique",
+        "subtitle": "Façonner la Transformation Numérique",
+        "description": "Faire progresser les frontières technologiques pour créer des solutions plus intelligentes et efficaces aux défis modernes.",
+        "cta": "Voir Notre Technologie"
+      },
+      {
+        "title": "Empreinte Carbone",
+        "subtitle": "Empreinte Carbone Zéro%",
+        "description": "Gestion de l'empreinte carbone grâce aux données en temps réel, à l'optimisation par l'IA et à des opérations plus efficaces.",
+        "cta": "Suivre l'Empreinte Carbone"
+      },
+      {
+        "title": "Durabilité",
+        "subtitle": "Bâtir un Avenir Plus Vert avec la Tech Intelligente",
+        "description": "Intégration d'une conception éco-consciente et d'opérations efficaces pour un impact environnemental à long terme.",
+        "cta": "Explorer Notre Parcours Écologique"
+      }
+    ]
   }
 }
