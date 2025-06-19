@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { usePathname, Link } from '@/i18n/navigation'; 
+import { usePathname, Link } from '@/i18n/navigation';
 import { Search, ChevronDown, ExternalLink, Menu, X } from 'lucide-react';
 import { FaInstagram, } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -28,6 +28,8 @@ const menuRoutes: { [key: string]: string } = {
   'Corporate Governance': '/about/governance',
   'CSR Initiatives': '/about/csr',
 
+
+
   'Quarterly Results': '/investors/financial-information',
   'Annual Reports': '/investors/financial-information',
   'Financial Statements': '/investors/financial-information',
@@ -37,6 +39,13 @@ const menuRoutes: { [key: string]: string } = {
   'Media Releases': '/investors/notices-and-announcements',
   'Press Releases': '/investors/notices-and-announcements',
   'Investor Updates': '/investors/notices-and-announcements',
+
+  'Media Kit': '/media/media-kit',
+  'News Update': '/media/news',
+
+  'Global Footprint': '/sustainability/global-footprint',
+  'Carbon Footprint': '/sustainability/carbon-footprint',
+  'Carbon Neutrality': '/sustainability/carbon-neutrality',
 };
 
 const megaMenuData: { [key: string]: { title: string; links: string[] }[] } = {
@@ -51,6 +60,8 @@ const megaMenuData: { [key: string]: { title: string; links: string[] }[] } = {
     { title: 'Financial Information', links: ['Quarterly Results', 'Annual Reports', 'Financial Statements'] },
     { title: 'Meeting Information', links: ['Stock Information', 'Board Meetings', 'Shareholder Meetings'] },
     { title: 'Notices & Announcements', links: ['Media Releases', 'Press Releases', 'Investor Updates'] },
+    { title: 'News & Media house', links: ['Media Kit', 'News Update'] },
+    { title: 'Sustainability', links: ['Global Footprint','Carbon Footprint','Carbon Neutrality'] },
   ],
   'Careers': [],
   'Contact US': [],
@@ -163,8 +174,8 @@ const Header = () => {
 
       <header
         className={`fixed left-0 right-0 z-50 transition-all duration-300 ease-in-out ${shouldAppearScrolled
-            ? 'top-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-gray-200 dark:border-gray-700'
-            : 'top-16 bg-black/70 py-2'
+          ? 'top-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-gray-200 dark:border-gray-700'
+          : 'top-16 bg-black/70 py-2'
           }`}
       >
         <div className={`container mx-auto px-6 flex justify-between items-center transition-all duration-300 ease-in-out ${shouldAppearScrolled ? 'h-16' : 'h-20'}`}>
@@ -185,8 +196,8 @@ const Header = () => {
                   <Link
                     href={menuRoutes[link] || '#'}
                     className={`relative px-4 py-2 mx-1 text-sm font-semibold transition-all duration-300 rounded-lg group ${shouldAppearScrolled
-                        ? 'text-gray-700 dark:text-gray-200 hover:text-[#c6a35d] dark:hover:text-[#c6a35d] hover:bg-gray-100 dark:hover:bg-gray-800'
-                        : 'text-white/90 hover:text-white hover:bg-white/10'
+                      ? 'text-gray-700 dark:text-gray-200 hover:text-[#c6a35d] dark:hover:text-[#c6a35d] hover:bg-gray-100 dark:hover:bg-gray-800'
+                      : 'text-white/90 hover:text-white hover:bg-white/10'
                       }`}
                     onClick={() => handleMenuClick(link)}
                   >
@@ -197,8 +208,8 @@ const Header = () => {
                 ) : (
                   <button
                     className={`relative px-4 py-2 mx-1 text-sm font-semibold transition-all duration-300 rounded-lg group flex items-center ${shouldAppearScrolled
-                        ? 'text-gray-700 dark:text-gray-200 hover:text-[#c6a35d] dark:hover:text-[#c6a35d] hover:bg-gray-100 dark:hover:bg-gray-800'
-                        : 'text-white/90 hover:text-white hover:bg-white/10'
+                      ? 'text-gray-700 dark:text-gray-200 hover:text-[#c6a35d] dark:hover:text-[#c6a35d] hover:bg-gray-100 dark:hover:bg-gray-800'
+                      : 'text-white/90 hover:text-white hover:bg-white/10'
                       } ${activeMenu === link ? (shouldAppearScrolled ? 'text-[#c6a35d] dark:text-[#c6a35d] bg-gray-100 dark:bg-gray-800' : 'text-white bg-white/10') : ''}`}
                   >
                     <span className="relative z-10">{link}</span>
@@ -216,31 +227,31 @@ const Header = () => {
             <button
               onClick={handleSearchToggle}
               className={`p-2 rounded-lg transition-all duration-300 ${shouldAppearScrolled
-                  ? 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
-                  : 'text-white/80 hover:text-white hover:bg-white/10'
+                ? 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
+                : 'text-white/80 hover:text-white hover:bg-white/10'
                 } ${searchOpen ? (shouldAppearScrolled ? 'text-blue-600 dark:text-blue-400 bg-gray-100 dark:bg-gray-800' : 'text-white bg-white/10') : ''}`}
             >
               <Search size={20} />
             </button>
 
             <div className={`transition-colors duration-300 ${shouldAppearScrolled
-                ? 'text-gray-600 dark:text-gray-300'
-                : 'text-white'
+              ? 'text-gray-600 dark:text-gray-300'
+              : 'text-white'
               }`}>
               <ModeToggle />
             </div>
-              
+
             <div className={`transition-colors duration-300 ${shouldAppearScrolled
-                ? 'text-gray-600 dark:text-gray-300'
-                : 'text-white'
+              ? 'text-gray-600 dark:text-gray-300'
+              : 'text-white'
               }`}>
               <LanguageSwitcher />
             </div>
 
             <button
               className={`lg:hidden p-2 rounded-lg transition-all duration-300 ${shouldAppearScrolled
-                  ? 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
-                  : 'text-white/80 hover:text-white hover:bg-white/10'
+                ? 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
+                : 'text-white/80 hover:text-white hover:bg-white/10'
                 }`}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
@@ -252,8 +263,8 @@ const Header = () => {
 
       <div
         className={`fixed right-0 z-40 transition-all duration-500 ease-in-out ${searchOpen
-            ? 'opacity-100 visible translate-y-0'
-            : 'opacity-0 invisible -translate-y-4 pointer-events-none'
+          ? 'opacity-100 visible translate-y-0'
+          : 'opacity-0 invisible -translate-y-4 pointer-events-none'
           } ${shouldAppearScrolled ? 'top-16' : 'top-32'} lg:left-auto left-0`}
       >
         <div className="px-4 lg:px-6 py-3 lg:py-4">
@@ -282,16 +293,16 @@ const Header = () => {
 
       <div
         className={`fixed left-0 right-0 z-40 transition-all duration-300 ease-in-out ${activeMenu && !searchOpen
-            ? 'opacity-100 visible translate-y-0'
-            : 'opacity-0 invisible -translate-y-4 pointer-events-none'
+          ? 'opacity-100 visible translate-y-0'
+          : 'opacity-0 invisible -translate-y-4 pointer-events-none'
           } ${shouldAppearScrolled ? 'top-16' : 'top-32'}`}
       >
         <div className="bg-white/40 dark:bg-slate-900/40 backdrop-blur-md shadow-2xl border-b border-gray-200 dark:border-gray-700">
           {activeMenu && (
             <div className="container mx-auto px-6 py-8">
               <div className={` flex justify-around gap-8 ${megaMenuData[activeMenu]?.length <= 2
-                  ? 'grid-cols-1 md:grid-cols-2 max-w-4xl'
-                  : 'grid-cols-1 md:grid-cols-3 lg:grid-cols-4'
+                ? 'grid-cols-1 md:grid-cols-2 max-w-4xl'
+                : 'grid-cols-1 md:grid-cols-3 lg:grid-cols-4'
                 }`}>
                 {megaMenuData[activeMenu]?.map((section, index) => (
                   <div key={index} className="space-y-4">

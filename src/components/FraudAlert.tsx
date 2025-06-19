@@ -1,4 +1,4 @@
-import { Link } from '@/i18n/navigation'; 
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { Shield, AlertTriangle, Mail, Globe, CheckCircle, XCircle } from 'lucide-react';
 
@@ -46,12 +46,11 @@ export default function FraudAlert() {
 
   const amaraaCompanies = [
     "Amaraa Agro Group Ltd.", "Amaraa Security Shield Ltd.", "Amaraa Auto Group Ltd.",
-    "Amaraa IT Services Ltd.", "Amaraa Food & Beverages Ltd.", "Amaraa Aviation Ltd.",
-    "Amaraa Real Estate Ltd.", "Amaraa Energy Solutions Ltd.", "Amaraa Healthcare Ltd.",
-    "Amaraa Education Foundation", "Amaraa Logistics Ltd.", "Amaraa Manufacturing Ltd.",
-     "Amaraa Global Trading Ltd.",
-    "Amaraa Financial Services Ltd.", "Amaraa Hospitality Ltd.", "Amaraa Media & Communications Ltd.",
-    "Amaraa Sports & Recreation Ltd.", "Amaraa Consulting Ltd."
+    "Amaraa IT Services Ltd.", "Amaraa Food & Beverages Ltd.", "Amaraa Marine Ltd.",
+    "Amaraa Aviation Ltd.", "Amaraa Real Estate Ltd.", "Amaraa Energy Solutions Ltd.",
+    "Amaraa Healthcare Ltd.", "Amaraa Education Foundation", "Amaraa Logistics Ltd.",
+    "Amaraa Manufacturing Ltd.", "Amaraa Global Trading Ltd.", "Amaraa Financial Services Ltd.",
+    "Amaraa Hospitality Ltd.", "Amaraa Media & Communications Ltd.", "Amaraa Sports & Recreation Ltd.", "Amaraa Consulting Ltd."
   ];
 
   return (
@@ -71,18 +70,18 @@ export default function FraudAlert() {
       <div className="container mx-auto px-4 py-12">
         <div className="bg-white dark:bg-[#232323] rounded-2xl shadow-2xl border-4 border-red-500 dark:border-red-400 p-8 mb-12">
           <div className="text-center mb-8">
-            <Image 
-              src="/images/logo/logo.png" 
-              alt="Amaraa Group Logo" 
-              width={120} 
-              height={60} 
+            <Image
+              src="/images/logo/logo.png"
+              alt="Amaraa Group Logo"
+              width={120}
+              height={60}
               className="mx-auto mb-6"
             />
             <h2 className="font-bodoni text-4xl md:text-5xl font-bold text-[#232323] dark:text-white mb-4">
               Protect Yourself From Fraud
             </h2>
             <p className="font-montserrat text-lg text-[#232323]/70 dark:text-white/70 max-w-3xl mx-auto">
-              Amaraa Group is committed to protecting our stakeholders from fraudulent activities. 
+              Amaraa Group is committed to protecting our stakeholders from fraudulent activities.
               Be aware of scams using our company name and always verify authenticity.
             </p>
           </div>
@@ -95,8 +94,8 @@ export default function FraudAlert() {
               </h3>
             </div>
             <p className="font-montserrat text-red-700 dark:text-red-200 leading-relaxed">
-              Fraudsters are actively using Amaraa Group&apos;s name and reputation to deceive individuals. 
-              Always verify any communication, job offer, investment opportunity, or business proposal 
+              Fraudsters are actively using Amaraa Group&apos;s name and reputation to deceive individuals.
+              Always verify any communication, job offer, investment opportunity, or business proposal
               through our official channels before proceeding.
             </p>
           </div>
@@ -246,17 +245,17 @@ export default function FraudAlert() {
             Stay Safe, Stay Informed
           </h3>
           <p className="font-montserrat mb-6 max-w-2xl mx-auto">
-            Your security is our priority. When in doubt, always verify directly with us. 
+            Your security is our priority. When in doubt, always verify directly with us.
             Together, we can stop fraudsters from using our trusted name.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
+            <Link
               href="/contact"
               className="bg-white text-[#c6a35d] px-8 py-3 rounded-full font-montserrat font-semibold hover:bg-[#f0efe2] transition-colors"
             >
               Contact Us
             </Link>
-            <Link 
+            <Link
               href="/"
               className="border-2 border-white text-white px-8 py-3 rounded-full font-montserrat font-semibold hover:bg-white hover:text-[#c6a35d] transition-colors"
             >

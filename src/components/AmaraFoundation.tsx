@@ -12,6 +12,7 @@ const companyStaticData = [
   { image: '/images/chapter-autogroup.jpg' },
   { image: '/images/chapter-itservice.jpg' },
   { image: '/images/chapter-food.jpg' },
+  { image: '/images/chapter-marine.jpg' },
   { image: '/images/chapter-aviation.jpg' },
   { image: '/images/chapter-estate.jpg' },
   { image: '/images/chapter-energy.jpg' },
@@ -19,14 +20,11 @@ const companyStaticData = [
   { image: '/images/chapter-education.jpg' },
   { image: '/images/chapter-logistics.jpg' },
   { image: '/images/chapter-manufacturing.jpg' },
-  { image: '/images/chapter-engineering.jpg' },
   { image: '/images/chapter-global.jpg' },
-  { image: '/images/chapter-tech.jpg' },
   { image: '/images/chapter-financial.jpg' },
   { image: '/images/chapter-hospital.jpg' },
   { image: '/images/chapter-media.jpg' },
   { image: '/images/chapter-sports.jpg' },
-  { image: '/images/chapter-environmental.jpg' },
   { image: '/images/chapter-consulting.jpg' },
 ];
 

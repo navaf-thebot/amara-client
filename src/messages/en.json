@@ -99,9 +99,15 @@
     ],
     "resolutions": [
       { "title": "Dividend Declaration for FY 2023-24", "status": "Approved" },
-      { "title": "Re-appointment of Independent Directors", "status": "Approved" },
+      {
+        "title": "Re-appointment of Independent Directors",
+        "status": "Approved"
+      },
       { "title": "Increase in Authorized Share Capital", "status": "Approved" },
-      { "title": "Approval of Related Party Transactions", "status": "Approved" }
+      {
+        "title": "Approval of Related Party Transactions",
+        "status": "Approved"
+      }
     ]
   },
   "NoticesPage": {
@@ -225,6 +231,10 @@
         "description": "Farm-to-table products with a focus on sustainability, bringing authentic flavors while preserving our planet. Organic food production with direct farmer partnerships and sustainable packaging across 25 product lines."
       },
       {
+        "name": "Amaraa Marine Ltd.",
+        "description": "Specializing in luxury yacht manufacturing and full-service marine solutions, Amaraa Marine Ltd. combines elegant design with engineering excellence. The company crafts customized yachts tailored to client preferences, integrating advanced marine technology and premium craftsmanship. It also offers comprehensive services including docking, maintenance, and private navigation solutions—delivering performance, reliability, and luxury at sea."
+      },
+      {
         "name": "Amaraa Aviation Ltd.",
         "description": "Full-service airline and eco-conscious aviation services, connecting destinations while caring for the environment. Operating 50+ aircraft with carbon-neutral flights and premium passenger services across 100+ destinations."
       },
@@ -253,16 +263,8 @@
         "description": "Advanced manufacturing and industrial solutions, crafting quality products with precision and care. Smart manufacturing facilities with Industry 4.0 integration and zero-waste production processes."
       },
       {
-        "name": "Amaraa Engineering Services Ltd.",
-        "description": "Expert engineering consultancy and project management, building the infrastructure of tomorrow. Engineering excellence in infrastructure projects with BIM technology and sustainable design practices."
-      },
-      {
         "name": "Amaraa Global Trading Ltd.",
         "description": "International trade and export services, bridging markets and fostering global partnerships. Trade partnerships across 40+ countries with commodity trading and export financing solutions."
-      },
-      {
-        "name": "Amaraa Tech Innovations Ltd.",
-        "description": "Cutting-edge technology research and AI solutions, pioneering the next generation of innovation. AI and IoT solutions with 50+ patents and research partnerships with leading universities."
       },
       {
         "name": "Amaraa Financial Services Ltd.",
@@ -279,10 +281,6 @@
       {
         "name": "Amaraa Sports & Recreation Ltd.",
         "description": "Sports development and recreational facilities, promoting health, fitness, and competitive spirit. Sports academies and recreational facilities promoting youth development and professional athletics."
-      },
-      {
-        "name": "Amaraa Environmental Solutions Ltd.",
-        "description": "Environmental conservation and waste management, protecting our planet for future generations. Waste-to-energy projects and environmental remediation with carbon offset programs."
       },
       {
         "name": "Amaraa Consulting Ltd.",

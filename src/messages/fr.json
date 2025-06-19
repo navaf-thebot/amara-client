@@ -237,6 +237,10 @@
         "description": "Produits de la ferme à la table axés sur la durabilité, apportant des saveurs authentiques tout en préservant notre planète. Production alimentaire biologique avec des partenariats directs avec les agriculteurs et des emballages durables pour 25 gammes de produits."
       },
       {
+        "name": "Amaraa Marine Ltée.",
+        "description": "Spécialisée dans la fabrication de yachts de luxe et les services maritimes complets, Amaraa Marine Ltée allie design élégant et excellence en ingénierie. L'entreprise conçoit des yachts personnalisés selon les préférences des clients, intégrant une technologie marine avancée et un savoir-faire haut de gamme. Elle propose également des services complets tels que l’amarrage, l’entretien et les solutions de navigation privée — offrant performance, fiabilité et luxe en mer."
+      },
+      {
         "name": "Amaraa Aviation Ltée.",
         "description": "Compagnie aérienne à service complet et services d'aviation éco-conscients, reliant les destinations tout en prenant soin de l'environnement. Exploitation de plus de 50 avions avec des vols neutres en carbone et des services passagers premium vers plus de 100 destinations."
       },
@@ -265,16 +269,8 @@
         "description": "Fabrication de pointe et solutions industrielles, créant des produits de qualité avec précision et soin. Usines de fabrication intelligentes avec intégration de l'Industrie 4.0 et processus de production sans déchets."
       },
       {
-        "name": "Amaraa Services d'Ingénierie Ltée.",
-        "description": "Conseil en ingénierie expert et gestion de projet, construisant l'infrastructure de demain. Excellence en ingénierie dans les projets d'infrastructure avec la technologie BIM et des pratiques de conception durables."
-      },
-      {
         "name": "Amaraa Commerce Mondial Ltée.",
         "description": "Commerce international et services d'exportation, reliant les marchés et favorisant les partenariats mondiaux. Partenariats commerciaux dans plus de 40 pays avec le négoce de matières premières et des solutions de financement à l'exportation."
-      },
-      {
-        "name": "Amaraa Innovations Technologiques Ltée.",
-        "description": "Recherche technologique de pointe et solutions d'IA, pionnier de la prochaine génération d'innovation. Solutions d'IA et d'IoT avec plus de 50 brevets et des partenariats de recherche avec des universités de premier plan."
       },
       {
         "name": "Amaraa Services Financiers Ltée.",
@@ -291,10 +287,6 @@
       {
         "name": "Amaraa Sports & Loisirs Ltée.",
         "description": "Développement sportif et installations de loisirs, promouvant la santé, la forme physique et l'esprit de compétition. Académies sportives et installations de loisirs promouvant le développement des jeunes et l'athlétisme professionnel."
-      },
-      {
-        "name": "Amaraa Solutions Environnementales Ltée.",
-        "description": "Conservation de l'environnement et gestion des déchets, protégeant notre planète pour les générations futures. Projets de valorisation énergétique des déchets et assainissement de l'environnement avec des programmes de compensation carbone."
       },
       {
         "name": "Amaraa Conseil Ltée.",

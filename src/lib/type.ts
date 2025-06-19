@@ -36,3 +36,31 @@ export type Report = {
   export type Category = {
     name: string;
   };
+
+
+  export interface NewsItem {
+    id: number;
+    title: string;
+    description: string;
+    category: string;
+    date: string;
+    author: string;
+    featured: boolean;
+    tags: string[];
+  }
+  
+  export interface Location {
+    country: string;
+    flag: string;
+    title: string;
+    company?: string;
+    address: string;
+    focus: string;
+    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  }
+  
+  export interface CompanyStats {
+    value: string;
+    label: string;
+    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  }

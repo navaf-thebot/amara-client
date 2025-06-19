@@ -9,27 +9,27 @@ import { useTranslations } from 'next-intl';
 const newsStaticData = [
   {
     imageSrc: '/images/news-energy.jpg',
-    articleUrl: '/news',
+    articleUrl: '/media/news',
     videoUrl: 'https://www.youtube.com/watch?v=your-video-id',
   },
   {
     imageSrc: '/images/news-global.jpg',
-    articleUrl: '/news',
+    articleUrl: '/media/news',
     videoUrl: '',
   },
   {
     imageSrc: '/images/news-estate.jpg',
-    articleUrl: '/news',
+    articleUrl: '/media/news',
     videoUrl: '',
   },
   {
     imageSrc: '/images/news-tech.jpg',
-    articleUrl: '/news',
+    articleUrl: '/media/news',
     videoUrl: '',
   },
   {
     imageSrc: '/images/news-community.jpg',
-    articleUrl: '/news',
+    articleUrl: '/media/news',
     videoUrl: '',
   },
 ];
