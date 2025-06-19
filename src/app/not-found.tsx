@@ -1,5 +1,5 @@
-import { Link } from '@/i18n/navigation'; 
 import { Home, Wrench, HardHat, Hammer } from 'lucide-react';
+import Link from 'next/link';
 
 export default function NotFound() {
   return (
