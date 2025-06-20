@@ -2,6 +2,7 @@
 'use client';
 import React, { useState, useMemo } from 'react';
 import { Search, Calendar, ArrowRight, Play, Download, ExternalLink, Award, Users, Mic, FileText } from 'lucide-react';
+import { Link } from '@/i18n/navigation';
 
 const newsData = [
   {
@@ -391,14 +392,14 @@ const NewsPage = () => {
               { name: 'Press Images', icon: Download, size: '12.5 MB' },
               { name: 'Media Contacts', icon: ExternalLink, size: 'PDF' }
             ].map((item, index) => (
-              <div
+              <Link href={'/media/media-kit'}
                 key={index}
                 className="group bg-[#f0efe2] dark:bg-[#232323] rounded-xl p-6 hover:bg-[#c6a35d] dark:hover:bg-[#c6a35d] hover:text-white dark:hover:text-black transition-all duration-300 cursor-pointer"
               >
                 <item.icon className="w-8 h-8 mb-4 group-hover:scale-110 transition-transform" />
                 <h3 className="font-bodoni font-bold text-lg mb-2">{item.name}</h3>
                 <p className="font-montserrat text-sm opacity-70">{item.size}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

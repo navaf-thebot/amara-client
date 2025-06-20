@@ -19,14 +19,14 @@ const MediaKit: React.FC = () => {
     ];
 
     const globalLocations: Location[] = [
-        { country: "Luxembourg", flag: "🇱🇺", title: "Headquarters", company: "Amaraa Global Corporation Ltd.", address: "15 Rue Edward Steichen, L-2540 Luxembourg City, Grand Duchy of Luxembourg", focus: "Global Holding HQ; Strategic Governance; Corporate Control", icon: Building2 },
-        { country: "Switzerland", flag: "🇨🇭", title: "Swiss Operations", address: "Rue du Rhône 118, 1204 Geneva, Switzerland", focus: "High Horology Brand; Swiss Precision Manufacturing", icon: Globe },
-        { country: "Singapore", flag: "🇸🇬", title: "Asia Pacific Hub", address: "80 Robinson Road, #10-01, Singapore 068898", focus: "Venture Capital, Innovation, Logistics Intelligence", icon: Briefcase },
-        { country: "United Arab Emirates", flag: "🇦🇪", title: "Capital & MENA Region", address: "Unit 502, Level 5, Index Tower, Dubai International Financial Centre, Dubai, UAE", focus: "Capital Markets; M&A; Regional Investments", icon: Building2 },
-        { country: "United States", flag: "🇺🇸", title: "North American Investment Arm", address: "745 Fifth Avenue, Suite 500, New York, NY 10151, USA", focus: "US Strategic Equity, Partnerships, Deal Structuring", icon: Briefcase },
-        { country: "United Kingdom", flag: "🇬🇧", title: "Family Office & Capital Markets", address: "1 Mayfair Place, London W1J 8AJ, United Kingdom", focus: "Family Office, Wealth Structuring, Asset Management", icon: Globe },
-        { country: "India", flag: "🇮🇳", title: "Development & Strategic Talent", address: "10th floor Panchsil Business Park, Laxman Nagar, Baner, Pune 411045", focus: "Technology, ESG, Research, Compliance Back Office", icon: Building2 },
-        { country: "Ireland", flag: "🇮🇪", title: "IP & Patent Holding", address: "The Academy, 42 Pearse St, Dublin 2", focus: "IP-Patent Holding; Aircraft Leasing", icon: Briefcase }
+        { country: "Luxembourg", flag: "/images/flags/luxembourg.jpg", title: "Headquarters", company: "Amaraa Global Corporation Ltd.", address: "15 Rue Edward Steichen, L-2540 Luxembourg City, Grand Duchy of Luxembourg", focus: "Global Holding HQ; Strategic Governance; Corporate Control", icon: Building2 },
+        { country: "Switzerland", flag: "/images/flags/switzerland.jpg", title: "Swiss Operations", address: "Rue du Rhône 118, 1204 Geneva, Switzerland", focus: "High Horology Brand; Swiss Precision Manufacturing", icon: Globe },
+        { country: "Singapore", flag: "/images/flags/singapore.jpg", title: "Asia Pacific Hub", address: "80 Robinson Road, #10-01, Singapore 068898", focus: "Venture Capital, Innovation, Logistics Intelligence", icon: Briefcase },
+        { country: "United Arab Emirates", flag: "/images/flags/uae.png", title: "Capital & MENA Region", address: "Unit 502, Level 5, Index Tower, Dubai International Financial Centre, Dubai, UAE", focus: "Capital Markets; M&A; Regional Investments", icon: Building2 },
+        { country: "United States", flag: "/images/flags/america.jpg", title: "North American Investment Arm", address: "745 Fifth Avenue, Suite 500, New York, NY 10151, USA", focus: "US Strategic Equity, Partnerships, Deal Structuring", icon: Briefcase },
+        { country: "United Kingdom", flag: "/images/flags/uk.jpg", title: "Family Office & Capital Markets", address: "1 Mayfair Place, London W1J 8AJ, United Kingdom", focus: "Family Office, Wealth Structuring, Asset Management", icon: Globe },
+        { country: "India", flag: "/images/flags/india.jpg", title: "Development & Strategic Talent", address: "10th floor Panchsil Business Park, Laxman Nagar, Baner, Pune 411045", focus: "Technology, ESG, Research, Compliance Back Office", icon: Building2 },
+        { country: "Ireland", flag: "/images/flags/ireland.jpg", title: "IP & Patent Holding", address: "The Academy, 42 Pearse St, Dublin 2", focus: "IP-Patent Holding; Aircraft Leasing", icon: Briefcase }
     ];
 
     const companyStats: CompanyStats[] = [
@@ -36,16 +36,16 @@ const MediaKit: React.FC = () => {
         { value: "19", label: "Business Divisions", icon: Building2 }
     ];
 
-    
-        
 
-    
+
+
+
 
     const newsData: NewsItem[] = [
         { id: 1, title: 'Amaraa Group Wins Sustainability Excellence Award 2024', imageSrc: '/images/news/sustainability.jpg', description: 'Our commitment to environmental responsibility has been recognized with the prestigious Sustainability Excellence Award, highlighting our renewable energy initiatives and green building practices.', category: 'Awards & Recognitions', date: '2024-12-15', author: 'Amaraa Communications', featured: true, tags: ['sustainability', 'award', 'environment'] },
         { id: 2, title: 'Revolutionary Solar Project Launches in Dubai', imageSrc: '/images/news/solar.jpg', description: 'Amaraa Group announces the launch of its largest solar installation project, capable of powering 50,000 homes with clean energy.', category: 'Press Releases', date: '2024-12-10', author: 'Energy Division', featured: true, tags: ['solar', 'dubai', 'renewable energy'] },
-        { id: 3, title: 'Forbes Features Amaraa Group in Top 100 Innovative Companies',imageSrc: '/images/news/innovative.jpg', description: 'Leading business magazine recognizes our technological innovations and market leadership in sustainable development.', category: 'Media Coverage', date: '2024-11-28', author: 'Forbes Magazine', featured: false, tags: ['forbes', 'innovation', 'recognition'] },
-        { id: 4, title: 'Q3 2024 Financial Results Exceed Expectations',imageSrc: '/images/news/financial.jpg', description: 'Strong performance across all business divisions with 35% revenue growth year-over-year, driven by successful international expansion.', category: 'Press Releases', date: '2024-11-20', author: 'Finance Department', featured: false, tags: ['financial', 'results', 'growth'] }
+        { id: 3, title: 'Forbes Features Amaraa Group in Top 100 Innovative Companies', imageSrc: '/images/news/innovative.jpg', description: 'Leading business magazine recognizes our technological innovations and market leadership in sustainable development.', category: 'Media Coverage', date: '2024-11-28', author: 'Forbes Magazine', featured: false, tags: ['forbes', 'innovation', 'recognition'] },
+        { id: 4, title: 'Q3 2024 Financial Results Exceed Expectations', imageSrc: '/images/news/financial.jpg', description: 'Strong performance across all business divisions with 35% revenue growth year-over-year, driven by successful international expansion.', category: 'Press Releases', date: '2024-11-20', author: 'Finance Department', featured: false, tags: ['financial', 'results', 'growth'] }
     ];
 
     const leaders = [
@@ -242,7 +242,7 @@ const MediaKit: React.FC = () => {
                         {globalLocations.map((location, index) => (
                             <div key={index} className="bg-white dark:bg-zinc-900 rounded-2xl p-8 shadow-xl transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-2 border border-[#c6a35d]">
                                 <div className="flex items-center justify-between mb-6">
-                                    <span className="text-4xl">{location.flag}</span>
+                                    <Image src={location.flag} alt={location.country} width={100} height={100} className="w-12 h-12 rounded-full" />
                                     <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-br from-[#c6a35d] to-[#b8935a]">
                                         <location.icon className="w-6 h-6 text-white" />
                                     </div>
@@ -406,35 +406,35 @@ const MediaKit: React.FC = () => {
                     </div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {leaders.map((leader, index) => (
-                            <div key={index} className="group bg-white dark:bg-zinc-900 rounded-3xl p-8 shadow-xl text-center transition-all duration-500 hover:shadow-2xl transform hover:-translate-y-4 border-2 hover:border-opacity-100 border-opacity-30 border-[#c6a35d] overflow-hidden relative">
+                            <div key={index} className="group bg-white dark:bg-zinc-900 rounded-3xl p-8 shadow-xl text-center transition-all duration-500 hover:shadow-2xl transform hover:-translate-y-4 border-2 hover:border-opacity-100 border-opacity-30 border-[#c6a35d] overflow-hidden relative flex flex-col">
                                 <div className="absolute inset-0 opacity-5 dark:opacity-10" style={{ background: `radial-gradient(circle at 50% 50%, #c6a35d 1px, transparent 1px)`, backgroundSize: '20px 20px' }}></div>
-                                <div className="relative mb-8 z-10">
-                                    <div className="relative">
-                                        <div className={`w-32 h-32 rounded-full mx-auto bg-gradient-to-br ${leader.accent} p-1 shadow-2xl group-hover:scale-110 transition-transform duration-500`}>
-                                            <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center relative overflow-hidden">
-                                                <div className="absolute inset-0 bg-gradient-to-br from-[#c6a35d]/10 to-[#c6a35d]/20"></div>
-                                                <Image src={leader.image} alt={leader.name} width={200} height={200} className="w-full h-full object-cover rounded-full" />
+                                <div className="relative z-10 flex flex-col flex-grow">
+                                    <div className="relative mb-8">
+                                        <div className="relative">
+                                            <div className={`w-32 h-32 rounded-full mx-auto bg-gradient-to-br ${leader.accent} p-1 shadow-2xl group-hover:scale-110 transition-transform duration-500`}>
+                                                <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center relative overflow-hidden">
+                                                    <div className="absolute inset-0 bg-gradient-to-br from-[#c6a35d]/10 to-[#c6a35d]/20"></div>
+                                                    <Image src={leader.image} alt={leader.name} width={200} height={200} className="w-full h-full object-cover rounded-full" />
+                                                </div>
                                             </div>
+                                            <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full border-3 border-white dark:border-zinc-900 shadow-lg group-hover:rotate-180 transition-transform duration-700 bg-[#c6a35d]"></div>
+                                            <div className="absolute -bottom-2 -left-2 w-6 h-6 rounded-full border-2 border-white dark:border-zinc-900 shadow-lg group-hover:rotate-180 transition-transform duration-700 bg-[#232323]"></div>
                                         </div>
-                                        <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full border-3 border-white dark:border-zinc-900 shadow-lg group-hover:rotate-180 transition-transform duration-700 bg-[#c6a35d]"></div>
-                                        <div className="absolute -bottom-2 -left-2 w-6 h-6 rounded-full border-2 border-white dark:border-zinc-900 shadow-lg group-hover:rotate-180 transition-transform duration-700 bg-[#232323]"></div>
                                     </div>
-                                </div>
-                                <div className="relative z-10 space-y-4">
-                                    <div>
+
+                                    <div className="flex-grow">
                                         <h3 className="text-2xl font-bold font-bodoni mb-2 group-hover:text-opacity-100 transition-all duration-300 text-[#232323] dark:text-white">
                                             {leader.name}
                                         </h3>
                                         <div className="inline-block px-4 py-2 rounded-full text-sm font-montserrat font-bold text-white shadow-lg bg-gradient-to-br from-[#c6a35d] to-[#b8935a]">
                                             {leader.title}
                                         </div>
-                                    </div>
-                                    <div className="pt-4">
-                                        <p className="text-sm font-montserrat leading-relaxed group-hover:text-opacity-100 transition-all duration-300 text-zinc-700 dark:text-gray-300">
+                                        <p className="text-sm font-montserrat leading-relaxed group-hover:text-opacity-100 transition-all duration-300 text-zinc-700 dark:text-gray-300 mt-4">
                                             {leader.bio}
                                         </p>
                                     </div>
-                                    <div className="pt-4 border-t border-opacity-20 border-[#c6a35d]">
+
+                                    <div className="mt-auto pt-4 border-t border-opacity-20 border-[#c6a35d]">
                                         <div className="flex justify-center space-x-4">
                                             <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#c6a35d]/10 hover:bg-[#c6a35d]/20 dark:bg-[#c6a35d]/20 dark:hover:bg-[#c6a35d]/30 transition-all duration-300 cursor-pointer">
                                                 <Mail className="w-4 h-4 text-[#c6a35d]" />
@@ -507,7 +507,7 @@ const MediaKit: React.FC = () => {
                                                 <div className="absolute inset-0 flex items-center justify-center">
                                                     <div className="text-center">
                                                         <Link href={'/media/news'} className=" mx-auto mb-4 rounded-full flex items-center justify-center bg-[#c6a35d]">
-                                                           <Image src={news.imageSrc} alt={news.title} fill className="w-44 h-44 object-cover" /> 
+                                                            <Image src={news.imageSrc} alt={news.title} fill className="w-44 h-44 object-cover" />
                                                         </Link>
                                                     </div>
                                                 </div>
