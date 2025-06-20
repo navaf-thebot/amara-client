@@ -157,7 +157,7 @@ const AuthModal = ({ open, onOpenChange, onAuthSuccess }: AuthModalProps) => {
             />
             <button 
               onClick={() => { setActiveTab("login"); resetStates(); }} 
-              className={`relative z-10 w-1/2 py-2 font-semibold text-sm transition-colors duration-300 ${
+              className={`relative cursor-pointer z-10 w-1/2 py-2 font-semibold text-sm transition-colors duration-300 ${
                 activeTab === "login" ? "text-white" : "text-gray-600 dark:text-gray-300"
               }`}
             >
@@ -165,7 +165,7 @@ const AuthModal = ({ open, onOpenChange, onAuthSuccess }: AuthModalProps) => {
             </button>
             <button 
               onClick={() => { setActiveTab("register"); resetStates(); }} 
-              className={`relative z-10 w-1/2 py-2 font-semibold text-sm transition-colors duration-300 ${
+              className={`relative cursor-pointer z-10 w-1/2 py-2 font-semibold text-sm transition-colors duration-300 ${
                 activeTab === "register" ? "text-white" : "text-gray-600 dark:text-gray-300"
               }`}
             >
