@@ -41,6 +41,7 @@ export type Report = {
   export interface NewsItem {
     id: number;
     title: string;
+    imageSrc: string;
     description: string;
     category: string;
     date: string;
