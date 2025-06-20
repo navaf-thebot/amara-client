@@ -291,7 +291,7 @@ export default function CareersPage() {
                     </div>
                   </div>
                   <div className="flex-shrink-0">
-                    <button onClick={handleApplyClick} className="group w-full sm:w-auto px-8 py-4 bg-[#232323] dark:bg-white text-white dark:text-[#232323] hover:bg-[#c6a35d] dark:hover:bg-[#c6a35d] dark:hover:text-white font-montserrat font-semibold rounded-lg transition-all duration-300 hover:shadow-lg flex items-center justify-center gap-3">
+                    <button onClick={handleApplyClick} className="group cursor-pointer w-full sm:w-auto px-8 py-4 bg-[#232323] dark:bg-white text-white dark:text-[#232323] hover:bg-[#c6a35d] dark:hover:bg-[#c6a35d] dark:hover:text-white font-montserrat font-semibold rounded-lg transition-all duration-300 hover:shadow-lg flex items-center justify-center gap-3">
                       <span>Apply Now</span>
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                     </button>
