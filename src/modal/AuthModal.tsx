@@ -1,417 +1,417 @@
-import { useState } from "react";
-import {
-  Users,
-  TrendingUp,
-  Globe,
-  UserPlus,
-  Building2,
-  Zap,
-  Shield,
-  Upload,
-  FileText,
-  X,
-  ChevronDown,
-} from "lucide-react"
+"use client";
 
-interface JobApplicationModalProps {
+import { useState } from "react";
+import { X, Mail, Lock, User as UserIcon, Check, ChevronDown } from "lucide-react";
+import type { User } from "@/lib/type";
+
+const countries = [
+  { code: "US", name: "United States", dialCode: "+1", flag: "🇺🇸" },
+  { code: "GB", name: "United Kingdom", dialCode: "+44", flag: "🇬🇧" },
+  { code: "CA", name: "Canada", dialCode: "+1", flag: "🇨🇦" },
+  { code: "AU", name: "Australia", dialCode: "+61", flag: "🇦🇺" },
+  { code: "DE", name: "Germany", dialCode: "+49", flag: "🇩🇪" },
+  { code: "FR", name: "France", dialCode: "+33", flag: "🇫🇷" },
+  { code: "IN", name: "India", dialCode: "+91", flag: "🇮🇳" },
+  { code: "CN", name: "China", dialCode: "+86", flag: "🇨🇳" },
+  { code: "JP", name: "Japan", dialCode: "+81", flag: "🇯🇵" },
+  { code: "BR", name: "Brazil", dialCode: "+55", flag: "🇧🇷" },
+  { code: "MX", name: "Mexico", dialCode: "+52", flag: "🇲🇽" },
+  { code: "RU", name: "Russia", dialCode: "+7", flag: "🇷🇺" },
+  { code: "IT", name: "Italy", dialCode: "+39", flag: "🇮🇹" },
+  { code: "ES", name: "Spain", dialCode: "+34", flag: "🇪🇸" },
+  { code: "KR", name: "South Korea", dialCode: "+82", flag: "🇰🇷" },
+  { code: "SA", name: "Saudi Arabia", dialCode: "+966", flag: "🇸🇦" },
+  { code: "AE", name: "UAE", dialCode: "+971", flag: "🇦🇪" },
+  { code: "SG", name: "Singapore", dialCode: "+65", flag: "🇸🇬" },
+  { code: "ZA", name: "South Africa", dialCode: "+27", flag: "🇿🇦" },
+  { code: "NG", name: "Nigeria", dialCode: "+234", flag: "🇳🇬" },
+  { code: "EG", name: "Egypt", dialCode: "+20", flag: "🇪🇬" },
+  { code: "PK", name: "Pakistan", dialCode: "+92", flag: "🇵🇰" },
+  { code: "BD", name: "Bangladesh", dialCode: "+880", flag: "🇧🇩" },
+  { code: "ID", name: "Indonesia", dialCode: "+62", flag: "🇮🇩" },
+  { code: "MY", name: "Malaysia", dialCode: "+60", flag: "🇲🇾" },
+  { code: "TH", name: "Thailand", dialCode: "+66", flag: "🇹🇭" },
+  { code: "VN", name: "Vietnam", dialCode: "+84", flag: "🇻🇳" },
+  { code: "PH", name: "Philippines", dialCode: "+63", flag: "🇵🇭" },
+  { code: "TR", name: "Turkey", dialCode: "+90", flag: "🇹🇷" },
+  { code: "AR", name: "Argentina", dialCode: "+54", flag: "🇦🇷" }
+];
+
+interface AuthModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onAuthSuccess: (user: User) => void; 
 }
 
-const JobApplicationModal = ({ open, onOpenChange }: JobApplicationModalProps) => {
-  const [isLoading, setIsLoading] = useState(false);
+const AuthModal = ({ open, onOpenChange, onAuthSuccess }: AuthModalProps) => {
+  const [activeTab, setActiveTab] = useState<"login" | "register">("login");
+  const [showEmailOtp, setShowEmailOtp] = useState(false);
+  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+  const [loading, setLoading] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState(countries[0]);
   const [showCountryDropdown, setShowCountryDropdown] = useState(false);
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phoneCountry: "IN",
-    phoneCode: "+91",
-    phone: "",
-    resume: null as File | null,
-    coverLetter: ""
+  const [countrySearch, setCountrySearch] = useState("");
+
+  const [loginData, setLoginData] = useState({ email: "", password: "" });
+  const [registerData, setRegisterData] = useState({ 
+    name: "", 
+    email: "", 
+    phone: "", 
+    password: "", 
+    confirmPassword: "" 
   });
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
-
-  const countries = [
-    { code: "IN", name: "India", flag: "🇮🇳", phoneCode: "+91" },
-    { code: "US", name: "United States", flag: "🇺🇸", phoneCode: "+1" },
-    { code: "GB", name: "United Kingdom", flag: "🇬🇧", phoneCode: "+44" },
-    { code: "CA", name: "Canada", flag: "🇨🇦", phoneCode: "+1" },
-    { code: "AU", name: "Australia", flag: "🇦🇺", phoneCode: "+61" },
-    { code: "DE", name: "Germany", flag: "🇩🇪", phoneCode: "+49" },
-    { code: "FR", name: "France", flag: "🇫🇷", phoneCode: "+33" },
-    { code: "SG", name: "Singapore", flag: "🇸🇬", phoneCode: "+65" },
-    { code: "AE", name: "UAE", flag: "🇦🇪", phoneCode: "+971" },
-    { code: "JP", name: "Japan", flag: "🇯🇵", phoneCode: "+81" }
-  ];
-
-  const clientLogos = [
-    { name: "Global Finance", icon: <TrendingUp className="h-6 w-6 text-amber-600" /> },
-    { name: "Secure Holdings", icon: <Shield className="h-6 w-6 text-amber-600" /> },
-    { name: "World Investments", icon: <Globe className="h-6 w-6 text-amber-600" /> },
-    { name: "Rapid Growth", icon: <Zap className="h-6 w-6 text-amber-600" /> },
-    { name: "Unity Partners", icon: <Users className="h-6 w-6 text-amber-600" /> },
-    { name: "Prime Assets", icon: <Building2 className="h-6 w-6 text-amber-600" /> }
-  ];
-
-  const selectedCountry = countries.find(c => c.code === formData.phoneCountry) || countries[0];
-
-  const validateForm = () => {
-    const newErrors: { [key: string]: string } = {};
-
-    if (!formData.fullName.trim()) {
-      newErrors.fullName = "Full name is required";
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
-    }
-
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required";
-    } else if (!/^\d{6,15}$/.test(formData.phone.replace(/\s/g, ''))) {
-      newErrors.phone = "Please enter a valid phone number";
-    }
-
-    if (!formData.resume) {
-      newErrors.resume = "Resume is required";
-    }
-
-    if (!formData.coverLetter.trim()) {
-      newErrors.coverLetter = "Cover letter is required";
-    } else if (formData.coverLetter.trim().length < 50) {
-      newErrors.coverLetter = "Cover letter should be at least 50 characters long";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
-
-    setIsLoading(true);
-
-    setTimeout(() => {
-      setIsLoading(false);
-      onOpenChange(false);
-      resetForm();
-      alert("Application submitted successfully! We'll review your application and get back to you soon.");
-    }, 2000);
-  };
-
-  const handleInputChange = (field: string, value: string | File | null) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-    if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: "" }));
-    }
-  };
-
-  const handleCountrySelect = (country: typeof countries[0]) => {
-    setFormData(prev => ({
-      ...prev,
-      phoneCountry: country.code,
-      phoneCode: country.phoneCode
-    }));
-    setShowCountryDropdown(false);
-  };
-
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-      if (!allowedTypes.includes(file.type)) {
-        setErrors(prev => ({ ...prev, resume: "Please upload a PDF or Word document" }));
-        return;
-      }
-
-      if (file.size > 5 * 1024 * 1024) {
-        setErrors(prev => ({ ...prev, resume: "File size should be less than 5MB" }));
-        return;
-      }
-
-      handleInputChange("resume", file);
-    }
-  };
-
-  const removeFile = () => {
-    handleInputChange("resume", null);
-    const fileInput = document.getElementById("resume") as HTMLInputElement;
-    if (fileInput) fileInput.value = "";
-  };
-
-  const resetForm = () => {
-    setFormData({
-      fullName: "",
-      email: "",
-      phoneCountry: "IN",
-      phoneCode: "+91",
-      phone: "",
-      resume: null,
-      coverLetter: ""
-    });
-    setErrors({});
-    setIsLoading(false);
-    setShowCountryDropdown(false);
-  };
-
-  const handleOpenChange = (newOpen: boolean) => {
-    if (!newOpen) {
-      resetForm();
-    }
-    onOpenChange(newOpen);
-  };
 
   if (!open) return null;
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-        onClick={() => handleOpenChange(false)}
-      />
+  const filteredCountries = countries.filter(country =>
+    country.name.toLowerCase().includes(countrySearch.toLowerCase()) ||
+    country.dialCode.includes(countrySearch)
+  );
 
-      <div className="relative bg-white dark:bg-gray-900 rounded-lg shadow-xl max-w-3xl w-full mx-2 sm:mx-4 max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 z-10 bg-white dark:bg-gray-900 p-4 sm:p-6 border-b border-gray-200 dark:border-gray-700 rounded-t-lg">
-          <div className="flex items-center justify-between">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-              <UserPlus className="h-5 w-5 sm:h-6 sm:w-6 text-amber-600" />
-              Apply for Position
-            </h2>
-            <button
-              onClick={() => handleOpenChange(false)}
-              className="text-gray-400 cursor-pointer hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-200 p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full"
+  const handleOtpChange = (index: number, value: string) => {
+    if (value.length > 1) return;
+    const newOtp = [...otp];
+    newOtp[index] = value;
+    setOtp(newOtp);
+    
+    if (value && index < 5) {
+      const nextInput = document.getElementById(`otp-${index + 1}`);
+      nextInput?.focus();
+    }
+  };
+
+  const handleOtpKeyDown = (index: number, e: React.KeyboardEvent) => {
+    if (e.key === "Backspace" && !otp[index] && index > 0) {
+      const prevInput = document.getElementById(`otp-${index - 1}`);
+      prevInput?.focus();
+    }
+  };
+
+  const sendEmailOtp = async () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setShowEmailOtp(true);
+    }, 1500);
+  };
+
+  const verifyEmailOtp = async () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      const user: User = {
+          id: "1",
+          name: registerData.name,
+          email: registerData.email,
+          phone: `${selectedCountry.dialCode}${registerData.phone}`,
+          password: ""
+      };
+      onAuthSuccess(user);
+      onOpenChange(false);
+    }, 1500);
+  };
+
+  const handleLogin = async () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      const user: User = {
+          id: "1",
+          name: "John Doe",
+          email: loginData.email,
+          phone: "",
+          password: ""
+      };
+      onAuthSuccess(user);
+      onOpenChange(false);
+    }, 1500);
+  };
+
+  const resetStates = () => {
+    setShowEmailOtp(false);
+    setOtp(["", "", "", "", "", ""]);
+    setLoading(false);
+    setCountrySearch("");
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center font-montserrat p-4">
+      <div
+        className="absolute inset-0 bg-[#232323]/60 backdrop-blur-sm"
+        onClick={() => onOpenChange(false)}
+      />
+      
+      <div className="relative bg-[#f0efe2] dark:bg-[#232323] rounded-xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-hidden">
+        <button
+          onClick={() => onOpenChange(false)}
+          className="absolute top-4 right-4 text-gray-400 cursor-pointer hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-200 p-1 hover:bg-gray-200/50 dark:hover:bg-white/10 rounded-full z-20"
+        >
+          <X className="w-5 h-5" />
+        </button>
+
+        <div className="p-3 bg-white/50 dark:bg-[#1a1a1a] border-b border-gray-200/20">
+          <div className="relative flex w-full bg-gray-200 dark:bg-[#2d2d2d] rounded-lg p-1">
+            <div
+              className="absolute top-1 left-1 h-[calc(100%-8px)] w-1/2 bg-[#c6a35d] rounded-md shadow-md transition-transform duration-300 ease-in-out"
+              style={{ transform: `translateX(${activeTab === "login" ? "0%" : "100%"})` }}
+            />
+            <button 
+              onClick={() => { setActiveTab("login"); resetStates(); }} 
+              className={`relative z-10 w-1/2 py-2 font-semibold text-sm transition-colors duration-300 ${
+                activeTab === "login" ? "text-white" : "text-gray-600 dark:text-gray-300"
+              }`}
             >
-              <X className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
+              Sign In
+            </button>
+            <button 
+              onClick={() => { setActiveTab("register"); resetStates(); }} 
+              className={`relative z-10 w-1/2 py-2 font-semibold text-sm transition-colors duration-300 ${
+                activeTab === "register" ? "text-white" : "text-gray-600 dark:text-gray-300"
+              }`}
+            >
+              Register
             </button>
           </div>
-          <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm sm:text-base">Join our team and make an impact</p>
         </div>
 
-        <div className="p-4 sm:p-6 space-y-6">
-          <div>
-            <p className="text-center text-xs text-gray-500 dark:text-gray-400 mb-4">Trusted by leading organizations</p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
-              {clientLogos.map((client, index) => (
-                <div key={index} className="flex flex-col items-center p-2 bg-gray-50 dark:bg-gray-800 rounded border border-amber-200 dark:border-amber-800">
-                  {client.icon}
-                  <span className="text-xs text-gray-500 dark:text-gray-400 mt-1 text-center leading-tight">{client.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
-                Personal Information
-              </h3>
-
-              <div className="space-y-2">
-                <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Full Name *
-                </label>
-                <input
-                  id="fullName"
-                  type="text"
-                  value={formData.fullName}
-                  onChange={(e) => handleInputChange("fullName", e.target.value)}
-                  className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white ${errors.fullName ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                    }`}
-                  placeholder="Enter your full name"
-                />
-                {errors.fullName && (
-                  <p className="text-sm text-red-600">{errors.fullName}</p>
-                )}
-              </div>
-
-              <div className="space-y-2">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Email Address *
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange("email", e.target.value)}
-                  className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white ${errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                    }`}
-                  placeholder="Enter your email address"
-                />
-                {errors.email && (
-                  <p className="text-sm text-red-600">{errors.email}</p>
-                )}
-              </div>
-
-              <div className="space-y-2">
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Phone Number *
-                </label>
-                <div className="flex">
-                  <div className="relative">
-                    <button
-                      type="button"
-                      onClick={() => setShowCountryDropdown(!showCountryDropdown)}
-                      className="flex items-center px-3 py-2 border border-r-0 border-gray-300 dark:border-gray-600 rounded-l-md bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                    >
-                      <span className="mr-2">{selectedCountry.flag}</span>
-                      <span className="text-sm text-gray-700 dark:text-gray-300">{selectedCountry.phoneCode}</span>
-                      <ChevronDown className="ml-1 h-4 w-4 text-gray-500" />
-                    </button>
-
-                    {showCountryDropdown && (
-                      <div className="absolute top-full left-0 mt-1 w-64 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg z-10 max-h-60 overflow-y-auto">
-                        {countries.map((country) => (
-                          <button
-                            key={country.code}
-                            type="button"
-                            onClick={() => handleCountrySelect(country)}
-                            className="w-full px-3 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center"
-                          >
-                            <span className="mr-3">{country.flag}</span>
-                            <span className="text-sm text-gray-700 dark:text-gray-300 mr-2">{country.name}</span>
-                            <span className="text-sm text-gray-500">{country.phoneCode}</span>
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
+        <div className="overflow-y-auto max-h-[calc(90vh-80px)]">
+          {activeTab === "login" ? (
+            <div className="p-6">
+              <div className="space-y-4">
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                   <input
-                    id="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => handleInputChange("phone", e.target.value)}
-                    className={`flex-1 px-3 py-2 border rounded-r-md shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white ${errors.phone ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                      }`}
-                    placeholder="Enter your phone number"
+                    type="email"
+                    placeholder="Email Address"
+                    value={loginData.email}
+                    onChange={(e) => setLoginData(prev => ({ ...prev, email: e.target.value }))}
+                    className="w-full pl-10 pr-4 py-3 bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#c6a35d] focus:border-transparent outline-none transition-all"
                   />
                 </div>
-                {errors.phone && (
-                  <p className="text-sm text-red-600">{errors.phone}</p>
-                )}
+
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    value={loginData.password}
+                    onChange={(e) => setLoginData(prev => ({ ...prev, password: e.target.value }))}
+                    className="w-full pl-10 pr-4 py-3 bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#c6a35d] focus:border-transparent outline-none transition-all"
+                  />
+                </div>
+
+                <button
+                  onClick={handleLogin}
+                  disabled={loading}
+                  className="w-full bg-[#c6a35d] hover:bg-[#b8954f] text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                >
+                  {loading ? (
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  ) : (
+                    "Sign In"
+                  )}
+                </button>
+
+                <div className="text-center">
+                  <button className="text-[#c6a35d] hover:text-[#b8954f] text-sm font-medium transition-colors">
+                    Forgot Password?
+                  </button>
+                </div>
               </div>
             </div>
+          ) : !showEmailOtp ? (
+            <div className="p-6">
+              <div className="space-y-4">
+                <div className="relative">
+                  <UserIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="text"
+                    placeholder="Full Name"
+                    value={registerData.name}
+                    onChange={(e) => setRegisterData(prev => ({ ...prev, name: e.target.value }))}
+                    className="w-full pl-10 pr-4 py-3 bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#c6a35d] focus:border-transparent outline-none transition-all"
+                  />
+                </div>
 
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
-                Documents
-              </h3>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="email"
+                    placeholder="Email Address"
+                    value={registerData.email}
+                    onChange={(e) => setRegisterData(prev => ({ ...prev, email: e.target.value }))}
+                    className="w-full pl-10 pr-4 py-3 bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#c6a35d] focus:border-transparent outline-none transition-all"
+                  />
+                </div>
 
-              <div className="space-y-2">
-                <label htmlFor="resume" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Resume *
-                </label>
-                <div className="flex items-center justify-center w-full">
-                  <label htmlFor="resume" className={`flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 ${errors.resume ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                    } ${formData.resume ? 'bg-green-50 dark:bg-green-900/20 border-green-300 dark:border-green-700' : 'bg-gray-50 dark:bg-gray-900'}`}>
-                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                      {formData.resume ? (
-                        <>
-                          <FileText className="w-8 h-8 mb-4 text-green-600" />
-                          <p className="text-sm text-gray-700 dark:text-gray-300 font-medium">{formData.resume.name}</p>
-                          <p className="text-xs text-gray-500">
-                            {(formData.resume.size / 1024 / 1024).toFixed(2)} MB
-                          </p>
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              removeFile();
-                            }}
-                            className="mt-2 text-xs text-red-600 hover:text-red-800"
-                          >
-                            Remove file
-                          </button>
-                        </>
-                      ) : (
-                        <>
-                          <Upload className="w-8 h-8 mb-4 text-gray-500" />
-                          <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                            <span className="font-semibold">Click to upload</span> your resume
-                          </p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400">PDF, DOC or DOCX (MAX. 5MB)</p>
-                        </>
+                <div className="relative">
+                  <div className="flex">
+                    <div className="relative">
+                      <button
+                        type="button"
+                        onClick={() => setShowCountryDropdown(!showCountryDropdown)}
+                        className="flex items-center gap-2 px-3 py-3 bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 rounded-l-lg hover:bg-gray-50 dark:hover:bg-[#2d2d2d] transition-colors min-w-[100px]"
+                      >
+                        <span className="text-lg">{selectedCountry.flag}</span>
+                        <span className="text-sm font-medium">{selectedCountry.dialCode}</span>
+                        <ChevronDown className="w-4 h-4 text-gray-400" />
+                      </button>
+                      
+                      {showCountryDropdown && (
+                        <div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 min-w-[300px]">
+                          <div className="p-2 border-b border-gray-200 dark:border-gray-700">
+                            <input
+                              type="text"
+                              placeholder="Search countries..."
+                              value={countrySearch}
+                              onChange={(e) => setCountrySearch(e.target.value)}
+                              className="w-full px-3 py-2 text-sm bg-gray-50 dark:bg-[#2d2d2d] border border-gray-200 dark:border-gray-600 rounded focus:ring-2 focus:ring-[#c6a35d] focus:border-transparent outline-none"
+                            />
+                          </div>
+                          <div className="max-h-48 overflow-y-auto">
+                            {filteredCountries.map((country) => (
+                              <button
+                                key={country.code}
+                                type="button"
+                                onClick={() => {
+                                  setSelectedCountry(country);
+                                  setShowCountryDropdown(false);
+                                  setCountrySearch("");
+                                }}
+                                className="w-full flex items-center gap-3 px-3 py-2 hover:bg-gray-50 dark:hover:bg-[#2d2d2d] transition-colors text-left"
+                              >
+                                <span className="text-lg">{country.flag}</span>
+                                <span className="text-sm font-medium min-w-[50px]">{country.dialCode}</span>
+                                <span className="text-sm text-gray-600 dark:text-gray-300 truncate">{country.name}</span>
+                              </button>
+                            ))}
+                          </div>
+                        </div>
                       )}
                     </div>
+                    
                     <input
-                      id="resume"
-                      type="file"
-                      className="hidden"
-                      accept=".pdf,.doc,.docx"
-                      onChange={handleFileUpload}
+                      type="tel"
+                      placeholder="Phone Number"
+                      value={registerData.phone}
+                      onChange={(e) => {
+                        const value = e.target.value.replace(/\D/g, '');
+                        setRegisterData(prev => ({ ...prev, phone: value }));
+                      }}
+                      className="flex-1 px-4 py-3 bg-white dark:bg-[#1a1a1a] border border-l-0 border-gray-200 dark:border-gray-700 rounded-r-lg outline-none transition-all"
                     />
-                  </label>
+                  </div>
                 </div>
-                {errors.resume && (
-                  <p className="text-sm text-red-600">{errors.resume}</p>
-                )}
+
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    value={registerData.password}
+                    onChange={(e) => setRegisterData(prev => ({ ...prev, password: e.target.value }))}
+                    className="w-full pl-10 pr-4 py-3 bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#c6a35d] focus:border-transparent outline-none transition-all"
+                  />
+                </div>
+
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    value={registerData.confirmPassword}
+                    onChange={(e) => setRegisterData(prev => ({ ...prev, confirmPassword: e.target.value }))}
+                    className="w-full pl-10 pr-4 py-3 bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#c6a35d] focus:border-transparent outline-none transition-all"
+                  />
+                </div>
+
+                <button
+                  onClick={sendEmailOtp}
+                  disabled={loading}
+                  className="w-full bg-[#c6a35d] hover:bg-[#b8954f] text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                >
+                  {loading ? (
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  ) : (
+                    "Send Email Verification"
+                  )}
+                </button>
+
+                <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
+                  By registering, you agree to our Terms of Service and Privacy Policy
+                </p>
               </div>
             </div>
-
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
-                Cover Letter
+          ) : (
+            <div className="p-6 text-center">
+              <div className="w-16 h-16 bg-[#c6a35d]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Mail className="w-8 h-8 text-[#c6a35d]" />
+              </div>
+              
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                Verify Your Email
               </h3>
+              
+              <p className="text-gray-600 dark:text-gray-300 mb-6">
+                Enter the 6-digit code sent to<br />
+                <span className="font-medium text-[#c6a35d]">
+                  {registerData.email}
+                </span>
+              </p>
+
+              <div className="flex justify-center gap-2 mb-6">
+                {otp.map((digit, index) => (
+                  <input
+                    key={index}
+                    id={`otp-${index}`}
+                    type="text"
+                    inputMode="numeric"
+                    maxLength={1}
+                    value={digit}
+                    onChange={(e) => handleOtpChange(index, e.target.value)}
+                    onKeyDown={(e) => handleOtpKeyDown(index, e)}
+                    className="w-12 h-12 text-center text-lg font-semibold bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#c6a35d] focus:border-transparent outline-none transition-all"
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={verifyEmailOtp}
+                disabled={loading || otp.some(digit => !digit)}
+                className="w-full bg-[#c6a35d] hover:bg-[#b8954f] text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center mb-4"
+              >
+                {loading ? (
+                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                ) : (
+                  <>
+                    <Check className="w-5 h-5 mr-2" />
+                    Complete Registration
+                  </>
+                )}
+              </button>
 
               <div className="space-y-2">
-                <label htmlFor="coverLetter" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Cover Letter *
-                </label>
-                <textarea
-                  id="coverLetter"
-                  value={formData.coverLetter}
-                  onChange={(e) => handleInputChange("coverLetter", e.target.value)}
-                  rows={6}
-                  className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white resize-none ${errors.coverLetter ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                    }`}
-                  placeholder="Tell us why you're interested in this position and what makes you a great fit for our team..."
-                />
-                <div className="flex justify-between items-center">
-                  {errors.coverLetter && (
-                    <p className="text-sm text-red-600">{errors.coverLetter}</p>
-                  )}
-                  <p className="text-xs text-gray-500 dark:text-gray-400 ml-auto">
-                    {formData.coverLetter.length} characters (minimum 50)
-                  </p>
-                </div>
+                <button
+                  onClick={() => setShowEmailOtp(false)}
+                  className="text-[#c6a35d] hover:text-[#b8954f] font-medium text-sm transition-colors block mx-auto"
+                >
+                  ← Back to Registration
+                </button>
+                
+                <button
+                  onClick={sendEmailOtp}
+                  disabled={loading}
+                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-sm transition-colors block mx-auto"
+                >
+                  Didn&apos;t receive code? Resend
+                </button>
               </div>
             </div>
-
-            <button
-              type="submit"
-              className="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 text-lg shadow-lg hover:shadow-xl transition-all duration-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-              disabled={isLoading}
-            >
-              {isLoading ? (
-                <>
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                  Submitting Application...
-                </>
-              ) : (
-                <>
-                  <UserPlus className="h-5 w-5" />
-                  Submit Application
-                </>
-              )}
-            </button>
-          </form>
-
-          <div className="p-4 bg-amber-50 dark:bg-amber-950/20 rounded-lg border border-amber-200 dark:border-amber-800">
-            <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
-              🔒 Your application and personal information are protected with industry-standard encryption and security measures.
-            </p>
-          </div>
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-export default JobApplicationModal;
+export default AuthModal;
