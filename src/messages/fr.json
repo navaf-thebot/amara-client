@@ -138,6 +138,7 @@
     "viewDetailsButton": "Voir les Détails",
     "downloadButton": "Télécharger",
     "viewButton": "Voir",
+    "noResultsFound": "Aucun résultat ne correspond à vos critères de recherche ou de filtre.",
     "categories": [
       { "name": "SEBI" },
       { "name": "MCA" },

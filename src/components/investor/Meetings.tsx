@@ -1,11 +1,13 @@
 'use client';
 
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/card/Card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/card/badge";
 import { Calendar, Clock, MapPin, Users, FileText, Video, Download } from "lucide-react";
-import { Meeting, Resolution } from "@/lib/type";
+import { Meeting, Resolution, User } from "@/lib/type";
+import AuthModal from "../../modal/AuthModal";
 
 const upcomingMeetingsStatic = [
   { date: "December 15, 2024", time: "10:00 AM IST" }
@@ -24,14 +26,26 @@ const resolutionsStatic = [
   { votes: "89.3%" }
 ];
 
-
-
 const Meetings = () => {
   const t = useTranslations('MeetingsPage');
 
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const upcomingMeetings = t.raw('upcomingMeetings') as Meeting[];
   const pastMeetings = t.raw('pastMeetings') as Meeting[];
   const resolutions = t.raw('resolutions') as Resolution[];
+
+  const handleRegistrationClick = () => {
+    if (!currentUser) {
+      setIsAuthModalOpen(true);
+    }
+  };
+
+  const handleAuthSuccess = (user: User) => {
+    setCurrentUser(user);
+    setIsAuthModalOpen(false);
+    console.log("Authentication successful, user set:", user);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -70,9 +84,14 @@ const Meetings = () => {
                       <strong>{t('agendaLabel')}</strong> {meeting.agenda}
                     </CardDescription>
                     <div className="flex flex-col sm:flex-row gap-3">
-                      <Button className="bg-amber-600 hover:bg-amber-700 text-black"><Users className="mr-2 h-4 w-4" />{meeting.registerButton}</Button>
-                      <Button variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10"><Video className="mr-2 h-4 w-4" />{meeting.joinButton}</Button>
-                      <Button variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10"><Download className="mr-2 h-4 w-4" />{meeting.noticeButton}</Button>
+                      {!currentUser && (
+                        <Button onClick={handleRegistrationClick} className="cursor-pointer bg-amber-600 hover:bg-amber-700 text-black">
+                          <Users className="mr-2 h-4 w-4" />
+                          {meeting.registerButton}
+                        </Button>
+                      )}
+                      <Button variant="outline" className="cursor-pointer border-amber-600 text-amber-600 hover:bg-amber-600/10"><Video className="mr-2 h-4 w-4" />{meeting.joinButton}</Button>
+                      <Button variant="outline" className="cursor-pointer border-amber-600 text-amber-600 hover:bg-amber-600/10"><Download className="mr-2 h-4 w-4" />{meeting.noticeButton}</Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -105,7 +124,7 @@ const Meetings = () => {
         <div className="mb-12">
           <div className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-4 mb-6">
             <h2 className="text-2xl font-semibold text-foreground">{t('pastMeetingsTitle')}</h2>
-            <Button variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10 self-start sm:self-center"><FileText className="mr-2 h-4 w-4" />{t('viewArchivesButton')}</Button>
+            <Button variant="outline" className="cursor-pointer border-amber-600 text-amber-600 hover:bg-amber-600/10 self-start sm:self-center"><FileText className="mr-2 h-4 w-4" />{t('viewArchivesButton')}</Button>
           </div>
 
           <div className="grid gap-6">
@@ -131,9 +150,9 @@ const Meetings = () => {
                       <strong>{t('agendaLabel')}</strong> {meeting.agenda}
                     </CardDescription>
                     <div className="flex flex-wrap gap-2">
-                      <Button size="sm" variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10"><Download className="mr-2 h-3 w-3" />{meeting.minutesButton}</Button>
-                      <Button size="sm" variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10"><FileText className="mr-2 h-3 w-3" />{meeting.resolutionsButton}</Button>
-                      <Button size="sm" variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10"><Video className="mr-2 h-3 w-3" />{meeting.recordingButton}</Button>
+                      <Button size="sm" variant="outline" className="cursor-pointer border-amber-600 text-amber-600 hover:bg-amber-600/10"><Download className="mr-2 h-3 w-3" />{meeting.minutesButton}</Button>
+                      <Button size="sm" variant="outline" className="cursor-pointer border-amber-600 text-amber-600 hover:bg-amber-600/10"><FileText className="mr-2 h-3 w-3" />{meeting.resolutionsButton}</Button>
+                      <Button size="sm" variant="outline" className="cursor-pointer border-amber-600 text-amber-600 hover:bg-amber-600/10"><Video className="mr-2 h-3 w-3" />{meeting.recordingButton}</Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -142,19 +161,27 @@ const Meetings = () => {
           </div>
         </div>
 
-        <Card className="border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/20">
-          <CardContent className="p-6 sm:p-8">
-            <h3 className="text-xl font-semibold text-foreground mb-4">{t('participationTitle')}</h3>
-            <p className="text-muted-foreground mb-6">
-              {t('participationDescription')}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="bg-amber-600 hover:bg-amber-700 text-black">{t('registerUpdatesButton')}</Button>
-              <Button variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10">{t('shareholderServicesButton')}</Button>
-            </div>
-          </CardContent>
-        </Card>
+        {!currentUser && (
+          <Card className="border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/20">
+            <CardContent className="p-6 sm:p-8">
+              <h3 className="text-xl font-semibold text-foreground mb-4">{t('participationTitle')}</h3>
+              <p className="text-muted-foreground mb-6">
+                {t('participationDescription')}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button onClick={handleRegistrationClick} className="cursor-pointer bg-amber-600 hover:bg-amber-700 text-black">{t('registerUpdatesButton')}</Button>
+                <Button variant="outline" className="cursor-pointer border-amber-600 text-amber-600 hover:bg-amber-600/10">{t('shareholderServicesButton')}</Button>
+              </div>
+            </CardContent>
+          </Card>
+        )}
       </main>
+
+      <AuthModal
+        open={isAuthModalOpen}
+        onOpenChange={setIsAuthModalOpen}
+        onAuthSuccess={handleAuthSuccess}
+      />
     </div>
   );
 };

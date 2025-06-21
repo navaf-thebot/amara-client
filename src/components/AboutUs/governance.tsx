@@ -173,8 +173,9 @@ export default function GovernancePage() {
               </div>
             </div>
             <div className={`transition-all duration-1000 delay-300 ${isVisible['section-framework'] ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
-              <div className="relative group"><div className="absolute inset-0 bg-gradient-to-br from-[#c6a35d]/20 to-transparent rounded-3xl group-hover:from-[#c6a35d]/30 transition-all duration-500"></div>
-                <Image fill src="/images/gover-img.jpg" alt="Corporate governance framework" className="rounded-3xl object-cover shadow-2xl group-hover:scale-105 transition-transform duration-500" />
+              <div className="relative group flex justify-center">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#c6a35d]/20 to-transparent rounded-3xl group-hover:from-[#c6a35d]/30 transition-all duration-500"></div>
+                <Image src="/images/gover-img.jpg" alt="Corporate governance framework" quality={100} width={500} height={500} className="rounded-3xl object-contain shadow-2xl group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute top-6 right-6 bg-white/90 dark:bg-black/90 backdrop-blur-sm p-4 rounded-xl border border-[#c6a35d]/20"><div className="text-2xl font-bodoni font-bold text-[#c6a35d]">25+</div><div className="text-sm font-montserrat text-[#232323] dark:text-white">Years Excellence</div></div><div className="absolute bottom-6 left-6 bg-white/90 dark:bg-black/90 backdrop-blur-sm p-4 rounded-xl border border-[#c6a35d]/20"><div className="text-2xl font-bodoni font-bold text-[#c6a35d]">100%</div><div className="text-sm font-montserrat text-[#232323] dark:text-white">Compliance</div></div></div>
             </div>
           </div>
@@ -203,7 +204,6 @@ export default function GovernancePage() {
               We believe that creating sustainable value requires a deep understanding of and alignment with the interests of all our stakeholders—including investors, employees, customers, and the communities we operate in. We maintain an open dialogue to build trust, foster collaboration, and ensure our strategic objectives create mutual value for everyone involved.
             </p>
           </div>
-
         </div>
       </section>
 

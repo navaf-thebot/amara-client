@@ -132,6 +132,7 @@
     "viewDetailsButton": "View Details",
     "downloadButton": "Download",
     "viewButton": "View",
+    "noResultsFound": "No notices found matching your search or filter criteria.",
     "categories": [
       { "name": "SEBI" },
       { "name": "MCA" },

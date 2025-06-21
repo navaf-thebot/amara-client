@@ -1,10 +1,13 @@
 'use client';
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/card/Card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/card/badge";
 import { Download, Calendar, TrendingUp, DollarSign, PieChart, BarChart3 } from "lucide-react";
-import { Report } from "@/lib/type";
+import { Report, User } from "@/lib/type";
+import AuthModal from "../../modal/AuthModal";
+import { Link } from "@/i18n/navigation";
 
 const staticMetricsData = [
     { value: "+12.5%", icon: <TrendingUp className="h-5 w-5" /> },
@@ -16,6 +19,9 @@ const staticMetricsData = [
 const Financial = () => {
   const t = useTranslations('FinancialPage');
 
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+
   const reports = t.raw('reports') as Report[];
   const translatedMetrics = t.raw('metrics') as unknown[];
 
@@ -23,6 +29,18 @@ const Financial = () => {
     ...metric,
     label: (translatedMetrics[index] as { label: string }).label
   }));
+
+  const handleSubscribeClick = () => {
+    if (!currentUser) {
+      setIsAuthModalOpen(true);
+    }
+  };
+
+  const handleAuthSuccess = (user: User) => {
+    setCurrentUser(user);
+    setIsAuthModalOpen(false);
+    console.log("Authentication successful, user set:", user);
+  };
 
   return (
     <div className="min-h-screen bg-background">      
@@ -55,7 +73,7 @@ const Financial = () => {
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-semibold text-foreground">{t('recentReportsTitle')}</h2>
-            <Button variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10">
+            <Button variant="outline" className="cursor-pointer border-amber-600 text-amber-600 hover:bg-amber-600/10">
               <Calendar className="mr-2 h-4 w-4" />
               {t('viewAllButton')}
             </Button>
@@ -86,11 +104,11 @@ const Financial = () => {
                     {report.description}
                   </CardDescription>
                   <div className="flex gap-2">
-                    <Button size="sm" className="bg-amber-600 hover:bg-amber-700 text-black">
+                    <Button size="sm" className="cursor-pointer bg-amber-600 hover:bg-amber-700 text-black">
                       <Download className="mr-2 h-4 w-4" />
                       {t('downloadPdfButton')}
                     </Button>
-                    <Button size="sm" variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10">
+                    <Button size="sm" variant="outline" className="cursor-pointer border-amber-600 text-amber-600 hover:bg-amber-600/10">
                       {t('viewOnlineButton')}
                     </Button>
                   </div>
@@ -100,23 +118,36 @@ const Financial = () => {
           </div>
         </div>
 
-        <Card className="mt-12 border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/20">
-          <CardContent className="p-8">
-            <h3 className="text-xl font-semibold text-foreground mb-4">{t('commitmentTitle')}</h3>
-            <p className="text-muted-foreground mb-4">
-              {t('commitmentDescription')}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="bg-amber-600 hover:bg-amber-700 text-black">
-                {t('subscribeButton')}
-              </Button>
-              <Button variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-600/10">
-                {t('contactButton')}
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+        {!currentUser && (
+          <Card className="mt-12 border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/20">
+            <CardContent className="p-8">
+              <h3 className="text-xl font-semibold text-foreground mb-4">{t('commitmentTitle')}</h3>
+              <p className="text-muted-foreground mb-4">
+                {t('commitmentDescription')}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button
+                  onClick={handleSubscribeClick}
+                  className="cursor-pointer bg-amber-600 hover:bg-amber-700 text-black"
+                >
+                  {t('subscribeButton')}
+                </Button>
+                <Link href="/contact">
+                <Button variant="outline" className="cursor-pointer border-amber-600 text-amber-600 hover:bg-amber-600/10">
+                  {t('contactButton')}
+                </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        )}
       </main>
+
+      <AuthModal
+        open={isAuthModalOpen}
+        onOpenChange={setIsAuthModalOpen}
+        onAuthSuccess={handleAuthSuccess}
+      />
     </div>
   );
 };

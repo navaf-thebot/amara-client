@@ -30,12 +30,12 @@ const heroSlidesStaticData = [
   {
     id: 5,
     image: "/images/carbon.jpg",
-    link:'/sustainability'
+    link:'/sustainability/carbon-footprint'
   },
   {
     id: 6,
     image: "/images/Sustain.jpg",
-    link:'/sustainability'
+    link:'/sustainability/carbon-neutrality'
   }
 ];
 

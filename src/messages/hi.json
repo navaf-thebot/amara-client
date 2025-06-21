@@ -129,6 +129,7 @@
     "viewDetailsButton": "विवरण देखें",
     "downloadButton": "डाउनलोड करें",
     "viewButton": "देखें",
+    "noResultsFound": "आपकी खोज या फ़िल्टर से मेल खाने वाली कोई सूचना नहीं मिली।",
     "categories": [
       { "name": "सेबी" },
       { "name": "एमसीए" },
