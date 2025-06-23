@@ -1,7 +1,9 @@
 'use client';
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import type { User } from "@/lib/type";
+import AuthModal from "../../modal/AuthModal";
 
 function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -29,6 +31,25 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string
 }
 
 function SubsidiariesPage() {
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+
+  const handlePartnerClick = () => {
+    if (!currentUser) {
+      setIsAuthModalOpen(true);
+    } else {
+      console.log("User already logged in. Proceeding to partnership form...");
+      alert("Redirecting to partnership form...");
+    }
+  };
+
+  const handleAuthSuccess = (user: User) => {
+    setCurrentUser(user);
+    setIsAuthModalOpen(false);
+    console.log("Authentication successful, user set:", user);
+    alert(`Welcome, ${user.name}! You can now proceed with the partnership process.`);
+  };
+
   const companyStaticData = [
     { image: '/images/chapter-agra.jpg' },
     { image: '/images/chapter-security.jpg' },
@@ -59,7 +80,7 @@ function SubsidiariesPage() {
       details: "Leading sustainable farming practices across 50,000+ acres with organic certification and smart irrigation systems.",
     },
     {
-      name: "Amaraa Security Shield Ltd.",
+      name: "Physical Security and PSO Ltd.",
       chapter: "Chapter of Safety",
       description: "Armed security and surveillance services, protecting what matters most with advanced technology and trained professionals.",
       details: "Comprehensive security solutions serving 500+ clients with 24/7 monitoring and rapid response capabilities.",
@@ -505,13 +526,16 @@ function SubsidiariesPage() {
             organization.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.button
-              className="px-8 py-4 cursor-pointer bg-[#c6a35d] text-white font-semibold rounded-lg font-montserrat"
-              whileHover={{ scale: 1.05, backgroundColor: "#b8964f" }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Partner With Us
-            </motion.button>
+            {!currentUser && (
+              <motion.button
+                className="px-8 py-4 cursor-pointer bg-[#c6a35d] text-white font-semibold rounded-lg font-montserrat"
+                whileHover={{ scale: 1.05, backgroundColor: "#b8964f" }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handlePartnerClick}
+              >
+                Partner With Us
+              </motion.button>
+            )}
             <motion.button
               className="px-8 py-4 cursor-pointer border-2 border-[#c6a35d] text-[#c6a35d] font-semibold rounded-lg font-montserrat"
               whileHover={{ scale: 1.05, backgroundColor: "#c6a35d", color: "#ffffff" }}
@@ -523,6 +547,12 @@ function SubsidiariesPage() {
           </div>
         </div>
       </section>
+
+      <AuthModal
+        open={isAuthModalOpen}
+        onOpenChange={setIsAuthModalOpen}
+        onAuthSuccess={handleAuthSuccess}
+      />
     </div>
   )
 }

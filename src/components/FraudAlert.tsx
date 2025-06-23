@@ -45,7 +45,7 @@ export default function FraudAlert() {
   ];
 
   const amaraaCompanies = [
-    "Amaraa Agro Group Ltd.", "Amaraa Security Shield Ltd.", "Amaraa Auto Group Ltd.",
+    "Amaraa Agro Group Ltd.", "Physical Security and PSO Ltd.", "Amaraa Auto Group Ltd.",
     "Amaraa IT Services Ltd.", "Amaraa Food & Beverages Ltd.", "Amaraa Marine Ltd.",
     "Amaraa Aviation Ltd.", "Amaraa Real Estate Ltd.", "Amaraa Energy Solutions Ltd.",
     "Amaraa Healthcare Ltd.", "Amaraa Education Foundation", "Amaraa Logistics Ltd.",

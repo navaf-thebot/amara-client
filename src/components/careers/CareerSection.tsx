@@ -25,11 +25,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export default function CareersPage() {
-
   const currUser: User | null = null;
-  //for test saving :-  
-  // const currUser: User | null = { id: '123', name: 'John Doe', email: 'john@doe.com' ,password: '', phone: ''};
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showAllJobs, setShowAllJobs] = useState(false);
   const [isVisible, setIsVisible] = useState<Record<string, boolean>>({});
