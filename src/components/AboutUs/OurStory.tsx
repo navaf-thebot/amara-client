@@ -55,7 +55,37 @@ export default function OurStoryPage() {
   const [activeTimeline, setActiveTimeline] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const [visibleSections, setVisibleSections] = useState(new Set())
+  const [imageLoadingStates, setImageLoadingStates] = useState<Record<number, boolean>>(
+    timelineData.reduce((acc, _, index) => ({ ...acc, [index]: true }), {} as Record<number, boolean>)
+  )
+  const [, setImagesPreloaded] = useState(false)
 
+  
+  useEffect(() => {
+    const preloadImages = async () => {
+      const imagePromises = timelineData.map((item, index) => {
+        return new Promise((resolve, reject) => {
+          const img = new window.Image()
+          img.onload = () => {
+            setImageLoadingStates(prev => ({ ...prev, [index]: false }))
+            resolve(img)
+          }
+          img.onerror = reject
+          img.src = item.image
+        })
+      })
+
+      try {
+        await Promise.all(imagePromises)
+        setImagesPreloaded(true)
+      } catch (error) {
+        console.error('Error preloading images:', error)
+        setImagesPreloaded(true) 
+      }
+    }
+
+    preloadImages()
+  }, [])
 
   useEffect(() => {
     if (!isAutoPlaying) return
@@ -204,22 +234,50 @@ export default function OurStoryPage() {
             </div>
 
             <div className="lg:w-2/3">
-              <div className="relative bg-white/50 dark:bg-black/20 backdrop-blur-md rounded-2xl border border-gray-300/50 dark:border-gray-700/50 p-8 shadow-lg will-change-transform">
+              <div className="relative bg-white/50 dark:bg-black/20 backdrop-blur-md rounded-2xl border border-gray-300/50 dark:border-gray-700/50 p-8 shadow-lg">
                 <div className="flex flex-col md:flex-row gap-8">
                   <div className="md:w-1/2 relative group">
-                    <div className="aspect-[3/4] overflow-hidden rounded-lg shadow-xl">
-                      <Image
-                        fill
-                        src={timelineData[activeTimeline].image}
-                        alt={timelineData[activeTimeline].title}
-                        className="object-cover transition-transform duration-500 group-hover:scale-110 will-change-transform"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        key={timelineData[activeTimeline].image}
-                        quality={95}
-                      />  
+                    <div className="aspect-[3/4] overflow-hidden rounded-lg shadow-xl bg-gray-200 dark:bg-gray-800 relative">
+                      {imageLoadingStates[activeTimeline] && (
+                        <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 animate-pulse">
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
+                        </div>
+                      )}
+                      
+                      <div className={`absolute inset-0 transition-opacity duration-500 ${imageLoadingStates[activeTimeline] ? 'opacity-0' : 'opacity-100'}`}>
+                        <Image
+                          fill
+                          src={timelineData[activeTimeline].image}
+                          alt={timelineData[activeTimeline].title}
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          quality={95}
+                          priority={activeTimeline === 0} 
+                          onLoad={() => {
+                            setImageLoadingStates(prev => ({
+                              ...prev,
+                              [activeTimeline]: false
+                            }))
+                          }}
+                          onError={() => {
+                            setImageLoadingStates(prev => ({
+                              ...prev,
+                              [activeTimeline]: false
+                            }))
+                          }}
+                          
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover'
+                          }}
+                        />
+                      </div>
                     </div>
+                    
                     <div className="absolute -inset-2 bg-[#c6a35d] rounded-lg blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10"></div>
                   </div>
+                  
                   <div className="md:w-1/2 flex flex-col">
                     <div className="mb-auto">
                       <p className="font-semibold text-[#c6a35d] mb-2">{timelineData[activeTimeline].stats}</p>
@@ -284,6 +342,20 @@ export default function OurStoryPage() {
           </Link>
         </div>
       </section>
+
+      <style jsx>{`
+        @keyframes shimmer {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
+        .animate-shimmer {
+          animation: shimmer 2s infinite;
+        }
+      `}</style>
     </div>
   )
 }
