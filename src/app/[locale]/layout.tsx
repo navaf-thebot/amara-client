@@ -7,6 +7,9 @@ import {routing} from '@/i18n/routing';
  import { Inter } from 'next/font/google'
 import LayoutWrapper from '@/components/LayoutWrapper';
 import { ThemeProvider } from '@/components/themes/theme-provider';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -42,7 +45,20 @@ export default async function LocaleLayout({
           enableSystem
           disableTransitionOnChange
         >
+          
           <LayoutWrapper>{children}</LayoutWrapper>
+           <ToastContainer
+              position="bottom-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+            />
         </ThemeProvider>
         </NextIntlClientProvider>
       </div>

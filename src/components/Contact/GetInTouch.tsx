@@ -8,6 +8,10 @@ import { MapPin, Phone, Mail, Building2, Briefcase, Globe as GlobeIcon, Loader2 
 import { Canvas, useFrame, useLoader } from "@react-three/fiber"
 import { OrbitControls, Stars, Html } from "@react-three/drei"
 import * as THREE from "three"
+import { useFormik } from "formik"
+import * as Yup from "yup"
+import axios from "axios"
+import { toast } from "react-toastify"
 
 interface LocationPoint {
   country: string;
@@ -21,24 +25,25 @@ interface LocationPoint {
 }
 
 const globalLocations: LocationPoint[] = [
-    { country: "Luxembourg", flag: "🇱🇺", title: "Headquarters", address: "15 Rue Edward Steichen, L-2540 Luxembourg City, Grand Duchy of Luxembourg", focus: "Global Holding HQ; Strategic Governance; Corporate Control", icon: Building2, location: [49.6116, 6.1319], size: 0.1 },
-    { country: "Switzerland", flag: "🇨🇭", title: "Swiss Operations", address: "Rue du Rhône 118, 1204 Geneva, Switzerland", focus: "High Horology Brand; Swiss Precision Manufacturing", icon: GlobeIcon, location: [46.2044, 6.1432], size: 0.1 },
-    { country: "Singapore", flag: "🇸🇬", title: "Asia Pacific Hub", address: "80 Robinson Road, #10-01, Singapore 068898", focus: "Venture Capital, Innovation, Logistics Intelligence", icon: Briefcase, location: [1.3521, 103.8198], size: 0.1 },
-    { country: "United Arab Emirates", flag: "🇦🇪", title: "Capital & MENA Region", address: "Unit 502, Level 5, Index Tower, Dubai International Financial Centre, Dubai, UAE", focus: "Capital Markets; M&A; Regional Investments", icon: Building2, location: [25.276987, 55.296249], size: 0.1 },
-    { country: "United States", flag: "🇺🇸", title: "North American Investment Arm", address: "745 Fifth Avenue, Suite 500, New York, NY 10151, USA", focus: "US Strategic Equity, Partnerships, Deal Structuring", icon: Briefcase, location: [40.7128, -74.0060], size: 0.1 },
-    { country: "United Kingdom", flag: "🇬🇧", title: "Family Office & Capital Markets", address: "1 Mayfair Place, London W1J 8AJ, United Kingdom", focus: "Family Office, Wealth Structuring, Asset Management", icon: GlobeIcon, location: [51.5072, -0.1276], size: 0.1 },
-    { country: "India", flag: "🇮🇳", title: "Development & Strategic Talent", address: "10th floor Panchsil Business Park, Laxman Nagar, Baner, Pune 411045", focus: "Technology, ESG, Research, Compliance Back Office", icon: Building2, location: [18.5204, 73.8567], size: 0.1 },
-    { country: "Ireland", flag: "🇮🇪", title: "IP & Patent Holding", address: "The Academy, 42 Pearse St, Dublin 2", focus: "IP-Patent Holding; Aircraft Leasing", icon: Briefcase, location: [53.3498, -6.2603], size: 0.1 }
+  { country: "Luxembourg", flag: "🇱🇺", title: "Headquarters", address: "15 Rue Edward Steichen, L-2540 Luxembourg City, Grand Duchy of Luxembourg", focus: "Global Holding HQ; Strategic Governance; Corporate Control", icon: Building2, location: [49.6116, 6.1319], size: 0.1 },
+  { country: "Switzerland", flag: "🇨🇭", title: "Swiss Operations", address: "Rue du Rhône 118, 1204 Geneva, Switzerland", focus: "High Horology Brand; Swiss Precision Manufacturing", icon: GlobeIcon, location: [46.2044, 6.1432], size: 0.1 },
+  { country: "Singapore", flag: "🇸🇬", title: "Asia Pacific Hub", address: "80 Robinson Road, #10-01, Singapore 068898", focus: "Venture Capital, Innovation, Logistics Intelligence", icon: Briefcase, location: [1.3521, 103.8198], size: 0.1 },
+  { country: "United Arab Emirates", flag: "🇦🇪", title: "Capital & MENA Region", address: "Unit 502, Level 5, Index Tower, Dubai International Financial Centre, Dubai, UAE", focus: "Capital Markets; M&A; Regional Investments", icon: Building2, location: [25.276987, 55.296249], size: 0.1 },
+  { country: "United States", flag: "🇺🇸", title: "North American Investment Arm", address: "745 Fifth Avenue, Suite 500, New York, NY 10151, USA", focus: "US Strategic Equity, Partnerships, Deal Structuring", icon: Briefcase, location: [40.7128, -74.0060], size: 0.1 },
+  { country: "United Kingdom", flag: "🇬🇧", title: "Family Office & Capital Markets", address: "1 Mayfair Place, London W1J 8AJ, United Kingdom", focus: "Family Office, Wealth Structuring, Asset Management", icon: GlobeIcon, location: [51.5072, -0.1276], size: 0.1 },
+  { country: "India", flag: "🇮🇳", title: "Development & Strategic Talent", address: "10th floor Panchsil Business Park, Laxman Nagar, Baner, Pune 411045", focus: "Technology, ESG, Research, Compliance Back Office", icon: Building2, location: [18.5204, 73.8567], size: 0.1 },
+  { country: "Ireland", flag: "🇮🇪", title: "IP & Patent Holding", address: "The Academy, 42 Pearse St, Dublin 2", focus: "IP-Patent Holding; Aircraft Leasing", icon: Briefcase, location: [53.3498, -6.2603], size: 0.1 }
 ];
 
 type PhoneInputProps = {
   onChange: (e: React.ChangeEvent<HTMLInputElement> | { target: { name: string; value: string } }) => void
   name?: string
+  onBlur?: (e: React.FocusEvent<unknown>) => void;
 }
-const PhoneInput = ({ onChange, ...props }: PhoneInputProps) => {
+const PhoneInput = ({ onChange, onBlur, ...props }: PhoneInputProps) => {
   const [countryCode, setCountryCode] = useState("+91")
   const [phoneNumber, setPhoneNumber] = useState("")
-  const countryCodes = [ { code: "+1", flag: "🇺🇸" }, { code: "+44", flag: "🇬🇧" }, { code: "+352", flag: "🇱🇺" }, { code: "+41", flag: "🇨🇭" }, { code: "+65", flag: "🇸🇬" }, { code: "+971", flag: "🇦🇪" }, { code: "+91", flag: "🇮🇳" }, { code: "+353", flag: "🇮🇪" } ]
+  const countryCodes = [{ code: "+1", flag: "🇺🇸" }, { code: "+44", flag: "🇬🇧" }, { code: "+352", flag: "🇱🇺" }, { code: "+41", flag: "🇨🇭" }, { code: "+65", flag: "🇸🇬" }, { code: "+971", flag: "🇦🇪" }, { code: "+91", flag: "🇮🇳" }, { code: "+353", flag: "🇮🇪" }]
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const numbersOnly = e.target.value.replace(/\D/g, "")
@@ -55,14 +60,13 @@ const PhoneInput = ({ onChange, ...props }: PhoneInputProps) => {
 
   return (
     <div className="flex">
-      <select value={countryCode} onChange={handleCountryChange} className="px-3 py-1 border border-r-0 border-gray-300 dark:border-gray-700 rounded-l-md bg-[#f0efe2] dark:bg-[#2a2a2a] text-[#232323] dark:text-white focus:outline-none focus:ring-1 focus:ring-[#c6a35d] focus:border-[#c6a35d]">
+      <select value={countryCode} onChange={handleCountryChange} onBlur={onBlur} name={`${props.name}_code`} className="px-3 py-1 border border-r-0 border-gray-300 dark:border-gray-700 rounded-l-md bg-[#f0efe2] dark:bg-[#2a2a2a] text-[#232323] dark:text-white focus:outline-none focus:ring-1 focus:ring-[#c6a35d] focus:border-[#c6a35d]">
         {countryCodes.map((c) => (<option key={c.code} value={c.code}>{c.flag} {c.code}</option>))}
       </select>
-      <Input {...props} value={phoneNumber} onChange={handlePhoneChange} className="rounded-l-none border-gray-300 dark:border-gray-700 focus:border-[#c6a35d] focus:ring-[#c6a35d] bg-[#f0efe2] dark:bg-[#2a2a2a] flex-1" placeholder="Phone number" />
+      <Input {...props} value={phoneNumber} onChange={handlePhoneChange} onBlur={onBlur} className="rounded-l-none border-gray-300 dark:border-gray-700 focus:border-[#c6a35d] focus:ring-[#c6a35d] bg-[#f0efe2] dark:bg-[#2a2a2a] flex-1" placeholder="Phone number" />
     </div>
   )
 }
-
 
 function latLngToVector3(lat: number, lng: number, radius: number) {
   const phi = (90 - lat) * (Math.PI / 180);
@@ -88,13 +92,13 @@ function Earth({ targetLocation, selectedLocation }: { targetLocation: [number, 
   const earthRef = useRef<THREE.Group>(null!);
   const targetRotation = useRef(new THREE.Quaternion());
   const texture = useLoader(THREE.TextureLoader, 'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/land_ocean_ice_cloud_2048.jpg');
-  
+
   const markers = useMemo(() => globalLocations.map(loc => ({
     key: loc.country,
     position: latLngToVector3(loc.location[0], loc.location[1], 2),
     isSelected: loc.country === selectedLocation.country,
   })), [selectedLocation]);
-  
+
   useEffect(() => {
     const [lat, lng] = targetLocation;
     const phi = (lat * Math.PI) / 180;
@@ -104,7 +108,7 @@ function Earth({ targetLocation, selectedLocation }: { targetLocation: [number, 
   }, [targetLocation]);
 
   useFrame((state, delta) => {
-    if (!earthRef.current.quaternion.equals(targetRotation.current)) {
+    if (earthRef.current && !earthRef.current.quaternion.equals(targetRotation.current)) {
       const step = 4 * delta;
       earthRef.current.quaternion.slerp(targetRotation.current, step);
     }
@@ -149,34 +153,66 @@ const ThreeGlobe = memo(({ location, selectedLocation }: { location: [number, nu
 ThreeGlobe.displayName = "ThreeGlobe";
 
 
+const validationSchema = Yup.object({
+  name: Yup.string().required("Name is required"),
+  email: Yup.string().email("Invalid email address").required("Email is required"),
+  phone: Yup.string().required("Phone number is required").min(8, "Phone number seems too short"),
+  message: Yup.string().required("Message is required"),
+});
+
+
 export default function ContactSection() {
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" })
   const [selectedLocation, setSelectedLocation] = useState<LocationPoint>(globalLocations[0]);
   const [isGlobeVisible, setIsGlobeVisible] = useState(false);
   const globeContainerRef = useRef<HTMLDivElement>(null);
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
+      try {
+        await axios.post("http://localhost:5000/api/contact", values, {
+          withCredentials: true,
+        });
+        toast.success("Message Sent Successfully!");
+        resetForm();
+      } catch (error) {
+        toast.error("Something went wrong"+error);
+      } finally {
+        setSubmitting(false);
+      }
+    },
+  });
 
   const handleLocationClick = (location: LocationPoint) => {
     setSelectedLocation(location);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); console.log("Form submitted:", formData);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | { target: { name: string; value: string } }) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-  
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        setIsGlobeVisible(true); observer.disconnect();
+        setIsGlobeVisible(true);
+        observer.disconnect();
       }
     }, { threshold: 0.1 });
-    if(globeContainerRef.current) { observer.observe(globeContainerRef.current); }
-    return () => observer.disconnect();
+
+    const currentRef = globeContainerRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
   }, []);
-  
+
   return (
     <div className="bg-[#f0efe2] dark:bg-[#232323] text-[#232323] dark:text-[#f0efe2] font-montserrat">
       <section className="py-20 sm:py-24">
@@ -185,88 +221,105 @@ export default function ContactSection() {
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">Connect with House of Amaraa across our worldwide network of strategic locations.</p>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 min-h-[600px]">
-                <div className="lg:col-span-4">
-                    <h2 className="font-bodoni text-3xl font-bold mb-6">Our Offices</h2>
-                    <div className="space-y-3">
-                        {globalLocations.map((location) => (
-                            <button key={location.country} onClick={() => handleLocationClick(location)} className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 ${selectedLocation.country === location.country ? 'border-[#c6a35d] bg-white dark:bg-black/20 shadow-lg scale-105' : 'border-transparent bg-white/50 dark:bg-black/10 hover:bg-white hover:dark:bg-black/20'}`}>
-                                <div className="flex items-center gap-4">
-                                  <span className="text-3xl">{location.flag}</span>
-                                  <div>
-                                    <h3 className="font-semibold text-lg">{location.country}</h3>
-                                    <p className="text-sm text-gray-500 dark:text-gray-400">{location.title}</p>
-                                  </div>
-                                </div>
-                            </button>
-                        ))}
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 min-h-[600px]">
+            <div className="lg:col-span-4">
+              <h2 className="font-bodoni text-3xl font-bold mb-6">Our Offices</h2>
+              <div className="space-y-3">
+                {globalLocations.map((location) => (
+                  <button key={location.country} onClick={() => handleLocationClick(location)} className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 ${selectedLocation.country === location.country ? 'border-[#c6a35d] bg-white dark:bg-black/20 shadow-lg scale-105' : 'border-transparent bg-white/50 dark:bg-black/10 hover:bg-white hover:dark:bg-black/20'}`}>
+                    <div className="flex items-center gap-4">
+                      <span className="text-3xl">{location.flag}</span>
+                      <div>
+                        <h3 className="font-semibold text-lg">{location.country}</h3>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">{location.title}</p>
+                      </div>
                     </div>
-                </div>
-                <div ref={globeContainerRef} className="lg:col-span-8 relative rounded-xl overflow-hidden min-h-[400px] lg:min-h-[600px] flex items-center justify-center">
-                   {isGlobeVisible ? (
-                        <div className="w-full h-full relative animate-fade-in">
-                          <div className="absolute inset-0 bg-gradient-to-b from-[#f0efe2]/50 to-transparent dark:from-[#232323]/50 z-10 [mask-image:radial-gradient(ellipse_at_center,transparent_40%,black)] pointer-events-none"></div>
-                          <ThreeGlobe location={selectedLocation.location} selectedLocation={selectedLocation} />
-                        </div>
-                    ) : (
-                        <div className="flex items-center justify-center h-full"><Loader2 className="w-12 h-12 text-[#c6a35d] animate-spin" /></div>
-                    )}
-                    {selectedLocation && (
-                        <div key={selectedLocation.country} className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto will-change-transform z-20">
-                             <Card className="group bg-white/80 dark:bg-black/70 backdrop-blur-md border-2 border-[#c6a35d]/50 shadow-2xl animate-fade-in-up w-full max-w-sm sm:max-w-md">
-                                <CardContent className="p-6">
-                                    <div className="flex items-center space-x-4 mb-4">
-                                      <span className="text-4xl">{selectedLocation.flag}</span>
-                                      <div>
-                                        <h4 className="font-bodoni font-bold text-xl">{selectedLocation.country}</h4>
-                                        <p className="text-[#c6a35d] font-semibold">{selectedLocation.title}</p>
-                                      </div>
-                                    </div>
-                                    <div className="space-y-4">
-                                      <div className="flex items-start space-x-3">
-                                        <MapPin className="w-4 h-4 text-gray-500 dark:text-gray-400 mt-1 flex-shrink-0" />
-                                        <p className="text-sm text-gray-700 dark:text-gray-300">{selectedLocation.address}</p>
-                                      </div>
-                                      <div className="pt-3 border-t border-gray-300/50 dark:border-gray-700/50">
-                                        <p className="text-xs text-gray-500 dark:text-gray-400 italic">{selectedLocation.focus}</p>
-                                      </div>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </div>
-                    )}
-                </div>
+                  </button>
+                ))}
+              </div>
             </div>
+            <div ref={globeContainerRef} className="lg:col-span-8 relative rounded-xl overflow-hidden min-h-[400px] lg:min-h-[600px] flex items-center justify-center">
+              {isGlobeVisible ? (
+                <div className="w-full h-full relative animate-fade-in">
+                  <div className="absolute inset-0 bg-gradient-to-b from-[#f0efe2]/50 to-transparent dark:from-[#232323]/50 z-10 [mask-image:radial-gradient(ellipse_at_center,transparent_40%,black)] pointer-events-none"></div>
+                  <ThreeGlobe location={selectedLocation.location} selectedLocation={selectedLocation} />
+                </div>
+              ) : (
+                <div className="flex items-center justify-center h-full"><Loader2 className="w-12 h-12 text-[#c6a35d] animate-spin" /></div>
+              )}
+              {selectedLocation && (
+                <div key={selectedLocation.country} className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto will-change-transform z-20">
+                  <Card className="group bg-white/80 dark:bg-black/70 backdrop-blur-md border-2 border-[#c6a35d]/50 shadow-2xl animate-fade-in-up w-full max-w-sm sm:max-w-md">
+                    <CardContent className="p-6">
+                      <div className="flex items-center space-x-4 mb-4">
+                        <span className="text-4xl">{selectedLocation.flag}</span>
+                        <div>
+                          <h4 className="font-bodoni font-bold text-xl">{selectedLocation.country}</h4>
+                          <p className="text-[#c6a35d] font-semibold">{selectedLocation.title}</p>
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="flex items-start space-x-3">
+                          <MapPin className="w-4 h-4 text-gray-500 dark:text-gray-400 mt-1 flex-shrink-0" />
+                          <p className="text-sm text-gray-700 dark:text-gray-300">{selectedLocation.address}</p>
+                        </div>
+                        <div className="pt-3 border-t border-gray-300/50 dark:border-gray-700/50">
+                          <p className="text-xs text-gray-500 dark:text-gray-400 italic">{selectedLocation.focus}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </section>
 
       <section className="py-20 sm:py-24 bg-white dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-16 items-start">
-                <div className="space-y-8 lg:pt-10">
-                    <h2 className="font-bodoni text-4xl sm:text-5xl font-bold">Get in Touch</h2>
-                    <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">Ready to explore opportunities with House of Amaraa? Reach out for partnerships, investments, or general inquiries. Our team is ready to connect with you.</p>
-                    <div className="space-y-4">
-                        <div className="flex items-center gap-4 p-4 bg-[#f0efe2] dark:bg-[#2a2a2a] rounded-lg"><div className="w-12 h-12 bg-[#c6a35d]/10 flex-shrink-0 rounded-full flex items-center justify-center"><Phone className="w-6 h-6 text-[#c6a35d]" /></div><div><h4 className="font-semibold text-lg">Phone</h4><p className="text-gray-600 dark:text-gray-400">+91 22 1234 5678</p></div></div>
-                        <div className="flex items-center gap-4 p-4 bg-[#f0efe2] dark:bg-[#2a2a2a] rounded-lg"><div className="w-12 h-12 bg-[#c6a35d]/10 flex-shrink-0 rounded-full flex items-center justify-center"><Mail className="w-6 h-6 text-[#c6a35d]" /></div><div><h4 className="font-semibold text-lg">Email</h4><p className="text-gray-600 dark:text-gray-400">info@amaraaglobal.com</p></div></div>
-                    </div>
-                </div>
-                <div>
-                    <Card className="border-gray-200/80 dark:border-gray-800/80 shadow-2xl bg-[#f0efe2]/50 dark:bg-black/20">
-                        <CardContent className="p-8 sm:p-10">
-                            <h3 className="font-bodoni text-3xl font-bold mb-8">Send us a Message</h3>
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                {['name', 'email'].map(field => (
-                                    <div key={field}><label htmlFor={field} className="block text-sm font-semibold mb-2 capitalize">{field} *</label><Input id={field} name={field} type={field} value={formData[field as keyof typeof formData]} onChange={handleChange} className="h-12 bg-[#f0efe2] dark:bg-[#2a2a2a] border-gray-300 dark:border-gray-700 focus:border-[#c6a35d] focus:ring-[#c6a35d]" placeholder={`Your ${field}`} required/></div>
-                                ))}
-                                <div><label htmlFor="phone" className="block text-sm font-semibold mb-2">Phone Number *</label><PhoneInput name="phone" onChange={handleChange} /></div>
-                                <div><label htmlFor="message" className="block text-sm font-semibold mb-2">Message *</label><textarea id="message" name="message" rows={5} value={formData.message} onChange={handleChange} className="w-full p-3 bg-[#f0efe2] dark:bg-[#2a2a2a] border border-gray-300 dark:border-gray-700 rounded-md focus:border-[#c6a35d] focus:ring-[#c6a35d] resize-none" placeholder="Tell us about your inquiry..." required/></div>
-                                <Button type="submit" className="w-full h-12 bg-[#c6a35d] text-white font-bold text-lg shadow-lg hover:shadow-xl hover:bg-[#b8964f] transition-all duration-300 transform hover:-translate-y-0.5">Send Message</Button>
-                            </form>
-                        </CardContent>
-                    </Card>
-                </div>
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div className="space-y-8 lg:pt-10">
+              <h2 className="font-bodoni text-4xl sm:text-5xl font-bold">Get in Touch</h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">Ready to explore opportunities with House of Amaraa? Reach out for partnerships, investments, or general inquiries. Our team is ready to connect with you.</p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 p-4 bg-[#f0efe2] dark:bg-[#2a2a2a] rounded-lg"><div className="w-12 h-12 bg-[#c6a35d]/10 flex-shrink-0 rounded-full flex items-center justify-center"><Phone className="w-6 h-6 text-[#c6a35d]" /></div><div><h4 className="font-semibold text-lg">Phone</h4><p className="text-gray-600 dark:text-gray-400">+91 22 1234 5678</p></div></div>
+                <div className="flex items-center gap-4 p-4 bg-[#f0efe2] dark:bg-[#2a2a2a] rounded-lg"><div className="w-12 h-12 bg-[#c6a35d]/10 flex-shrink-0 rounded-full flex items-center justify-center"><Mail className="w-6 h-6 text-[#c6a35d]" /></div><div><h4 className="font-semibold text-lg">Email</h4><p className="text-gray-600 dark:text-gray-400">info@amaraaglobal.com</p></div></div>
+              </div>
             </div>
+            <div>
+              <Card className="border-gray-200/80 dark:border-gray-800/80 shadow-2xl bg-[#f0efe2]/50 dark:bg-black/20">
+                <CardContent className="p-8 sm:p-10">
+                  <h3 className="font-bodoni text-3xl font-bold mb-8">Send us a Message</h3>
+                  <form onSubmit={formik.handleSubmit} className="space-y-6">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-semibold mb-2 capitalize">Name *</label>
+                      <Input id="name" name="name" type="text" value={formik.values.name} onChange={formik.handleChange} onBlur={formik.handleBlur} className="h-12 bg-[#f0efe2] dark:bg-[#2a2a2a] border-gray-300 dark:border-gray-700 focus:border-[#c6a35d] focus:ring-[#c6a35d]" placeholder="Your name" />
+                      {formik.touched.name && formik.errors.name ? (<div className="text-red-500 text-xs mt-1">{formik.errors.name}</div>) : null}
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-semibold mb-2 capitalize">Email *</label>
+                      <Input id="email" name="email" type="email" value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur} className="h-12 bg-[#f0efe2] dark:bg-[#2a2a2a] border-gray-300 dark:border-gray-700 focus:border-[#c6a35d] focus:ring-[#c6a35d]" placeholder="Your email" />
+                      {formik.touched.email && formik.errors.email ? (<div className="text-red-500 text-xs mt-1">{formik.errors.email}</div>) : null}
+                    </div>
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-semibold mb-2">Phone Number *</label>
+                      <PhoneInput name="phone" onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                      {formik.touched.phone && formik.errors.phone ? (<div className="text-red-500 text-xs mt-1">{formik.errors.phone}</div>) : null}
+                    </div>
+                    <div>
+                      <label htmlFor="message" className="block text-sm font-semibold mb-2">Message *</label>
+                      <textarea id="message" name="message" rows={5} value={formik.values.message} onChange={formik.handleChange} onBlur={formik.handleBlur} className="w-full p-3 bg-[#f0efe2] dark:bg-[#2a2a2a] border border-gray-300 dark:border-gray-700 rounded-md focus:border-[#c6a35d] focus:ring-[#c6a35d] resize-none" placeholder="Tell us about your inquiry..." />
+                      {formik.touched.message && formik.errors.message ? (<div className="text-red-500 text-xs mt-1">{formik.errors.message}</div>) : null}
+                    </div>
+                    <Button type="submit" className="w-full h-12 bg-[#c6a35d] text-white font-bold text-lg shadow-lg hover:shadow-xl hover:bg-[#b8964f] transition-all duration-300 transform hover:-translate-y-0.5" disabled={formik.isSubmitting}>
+                      {formik.isSubmitting ? <Loader2 className="w-6 h-6 animate-spin mx-auto" /> : 'Send Message'}
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         </div>
       </section>
     </div>

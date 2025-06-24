@@ -9,7 +9,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; img-src 'self' https: data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self';",
+            value: "default-src 'self'; connect-src 'self' http://localhost:5000 https://localhost:5000; img-src 'self' https: data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self';",
           },
           {
             key: 'Access-Control-Allow-Origin',
