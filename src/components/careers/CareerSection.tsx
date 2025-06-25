@@ -1,10 +1,10 @@
 "use client"
 
 import { Link } from "@/i18n/navigation";
-import { User } from "@/lib/type";
 import AuthModal from "@/modal/AuthModal";
 import JobApplicationModal from "@/modal/JobApplyModal";
 import CountUp from "@/shared/CountUp";
+import { RootState, useAppSelector } from "@/store/store";
 import {
   Users,
   Heart,
@@ -25,7 +25,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export default function CareersPage() {
-  const currUser: User | null = null;
+  const {currentUser} = useAppSelector((state: RootState) => state.auth);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showAllJobs, setShowAllJobs] = useState(false);
   const [isVisible, setIsVisible] = useState<Record<string, boolean>>({});
@@ -53,8 +53,7 @@ export default function CareersPage() {
     setIsModalOpen(true);
   };
 
-  const handleAuthSuccess = (user: User) => {
-    alert(`Authentication successful for ${user.name}! You can now apply.`);
+  const handleAuthSuccess = () => {
     setIsModalOpen(false);
     window.location.reload();
   };
@@ -115,7 +114,6 @@ export default function CareersPage() {
       <section className="relative min-h-screen flex items-center overflow-hidden font-montserrat">
         <div className="absolute inset-0 bg-gradient-to-br from-[#f0efe2] via-white to-[#c6a35d]/10 dark:from-[#232323] dark:via-[#1a1a1a] dark:to-[#c6a35d]/5"></div>
         <div className="absolute inset-0 bg-[url('/placeholder.svg?height=1080&width=1920')] bg-cover bg-center opacity-5"></div>
-
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
@@ -318,7 +316,7 @@ export default function CareersPage() {
       </section>
 
       {isModalOpen &&
-        (!currUser ? (
+        (!currentUser ? (
           <AuthModal
             open={isModalOpen}
             onOpenChange={setIsModalOpen}

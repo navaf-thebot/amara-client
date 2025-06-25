@@ -9,7 +9,7 @@ import LayoutWrapper from '@/components/LayoutWrapper';
 import { ThemeProvider } from '@/components/themes/theme-provider';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import  ReduxProvider  from '@/components/ReduxProvider';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -39,13 +39,13 @@ export default async function LocaleLayout({
   return (
       <div className={inter.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <ThemeProvider
+         <ReduxProvider>
+           <ThemeProvider
           attribute="class"
           defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
-          
           <LayoutWrapper>{children}</LayoutWrapper>
            <ToastContainer
               position="bottom-right"
@@ -60,6 +60,7 @@ export default async function LocaleLayout({
               theme="colored"
             />
         </ThemeProvider>
+         </ReduxProvider>
         </NextIntlClientProvider>
       </div>
   );

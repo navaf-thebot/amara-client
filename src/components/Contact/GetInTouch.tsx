@@ -176,7 +176,7 @@ export default function ContactSection() {
     validationSchema: validationSchema,
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {
-        await axios.post("http://localhost:5000/api/contact", values, {
+        await axios.post(`${process.env.NEXT_PUBLIC_CLIENT_BASE_URL}/api/contact`, values, {
           withCredentials: true,
         });
         toast.success("Message Sent Successfully!");

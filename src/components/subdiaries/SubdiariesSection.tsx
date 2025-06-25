@@ -39,15 +39,12 @@ function SubsidiariesPage() {
       setIsAuthModalOpen(true);
     } else {
       console.log("User already logged in. Proceeding to partnership form...");
-      alert("Redirecting to partnership form...");
     }
   };
 
   const handleAuthSuccess = (user: User) => {
     setCurrentUser(user);
     setIsAuthModalOpen(false);
-    console.log("Authentication successful, user set:", user);
-    alert(`Welcome, ${user.name}! You can now proceed with the partnership process.`);
   };
 
   const companyStaticData = [

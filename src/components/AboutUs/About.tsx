@@ -114,7 +114,7 @@ const AboutUs = () => {
         </motion.div>
 
         <motion.div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 cursor-pointer z-20"
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 hidden md:block cursor-pointer z-20"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { delay: 1.5, duration: 1 } }}
           onClick={() => window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth' })}
